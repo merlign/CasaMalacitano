@@ -58,7 +58,7 @@ export default function SurroundingsCarousel() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                    <span className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5">
+                    <span className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">
                       {item.tag}
                     </span>
                     <h3 className="text-3xl md:text-4xl font-serif text-white mb-3 leading-tight">
@@ -73,8 +73,8 @@ export default function SurroundingsCarousel() {
             ))}
           </Carousel.ItemGroup>
 
-          {/* Side arrows */}
-          <Carousel.Control className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 pointer-events-none">
+          {/* Top arrows */}
+          <Carousel.Control className="absolute top-5 left-0 right-0 flex items-start justify-between px-5 pointer-events-none">
             <Carousel.PrevTrigger className="pointer-events-auto p-3 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-all">
               <ChevronLeft size={22} />
             </Carousel.PrevTrigger>
