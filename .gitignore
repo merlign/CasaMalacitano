@@ -15,6 +15,7 @@ dist-ssr
 .claude/
 .next/
 out/
+dist/
 
 # Editor directories and files
 .vscode/*
