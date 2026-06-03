@@ -1,3 +1,5 @@
+'use client'
+
 import { Carousel } from "@ark-ui/react/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 

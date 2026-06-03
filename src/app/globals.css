@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-casa-pink: #d98b8b;
+  --color-casa-pink-dark: #b86b6b;
+  --color-casa-teal: #8ec9c6;
+  --color-casa-teal-light: #d8eeed;
+  --color-casa-yellow: #f5d547;
+  --color-casa-stone: #fcfbf9;
+  --color-casa-stone-dark: #f0eee6;
+  --color-casa-text: #2c2c2c;
+  --color-casa-text-light: #5a5a5a;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --font-brand: var(--font-fredoka), sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-casa-stone);
+    color: var(--color-casa-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
