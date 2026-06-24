@@ -78,15 +78,6 @@ const AMENITIES = [
   },
 ]
 
-const DISTANCES = [
-  { label: 'Caminito del Rey', dist: '11 km' },
-  { label: 'Málaga', dist: '45 min' },
-  { label: 'Ronda', dist: '50 min' },
-  { label: 'Antequera', dist: '25 min' },
-  { label: 'El Torcal', dist: '30 min' },
-  { label: 'El Chorro lakes', dist: '15 min' },
-]
-
 const HIGHLIGHTS = [
   { icon: Check, text: 'Fresh towels & luxury linen', sub: 'Fully provided — no need to pack' },
   { icon: Coffee, text: 'Nespresso coffee machine', sub: 'With starter capsules' },
@@ -123,7 +114,7 @@ export default function CasitaPage() {
 
       <main className="pt-24 md:pt-28">
 
-        {/* Hero gallery — first 5 photos */}
+        {/* Hero gallery — first 5 photos, clickable */}
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 rounded-3xl overflow-hidden h-[260px] md:h-[480px]">
             <div className="col-span-2 row-span-2 relative bg-casa-stone-dark cursor-zoom-in" onClick={() => openLightbox(0)}>
@@ -173,11 +164,11 @@ export default function CasitaPage() {
           </div>
         </div>
 
-        {/* Two-column content */}
+        {/* Two-column layout: content + sticky booking card */}
+        {/* Sticky card stops naturally when this grid ends (after amenities) */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20 grid md:grid-cols-[1fr_360px] gap-12 md:gap-16">
           <div className="space-y-14 min-w-0">
 
-            {/* Description */}
             <section>
               <h2 className="text-2xl font-serif mb-5">About this space</h2>
               <div className="space-y-4 text-casa-text-light leading-relaxed">
@@ -188,7 +179,6 @@ export default function CasitaPage() {
               </div>
             </section>
 
-            {/* Pack light */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-2">Pack light. Everything is here.</h2>
               <p className="text-casa-text-light mb-6">This is a complete stay. You don&apos;t need to bring towels, linen, or toiletries.</p>
@@ -207,7 +197,6 @@ export default function CasitaPage() {
               </div>
             </section>
 
-            {/* Amenities */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
@@ -230,68 +219,9 @@ export default function CasitaPage() {
               </div>
             </section>
 
-            {/* Book direct banner */}
-            <div className="bg-casa-teal-dark rounded-3xl px-8 md:px-12 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-              <div>
-                <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Book direct and save</p>
-                <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">No platform fees. Just a better price.</h2>
-                <p className="text-white/80 text-sm max-w-xl leading-relaxed">
-                  Booking directly here skips Airbnb and Booking.com service fees — typically saving you 10–15%. Same property, same hosts, better deal.
-                </p>
-              </div>
-              <a href="#book" className="bg-white text-casa-teal-dark px-8 py-4 rounded-full font-bold text-base whitespace-nowrap hover:bg-casa-stone transition-colors shadow-sm shrink-0">
-                Book now
-              </a>
-            </div>
-
-            {/* Scroll gallery with lightbox */}
-            <section className="pt-14 border-t border-gray-100">
-              <h2 className="text-2xl font-serif mb-6">All photos</h2>
-              <div className="overflow-hidden">
-                <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
-                {PHOTOS.map((photo, i) => (
-                  <button
-                    key={i}
-                    onClick={() => openLightbox(i)}
-                    className="relative shrink-0 w-56 md:w-72 aspect-[4/3] rounded-2xl overflow-hidden bg-casa-stone-dark snap-start cursor-zoom-in focus:outline-none"
-                  >
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </button>
-                ))}
-                </div>
-              </div>
-              <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos — click to enlarge</p>
-            </section>
-
-            {/* Location */}
-            <section className="pt-14 border-t border-gray-100">
-              <h2 className="text-2xl font-serif mb-6">Location</h2>
-              <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                <div className="flex items-start gap-3 mb-6">
-                  <MapPin size={20} className="text-casa-teal mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-semibold text-casa-text">Valle de Abdalajís, Málaga, Andalusia</p>
-                    <p className="text-sm text-casa-text-light mt-1 leading-relaxed">A quiet village in the heart of Andalusia, surrounded by mountains, gorges and nature. Not packaged for tourists — and that&apos;s exactly the point.</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  {DISTANCES.map((place) => (
-                    <div key={place.label} className="flex items-center justify-between text-sm p-3 rounded-xl bg-casa-stone">
-                      <span className="text-casa-text-light">{place.label}</span>
-                      <span className="font-semibold text-casa-text ml-2 shrink-0">{place.dist}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
           </div>
 
-          {/* Sticky booking card */}
+          {/* Sticky booking card — sticks until this grid ends */}
           <div className="hidden md:block">
             <div className="sticky top-32">
               <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-8">
@@ -316,6 +246,43 @@ export default function CasitaPage() {
           </div>
         </div>
 
+        {/* Book direct banner — full width, sticky card stops here */}
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20">
+          <div className="bg-casa-teal-dark rounded-3xl px-8 md:px-12 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Book direct and save</p>
+              <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">No platform fees. Just a better price.</h2>
+              <p className="text-white/80 text-sm max-w-xl leading-relaxed">
+                Booking directly here skips Airbnb and Booking.com service fees — typically saving you 10–15%. Same property, same hosts, better deal.
+              </p>
+            </div>
+            <a href="#book" className="bg-white text-casa-teal-dark px-8 py-4 rounded-full font-bold text-base whitespace-nowrap hover:bg-casa-stone transition-colors shadow-sm shrink-0">
+              Book now
+            </a>
+          </div>
+        </div>
+
+        {/* Photo gallery — full width, click to open lightbox */}
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20">
+          <h2 className="text-2xl font-serif mb-6">All photos</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {PHOTOS.map((photo, i) => (
+              <button
+                key={i}
+                onClick={() => openLightbox(i)}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-casa-stone-dark cursor-zoom-in focus:outline-none"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos — click to enlarge</p>
+        </div>
+
         {/* Contact */}
         <section className="mt-16 md:mt-24 py-16 md:py-24 px-4 bg-casa-stone-dark">
           <div className="max-w-2xl mx-auto text-center">
@@ -331,7 +298,7 @@ export default function CasitaPage() {
 
       </main>
 
-      {/* Floating book bar — mobile only */}
+      {/* Floating book bar — mobile only, slides up after scrolling */}
       <div className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-300 ${showBar ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.10)] px-4 py-3">
           <a href="#book" className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold text-base">
