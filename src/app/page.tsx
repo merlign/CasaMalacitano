@@ -289,6 +289,57 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Hosts */}
+      <section className="py-24 px-6 bg-casa-stone-dark">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Your hosts</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text">Meet Jans &amp; Minouche</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Jans */}
+            <div className="bg-white rounded-3xl p-8 flex flex-col gap-6">
+              <div className="w-20 h-20 rounded-full bg-casa-stone-dark flex items-center justify-center text-3xl font-serif text-casa-text-light">J</div>
+              <div>
+                <h3 className="text-2xl font-serif text-casa-text mb-1">Jans</h3>
+                <p className="text-casa-text-light text-sm mb-4">Co-host</p>
+                <p className="text-casa-text-light leading-relaxed">
+                  [Placeholder: short personal introduction about Jans. Who he is, what he loves about Valle de Abdalajís, what he enjoys sharing with guests.]
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-2">Languages</p>
+                <div className="flex gap-2 flex-wrap">
+                  {['English', 'German', 'Dutch'].map((lang) => (
+                    <span key={lang} className="text-xs font-medium bg-casa-stone px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Minouche */}
+            <div className="bg-white rounded-3xl p-8 flex flex-col gap-6">
+              <div className="w-20 h-20 rounded-full bg-casa-stone-dark flex items-center justify-center text-3xl font-serif text-casa-text-light">M</div>
+              <div>
+                <h3 className="text-2xl font-serif text-casa-text mb-1">Minouche</h3>
+                <p className="text-casa-text-light text-sm mb-4">Co-host</p>
+                <p className="text-casa-text-light leading-relaxed">
+                  [Placeholder: short personal introduction about Minouche. Who she is, what she loves about the area, what she brings to the guest experience.]
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-2">Languages</p>
+                <div className="flex gap-2 flex-wrap">
+                  {['English', 'German', 'Dutch', 'French'].map((lang) => (
+                    <span key={lang} className="text-xs font-medium bg-casa-stone px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section id="contact" className="py-24 px-6 bg-casa-stone-dark">
         <div className="max-w-2xl mx-auto text-center">
@@ -334,9 +385,13 @@ export default function Page() {
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+        <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
+            <span className="hidden md:inline text-gray-200">·</span>
+            <p className="text-xs text-gray-400">Tourism licence: CR/MA/02488 (Andalusia)</p>
+          </div>
+          <div className="flex gap-6">
             <a href="#" className="hover:text-casa-text transition-colors">Privacy policy</a>
             <a href="#" className="hover:text-casa-text transition-colors">Terms and conditions</a>
           </div>

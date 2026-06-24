@@ -33,9 +33,13 @@ export default function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-        <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
-        <div className="flex gap-6 mt-4 md:mt-0">
+      <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-4">
+          <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
+          <span className="hidden md:inline text-gray-200">·</span>
+          <p className="text-xs text-gray-400">Tourism licence: CR/MA/02488 (Andalusia)</p>
+        </div>
+        <div className="flex gap-6">
           <a href="#" className="hover:text-casa-text transition-colors">Privacy policy</a>
           <a href="#" className="hover:text-casa-text transition-colors">Terms and conditions</a>
         </div>

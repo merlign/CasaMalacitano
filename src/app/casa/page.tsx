@@ -174,6 +174,7 @@ export default function CasaPage() {
                 <p>The apartment has a cozy veranda where you can enjoy the setting sun. There is a comfortable bedroom, a kitchenette and a modern bathroom. Air conditioning is included.</p>
                 <p>You have your own space and entrance: your own bathroom, kitchen and bedroom. The apartment is connected to the main house. You have access to the shared pool from April to October.</p>
                 <p>The Torcal mountains and the Caminito del Rey walk are absolutely worth the visit. The natural scenery around the El Chorro lakes is spectacular.</p>
+                <p className="text-sm bg-casa-stone-dark rounded-2xl p-4">Pets are welcome on request. Please get in touch before booking.</p>
               </div>
             </section>
 

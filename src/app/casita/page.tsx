@@ -169,6 +169,7 @@ export default function CasitaPage() {
                 <p>The casita is part of Casa Malacitano and has a large living room with open kitchen and French doors that open onto the terrace. There is a spacious bathroom with walk-in shower. The bedroom with double bed is fully equipped with air conditioning (available at €5/night).</p>
                 <p>From April to October you can use the swimming pool, shared with any other guests. Upstairs you will find our outdoor kitchen, pool and solarium, in summer months you are welcome to join us for dinner or a drink from the honesty bar.</p>
                 <p className="text-sm bg-casa-stone-dark rounded-2xl p-4">The casita can only be reached by car. The village centre is a 5-minute walk away.</p>
+                <p className="text-sm bg-casa-stone-dark rounded-2xl p-4">Pets are welcome on request. Please get in touch before booking.</p>
               </div>
             </section>
 
