@@ -123,7 +123,7 @@ export default function CasaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-casa-stone font-sans text-casa-text overflow-x-clip">
+    <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
       <SiteHeader />
 
       <main className="pt-24 md:pt-28">
@@ -252,6 +252,7 @@ export default function CasaPage() {
             {/* Scroll gallery with lightbox */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-6">All photos</h2>
+              <div className="overflow-hidden">
               <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
                 {PHOTOS.map((photo, i) => (
                   <button
@@ -266,6 +267,7 @@ export default function CasaPage() {
                     />
                   </button>
                 ))}
+              </div>
               </div>
               <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos — click to enlarge</p>
             </section>
