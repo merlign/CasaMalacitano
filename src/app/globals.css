@@ -18,6 +18,9 @@
 }
 
 @layer utilities {
+  .overflow-x-clip {
+    overflow-x: clip;
+  }
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

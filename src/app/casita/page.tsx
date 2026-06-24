@@ -118,7 +118,7 @@ export default function CasitaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-casa-stone font-sans text-casa-text overflow-x-hidden">
+    <div className="min-h-screen bg-casa-stone font-sans text-casa-text overflow-x-clip">
       <SiteHeader />
 
       <main className="pt-24 md:pt-28">
