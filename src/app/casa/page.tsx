@@ -236,17 +236,17 @@ export default function CasaPage() {
             {/* Amenities */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
                 {AMENITIES.map((group) => (
                   <div key={group.category}>
                     <div className="flex items-center gap-2 mb-3">
-                      <group.icon size={17} className="text-casa-teal" />
-                      <h3 className="font-semibold text-casa-text text-sm">{group.category}</h3>
+                      <group.icon size={18} className="text-casa-teal" />
+                      <h3 className="font-semibold text-casa-text text-base">{group.category}</h3>
                     </div>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {group.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm text-casa-text-light">
-                          <Check size={13} className="text-casa-teal shrink-0" />
+                        <li key={item} className="flex items-center gap-2 text-base text-casa-text-light">
+                          <Check size={15} className="text-casa-teal shrink-0" />
                           {item}
                         </li>
                       ))}
