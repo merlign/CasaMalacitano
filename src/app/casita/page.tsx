@@ -262,8 +262,7 @@ export default function CasitaPage() {
                     />
                   </button>
                 ))}
-              </div>
-              </div>
+                </div>
               </div>
               <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos — click to enlarge</p>
             </section>
