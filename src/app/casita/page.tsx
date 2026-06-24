@@ -210,7 +210,7 @@ export default function CasitaPage() {
             {/* Amenities */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
                 {AMENITIES.map((group) => (
                   <div key={group.category}>
                     <div className="flex items-center gap-2 mb-3">
@@ -248,7 +248,7 @@ export default function CasitaPage() {
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-6">All photos</h2>
               <div className="overflow-hidden">
-              <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
+                <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
                 {PHOTOS.map((photo, i) => (
                   <button
                     key={i}
@@ -262,6 +262,7 @@ export default function CasitaPage() {
                     />
                   </button>
                 ))}
+              </div>
               </div>
               </div>
               <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos — click to enlarge</p>
@@ -313,15 +314,6 @@ export default function CasitaPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Mobile booking CTA */}
-        <div className="md:hidden max-w-7xl mx-auto px-4 mt-12">
-          <div className="bg-white rounded-3xl border border-gray-100 shadow p-6">
-            <p className="font-semibold text-casa-text mb-1">Ready to book?</p>
-            <p className="text-sm text-casa-text-light mb-4">Contact us directly — no platform fees.</p>
-            <a href="#book" className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold">Book now</a>
           </div>
         </div>
 
