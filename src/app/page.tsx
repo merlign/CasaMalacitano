@@ -1,13 +1,19 @@
 'use client'
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { MapPin, Sun, Coffee, Waves, Snowflake, Calendar, Users, Menu, X, Mail } from 'lucide-react';
+import { MapPin, Sun, Coffee, Waves, Snowflake, Calendar, Users, Menu, X, Mail, ChevronDown } from 'lucide-react';
 import SurroundingsCarousel from '../components/SurroundingsCarousel';
 
 export default function Page() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [accomOpen, setAccomOpen] = React.useState(false);
+  const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openAccom = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setAccomOpen(true); };
+  const closeAccom = () => { closeTimer.current = setTimeout(() => setAccomOpen(false), 180); };
 
   React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -30,7 +36,24 @@ export default function Page() {
           </div>
 
           <div className="hidden md:flex items-center gap-1">
-            <a href="#accommodations" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Accommodations</a>
+            <div className="relative" onMouseEnter={openAccom} onMouseLeave={closeAccom}>
+              <button className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>
+                Accommodations
+                <ChevronDown size={14} className={`transition-transform duration-200 ${accomOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {accomOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-lg border border-gray-100 p-2 min-w-56 z-50">
+                  <Link href="/casita" onClick={() => setAccomOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                    <p className="font-semibold text-casa-text text-sm">Casita Malacitano</p>
+                    <p className="text-xs text-casa-text-light mt-0.5">Detached casita</p>
+                  </Link>
+                  <Link href="/casa" onClick={() => setAccomOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                    <p className="font-semibold text-casa-text text-sm">Casa Malacitano</p>
+                    <p className="text-xs text-casa-text-light mt-0.5">Studio with private entrance</p>
+                  </Link>
+                </div>
+              )}
+            </div>
             <a href="#surroundings" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Surroundings</a>
             <a href="#contact" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Contact</a>
           </div>
@@ -50,10 +73,13 @@ export default function Page() {
         </div>
 
         {menuOpen && (
-          <div className={`max-w-5xl mx-auto mt-2 rounded-2xl backdrop-blur-md md:hidden flex flex-col items-center py-5 space-y-4 border ${
+          <div className={`max-w-5xl mx-auto mt-2 rounded-2xl backdrop-blur-md md:hidden flex flex-col items-center py-5 gap-1 border ${
             scrolled ? 'bg-white/90 border-gray-200/80 text-casa-text' : 'bg-black/40 border-white/10 text-white'
           }`}>
-            <a href="#accommodations" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Accommodations</a>
+            <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Accommodations</p>
+            <Link href="/casita" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casita Malacitano</Link>
+            <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
+            <div className={`w-8 h-px my-2 ${scrolled ? 'bg-gray-200' : 'bg-white/20'}`} />
             <a href="#surroundings" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Surroundings</a>
             <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</a>
           </div>
