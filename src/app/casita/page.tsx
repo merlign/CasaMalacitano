@@ -174,7 +174,7 @@ export default function CasitaPage() {
         </div>
 
         {/* Two-column content */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20 grid md:grid-cols-[1fr_360px] gap-12 md:gap-16 items-start">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20 grid md:grid-cols-[1fr_360px] gap-12 md:gap-16">
           <div className="space-y-14 min-w-0">
 
             {/* Description */}
