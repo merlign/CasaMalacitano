@@ -13,7 +13,16 @@
       "Bash(git push *)",
       "Bash(mkdir -p \"/Users/merlign/Documents/Redesign | Casa Malacitano/.claude\")",
       "mcp__Claude_Preview__preview_start",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(git checkout *)",
+      "WebFetch(domain:www.airbnb.nl)",
+      "WebSearch",
+      "Bash(git merge *)",
+      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/app/casita/page.tsx\")",
+      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/app/casa/page.tsx\")",
+      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/app/page.tsx\")",
+      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/components/SiteHeader.tsx\")",
+      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/components/SurroundingsCarousel.tsx\")"
     ]
   }
 }

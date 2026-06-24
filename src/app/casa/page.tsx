@@ -48,7 +48,7 @@ const AMENITIES = [
   {
     category: 'Heating & cooling',
     icon: Snowflake,
-    items: ['Air conditioning (split — included)', 'Heating (split system)'],
+    items: ['Air conditioning (split system, included)', 'Heating (split system)'],
   },
   {
     category: 'Internet',
@@ -63,7 +63,7 @@ const AMENITIES = [
   {
     category: 'Parking & pool',
     icon: Car,
-    items: ['Free parking on site — 1 spot', 'Shared outdoor pool (Apr–Oct, 10:00–19:00)'],
+    items: ['Free parking on site, 1 spot', 'Shared outdoor pool (Apr–Oct, 10:00–19:00)'],
   },
   {
     category: 'Safety',
@@ -73,7 +73,7 @@ const AMENITIES = [
   {
     category: 'Access',
     icon: Key,
-    items: ['Private entrance (street level)', 'Self check-in — key box', 'Ground floor — no stairs'],
+    items: ['Private entrance (street level)', 'Self check-in (key box)', 'Ground floor, no stairs'],
   },
   {
     category: 'Views',
@@ -83,7 +83,7 @@ const AMENITIES = [
 ]
 
 const HIGHLIGHTS = [
-  { icon: Check, text: 'Fresh towels & luxury linen', sub: 'Fully provided — no need to pack' },
+  { icon: Check, text: 'Fresh towels & luxury linen', sub: 'Fully provided, no need to pack' },
   { icon: Coffee, text: 'Nespresso + coffee included', sub: 'Ready from the moment you arrive' },
   { icon: Check, text: 'Shampoo, conditioner & shower gel', sub: 'Quality toiletries provided' },
   { icon: Utensils, text: 'Full kitchen essentials', sub: 'Oil, salt, pepper, pans, dishes' },
@@ -119,7 +119,7 @@ export default function CasaPage() {
 
       <main className="pt-24 md:pt-28">
 
-        {/* Hero gallery — first 5 photos, clickable */}
+        {/* Hero gallery, first 5 photos, clickable */}
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 rounded-3xl overflow-hidden h-[260px] md:h-[480px]">
             <div className="col-span-2 row-span-2 relative bg-casa-stone-dark cursor-zoom-in" onClick={() => openLightbox(0)}>
@@ -172,7 +172,7 @@ export default function CasaPage() {
               <div className="space-y-4 text-casa-text-light leading-relaxed">
                 <p>A beautifully renovated studio apartment with its own front door and terrace, overlooking the friendly village of Valle de Abdalajís. Centrally located between Málaga, Ronda, Granada, Seville and Córdoba.</p>
                 <p>The apartment has a cozy veranda where you can enjoy the setting sun. There is a comfortable bedroom, a kitchenette and a modern bathroom. Air conditioning is included.</p>
-                <p>You have your own space and entrance — your own bathroom, kitchen and bedroom — but the apartment is connected to the main house. You have access to the shared pool from April to October.</p>
+                <p>You have your own space and entrance: your own bathroom, kitchen and bedroom. The apartment is connected to the main house. You have access to the shared pool from April to October.</p>
                 <p>The Torcal mountains and the Caminito del Rey walk are absolutely worth the visit. The natural scenery around the El Chorro lakes is spectacular.</p>
               </div>
             </section>
@@ -225,7 +225,7 @@ export default function CasaPage() {
 
           </div>
 
-          {/* Sticky booking card — sticks until this grid ends */}
+          {/* Sticky booking card, sticks until this grid ends */}
           <div className="hidden md:block">
             <div className="sticky top-32">
               <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-8">
@@ -238,7 +238,7 @@ export default function CasaPage() {
                   View on Airbnb (higher price)
                 </a>
                 <div className="mt-6 pt-6 border-t border-gray-100 space-y-2.5">
-                  {['2 guests', '1 bedroom — 1 bed', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)'].map((item) => (
+                  {['2 guests', '1 bedroom (1 bed)', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)'].map((item) => (
                     <div key={item} className="flex items-center gap-2 text-sm text-casa-text-light">
                       <Check size={13} className="text-casa-teal shrink-0" />
                       {item}
@@ -250,14 +250,14 @@ export default function CasaPage() {
           </div>
         </div>
 
-        {/* Book direct banner — full width, sticky card stops here */}
+        {/* Book direct banner, full width, sticky card stops here */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20">
           <div className="bg-casa-teal-dark rounded-3xl px-8 md:px-12 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Book direct and save</p>
               <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">No platform fees. Just a better price.</h2>
               <p className="text-white/80 text-sm max-w-xl leading-relaxed">
-                Booking directly here skips Airbnb and Booking.com service fees — typically saving you 10–15%. Same property, same hosts, better deal.
+                Booking directly here skips Airbnb and Booking.com service fees, typically saving you 10–15%. Same property, same hosts, better deal.
               </p>
             </div>
             <a href="#book" className="bg-white text-casa-teal-dark px-8 py-4 rounded-full font-bold text-base whitespace-nowrap hover:bg-casa-stone transition-colors shadow-sm shrink-0">
@@ -266,7 +266,7 @@ export default function CasaPage() {
           </div>
         </div>
 
-        {/* Photo gallery — full width, click to open lightbox */}
+        {/* Photo gallery, full width, click to open lightbox */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20">
           <h2 className="text-2xl font-serif mb-6">All photos</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -284,7 +284,7 @@ export default function CasaPage() {
               </button>
             ))}
           </div>
-          <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos — click to enlarge</p>
+          <p className="text-xs text-casa-text-light mt-3">{PHOTOS.length} photos, click to enlarge</p>
         </div>
 
         {/* Contact */}
@@ -316,11 +316,11 @@ export default function CasaPage() {
 
       </main>
 
-      {/* Floating book bar — mobile only, slides up after scrolling */}
+      {/* Floating book bar, mobile only, slides up after scrolling */}
       <div className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-300 ${showBar ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.10)] px-4 py-3">
           <a href="#book" className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold text-base">
-            Book now — no platform fees
+            Book now, no platform fees
           </a>
         </div>
       </div>
@@ -337,7 +337,7 @@ export default function CasaPage() {
               alt={PHOTOS[lightboxIndex].alt}
               className="max-h-[82vh] w-auto max-w-full object-contain rounded-2xl"
             />
-            <p className="text-white/50 text-sm mt-4">{lightboxIndex + 1} / {PHOTOS.length} — {PHOTOS[lightboxIndex].alt}</p>
+            <p className="text-white/50 text-sm mt-4">{lightboxIndex + 1} / {PHOTOS.length}, {PHOTOS[lightboxIndex].alt}</p>
           </div>
           <button onClick={nextPhoto} className="absolute right-4 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors z-10">
             <ChevronRight size={28} />
