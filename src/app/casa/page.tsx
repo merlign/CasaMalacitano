@@ -32,11 +32,6 @@ const PHOTOS = [
 
 const AMENITIES = [
   {
-    category: 'Views',
-    icon: Mountain,
-    items: ['Garden view', 'Mountain view', 'Valley view'],
-  },
-  {
     category: 'Bedroom & laundry',
     icon: Bed,
     items: ['Towels, linen, soap & toilet paper', 'Hangers', 'Cotton bedding', 'Extra pillows & blankets', 'Drying rack', 'Safe', 'Wardrobe'],
@@ -80,6 +75,11 @@ const AMENITIES = [
     category: 'Access',
     icon: Key,
     items: ['Private entrance (street level)', 'Self check-in — key box', 'Ground floor — no stairs'],
+  },
+  {
+    category: 'Views',
+    icon: Mountain,
+    items: ['Garden view', 'Mountain view', 'Valley view'],
   },
 ]
 
@@ -206,7 +206,7 @@ export default function CasaPage() {
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-                {(showAllAmenities ? AMENITIES : AMENITIES.slice(0, 6)).map((group) => (
+                {(showAllAmenities ? AMENITIES : AMENITIES.slice(0, 3)).map((group) => (
                   <div key={group.category}>
                     <div className="flex items-center gap-2 mb-3">
                       <group.icon size={18} className="text-casa-teal" />
