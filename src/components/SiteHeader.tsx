@@ -7,6 +7,15 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [accomOpen, setAccomOpen] = React.useState(false)
+  const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const openAccom = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setAccomOpen(true)
+  }
+  const closeAccom = () => {
+    closeTimer.current = setTimeout(() => setAccomOpen(false), 180)
+  }
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 pt-4">
@@ -20,8 +29,8 @@ export default function SiteHeader() {
           {/* Accommodations dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setAccomOpen(true)}
-            onMouseLeave={() => setAccomOpen(false)}
+            onMouseEnter={openAccom}
+            onMouseLeave={closeAccom}
           >
             <button className="flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">
               Accommodations
