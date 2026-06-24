@@ -222,7 +222,7 @@ export default function CasitaPage() {
                 onClick={() => setShowAllAmenities((v) => !v)}
                 className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-casa-text text-casa-text text-sm font-semibold hover:bg-casa-text hover:text-white transition-all"
               >
-                {showAllAmenities ? '↑ Show less' : `Show all ${AMENITIES.length} amenities`}
+                {showAllAmenities ? '↑ Show less' : 'Show all amenities'}
               </button>
             </section>
 
