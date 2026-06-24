@@ -240,6 +240,55 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Village & Map */}
+      <section className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The village</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text">Valle de Abdalajís</h2>
+          </div>
+
+          <div className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg mb-12">
+            <iframe
+              src="https://maps.google.com/maps?q=Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=13"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Valle de Abdalajís map"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+            <div>
+              <p className="text-casa-text-light text-lg leading-relaxed mb-4">
+                Nestled between mountain ridges in the province of Málaga, Valle de Abdalajís is an authentic Andalusian village that tourism has largely passed by. Around 2,000 residents, a handful of bars, and a pace of life that slows you down the moment you arrive.
+              </p>
+              <p className="text-casa-text-light leading-relaxed">
+                The GR-340 trail passes right through the village, the Caminito del Rey is 11 km away, and Málaga airport is under an hour. The kind of base that lets you do everything while feeling like you are in the middle of nowhere.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { label: 'Caminito del Rey', value: '11 km' },
+                { label: 'Málaga airport', value: '45 min' },
+                { label: 'Ronda', value: '50 min' },
+                { label: 'Antequera', value: '25 min' },
+                { label: 'El Torcal', value: '30 min' },
+                { label: 'El Chorro lakes', value: '15 min' },
+              ].map((item) => (
+                <div key={item.label} className="bg-casa-stone-dark rounded-2xl p-5">
+                  <p className="text-2xl font-serif text-casa-text">{item.value}</p>
+                  <p className="text-sm text-casa-text-light mt-1">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section id="contact" className="py-24 px-6 bg-casa-stone-dark">
         <div className="max-w-2xl mx-auto text-center">
