@@ -1,11 +1,10 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import {
   MapPin, Star, Users, Bed, Wifi, Car, Waves, Snowflake,
   Wind, Utensils, Shield, Mountain, Leaf, Coffee, Check,
-  ChevronRight, ChevronLeft, Mail, ArrowLeft, Key, X,
+  ChevronLeft, ChevronRight, Mail, Key, X,
 } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -136,14 +135,7 @@ export default function CasaPage() {
 
         {/* Title block */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8 md:mt-12">
-          <div className="flex items-center gap-2 text-casa-text-light text-sm mb-4">
-            <Link href="/" className="hover:text-casa-teal transition-colors flex items-center gap-1">
-              <ArrowLeft size={14} />
-              All accommodations
-            </Link>
-            <ChevronRight size={14} />
-            <span className="text-casa-text">Casa Malacitano</span>
-          </div>
+
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <span className="inline-block bg-casa-pink/10 text-casa-pink text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Studio with private entrance</span>

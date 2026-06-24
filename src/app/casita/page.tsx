@@ -1,11 +1,10 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import {
   MapPin, Star, Users, Bed, Wifi, Car, Waves, Snowflake,
   Wind, Utensils, Shield, Leaf, Coffee, Check,
-  ChevronRight, ChevronLeft, Mail, ArrowLeft, Key, X,
+  ChevronLeft, ChevronRight, Mail, Key, X,
 } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -131,14 +130,7 @@ export default function CasitaPage() {
 
         {/* Title block */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8 md:mt-12">
-          <div className="flex items-center gap-2 text-casa-text-light text-sm mb-4">
-            <Link href="/" className="hover:text-casa-teal transition-colors flex items-center gap-1">
-              <ArrowLeft size={14} />
-              All accommodations
-            </Link>
-            <ChevronRight size={14} />
-            <span className="text-casa-text">Casita Malacitano</span>
-          </div>
+
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
               <span className="inline-block bg-casa-teal/10 text-casa-teal text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Detached casita</span>
@@ -160,7 +152,7 @@ export default function CasitaPage() {
             <div className="flex items-center gap-2 shrink-0 bg-white border border-gray-100 rounded-2xl px-4 py-3">
               <Star size={16} className="text-yellow-400 fill-yellow-400" />
               <span className="font-semibold text-casa-text">5.0</span>
-              <span className="text-casa-text-light text-sm">on Airbnb</span>
+              <span className="text-casa-text-light text-sm">· 18 reviews</span>
             </div>
           </div>
         </div>
