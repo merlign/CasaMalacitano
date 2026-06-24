@@ -42,14 +42,14 @@ const AMENITIES = [
     items: ['Towels, linen, soap & toilet paper', 'Hangers', 'Cotton bedding', 'Extra pillows & blankets', 'Drying rack', 'Safe', 'Wardrobe'],
   },
   {
-    category: 'Bathroom',
-    icon: Wind,
-    items: ['Hairdryer', 'Shampoo', 'Conditioner', 'Shower gel', 'Hot water'],
-  },
-  {
     category: 'Kitchen',
     icon: Utensils,
     items: ['Full kitchenette', 'Fridge & mini-fridge', 'Bosch induction hob', 'Microwave', 'Kettle', 'Nespresso machine', 'Toaster', 'Wine glasses', 'Cooking essentials', 'Dishes & cutlery', 'Coffee included'],
+  },
+  {
+    category: 'Bathroom',
+    icon: Wind,
+    items: ['Hairdryer', 'Shampoo', 'Conditioner', 'Shower gel', 'Hot water'],
   },
   {
     category: 'Heating & cooling',
