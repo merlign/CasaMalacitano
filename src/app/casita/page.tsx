@@ -39,7 +39,7 @@ const AMENITIES = [
   {
     category: 'Kitchen',
     icon: Utensils,
-    items: ['Full kitchen', 'Fridge & mini-fridge', 'Freezer', 'Induction hob', 'Microwave', 'Kettle', 'Nespresso machine', 'Wine glasses', 'Dining table', 'Cooking essentials', 'Dishes & cutlery'],
+    items: ['Fridge & mini-fridge', 'Freezer', 'Induction hob', 'Microwave', 'Kettle', 'Nespresso machine', 'Wine glasses', 'Dining table', 'Cooking essentials', 'Dishes & cutlery'],
   },
   {
     category: 'Bathroom',
@@ -90,6 +90,7 @@ const HIGHLIGHTS = [
 export default function CasitaPage() {
   const [lightboxIndex, setLightboxIndex] = React.useState<number | null>(null)
   const [showBar, setShowBar] = React.useState(false)
+  const [showAllAmenities, setShowAllAmenities] = React.useState(false)
 
   React.useEffect(() => {
     const handleScroll = () => setShowBar(window.scrollY > 500)
@@ -200,7 +201,7 @@ export default function CasitaPage() {
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-                {AMENITIES.map((group) => (
+                {(showAllAmenities ? AMENITIES : AMENITIES.slice(0, 6)).map((group) => (
                   <div key={group.category}>
                     <div className="flex items-center gap-2 mb-3">
                       <group.icon size={18} className="text-casa-teal" />
@@ -217,6 +218,12 @@ export default function CasitaPage() {
                   </div>
                 ))}
               </div>
+              <button
+                onClick={() => setShowAllAmenities((v) => !v)}
+                className="mt-8 text-sm font-semibold text-casa-text underline underline-offset-4 hover:text-casa-teal transition-colors"
+              >
+                {showAllAmenities ? 'Show less' : `Show all ${AMENITIES.length} amenities`}
+              </button>
             </section>
 
           </div>
