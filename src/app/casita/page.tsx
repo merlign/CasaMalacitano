@@ -98,6 +98,13 @@ const HIGHLIGHTS = [
 
 export default function CasitaPage() {
   const [lightboxIndex, setLightboxIndex] = React.useState<number | null>(null)
+  const [showBar, setShowBar] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => setShowBar(window.scrollY > 500)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const openLightbox = (i: number) => setLightboxIndex(i)
   const closeLightbox = () => setLightboxIndex(null)
@@ -330,6 +337,15 @@ export default function CasitaPage() {
         </section>
 
       </main>
+
+      {/* Floating book bar — mobile only */}
+      <div className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-300 ${showBar ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className="bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.10)] px-4 py-3">
+          <a href="#book" className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold text-base">
+            Book now — no platform fees
+          </a>
+        </div>
+      </div>
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
