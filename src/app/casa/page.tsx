@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import {
   MapPin, Star, Users, Bed, Wifi, Car, Waves, Snowflake,
-  Wind, Utensils, Shield, Mountain, Leaf, Coffee, Check, X,
+  Wind, Utensils, Shield, Mountain, Leaf, Coffee, Check,
   ChevronRight, Mail, ArrowLeft, Key,
 } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
@@ -17,6 +17,16 @@ const PHOTOS = [
   { src: '/casa/photo-3.jpg', alt: 'Kitchenette and dining area' },
   { src: '/casa/photo-4.jpg', alt: 'Bathroom' },
   { src: '/casa/photo-5.jpg', alt: 'Terrace with garden furniture' },
+  { src: '/casa/photo-6.jpg', alt: 'Terrace at sunset' },
+  { src: '/casa/photo-7.jpg', alt: 'Kitchen detail' },
+  { src: '/casa/photo-8.jpg', alt: 'Pool area' },
+  { src: '/casa/photo-9.jpg', alt: 'Garden view' },
+  { src: '/casa/photo-10.jpg', alt: 'Outdoor dining area' },
+  { src: '/casa/photo-11.jpg', alt: 'Solarium' },
+  { src: '/casa/photo-12.jpg', alt: 'Village view from terrace' },
+  { src: '/casa/photo-13.jpg', alt: 'Living area' },
+  { src: '/casa/photo-14.jpg', alt: 'Bedroom detail' },
+  { src: '/casa/photo-15.jpg', alt: 'Mountain view' },
 ]
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -96,8 +106,6 @@ const AMENITIES = [
   },
 ]
 
-const NOT_AVAILABLE = ['TV', 'CO detector', 'Security cameras outside', 'Washing machine (paid, in building)']
-
 const DISTANCES = [
   { label: 'Caminito del Rey', dist: '11 km' },
   { label: 'Málaga', dist: '45 min' },
@@ -123,13 +131,13 @@ export default function CasaPage() {
 
       <main className="pt-24 md:pt-28">
 
-        {/* Gallery */}
+        {/* Hero gallery — first 5 photos */}
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 rounded-3xl overflow-hidden h-[260px] md:h-[480px]">
             <div className="col-span-2 row-span-2 relative bg-casa-stone-dark">
               <img src={PHOTOS[0].src} alt={PHOTOS[0].alt} className="absolute inset-0 w-full h-full object-cover" />
             </div>
-            {PHOTOS.slice(1).map((photo, i) => (
+            {PHOTOS.slice(1, 5).map((photo, i) => (
               <div key={i} className={`relative bg-casa-stone-dark ${i >= 2 ? 'hidden md:block' : ''}`}>
                 <img src={photo.src} alt={photo.alt} className="absolute inset-0 w-full h-full object-cover" />
               </div>
@@ -174,25 +182,6 @@ export default function CasaPage() {
           </div>
         </div>
 
-        {/* Book direct banner */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-10">
-          <div className="bg-casa-teal rounded-3xl px-8 md:px-12 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Book direct and save</p>
-              <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">No platform fees. Just a better price.</h2>
-              <p className="text-white/80 text-sm max-w-xl leading-relaxed">
-                Booking directly here skips Airbnb and Booking.com service fees — typically saving you 10–15%. Same property, same hosts, better deal.
-              </p>
-            </div>
-            <a
-              href="mailto:info@casamalacitano.com?subject=Booking request – Casa Malacitano"
-              className="bg-white text-casa-teal px-8 py-4 rounded-full font-bold text-base whitespace-nowrap hover:bg-casa-stone transition-colors shadow-sm shrink-0"
-            >
-              Request booking
-            </a>
-          </div>
-        </div>
-
         {/* Two-column content */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20 grid md:grid-cols-[1fr_360px] gap-12 md:gap-16 items-start">
 
@@ -228,6 +217,22 @@ export default function CasaPage() {
               </div>
             </section>
 
+            {/* Full photo gallery */}
+            <section className="pt-14 border-t border-gray-100">
+              <h2 className="text-2xl font-serif mb-6">All photos</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {PHOTOS.map((photo, i) => (
+                  <div key={i} className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-casa-stone-dark">
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+
             {/* Amenities */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
@@ -249,19 +254,24 @@ export default function CasaPage() {
                   </div>
                 ))}
               </div>
-
-              <div className="mt-8 pt-8 border-t border-gray-100">
-                <p className="text-xs font-semibold text-casa-text-light uppercase tracking-wider mb-3">Not available</p>
-                <div className="flex flex-wrap gap-4">
-                  {NOT_AVAILABLE.map((item) => (
-                    <span key={item} className="flex items-center gap-1.5 text-sm text-gray-400 line-through decoration-gray-300">
-                      <X size={12} className="text-gray-300 shrink-0" style={{ textDecoration: 'none' }} />
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </section>
+
+            {/* Book direct banner — after all amenities */}
+            <div className="bg-casa-teal-dark rounded-3xl px-8 md:px-12 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div>
+                <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Book direct and save</p>
+                <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">No platform fees. Just a better price.</h2>
+                <p className="text-white/80 text-sm max-w-xl leading-relaxed">
+                  Booking directly here skips Airbnb and Booking.com service fees — typically saving you 10–15%. Same property, same hosts, better deal.
+                </p>
+              </div>
+              <a
+                href="#book"
+                className="bg-white text-casa-teal-dark px-8 py-4 rounded-full font-bold text-base whitespace-nowrap hover:bg-casa-stone transition-colors shadow-sm shrink-0"
+              >
+                Book now
+              </a>
+            </div>
 
             {/* Location */}
             <section className="pt-14 border-t border-gray-100">
@@ -295,10 +305,10 @@ export default function CasaPage() {
                 <p className="text-casa-text-light text-sm mb-6 leading-relaxed">No Airbnb or Booking.com service fees. Direct contact with the hosts.</p>
 
                 <a
-                  href="mailto:info@casamalacitano.com?subject=Booking request – Casa Malacitano"
-                  className="block w-full bg-casa-teal hover:bg-casa-teal/90 text-white text-center px-6 py-4 rounded-2xl font-bold transition-colors mb-3"
+                  href="#book"
+                  className="block w-full bg-casa-teal-dark hover:opacity-90 text-white text-center px-6 py-4 rounded-2xl font-bold transition-opacity mb-3"
                 >
-                  Request booking
+                  Book now
                 </a>
                 <a
                   href="https://www.airbnb.nl/rooms/711527784364828762"
@@ -336,10 +346,10 @@ export default function CasaPage() {
             <p className="font-semibold text-casa-text mb-1">Ready to book?</p>
             <p className="text-sm text-casa-text-light mb-4">Contact us directly — no platform fees.</p>
             <a
-              href="mailto:info@casamalacitano.com?subject=Booking request – Casa Malacitano"
-              className="block w-full bg-casa-teal text-white text-center px-6 py-4 rounded-2xl font-bold"
+              href="#book"
+              className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold"
             >
-              Request booking
+              Book now
             </a>
           </div>
         </div>
