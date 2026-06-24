@@ -116,7 +116,7 @@ export default function CasaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
+    <div className="min-h-screen bg-casa-stone font-sans text-casa-text overflow-x-hidden">
       <SiteHeader />
 
       <main className="pt-24 md:pt-28">
@@ -173,7 +173,7 @@ export default function CasaPage() {
 
         {/* Two-column content */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20 grid md:grid-cols-[1fr_360px] gap-12 md:gap-16 items-start">
-          <div className="space-y-14">
+          <div className="space-y-14 min-w-0">
 
             {/* Description */}
             <section>
@@ -245,7 +245,7 @@ export default function CasaPage() {
             {/* Scroll gallery with lightbox */}
             <section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-6">All photos</h2>
-              <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory -mx-4 px-4 md:-mx-0 md:px-0">
+              <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
                 {PHOTOS.map((photo, i) => (
                   <button
                     key={i}
