@@ -1,101 +1,129 @@
-'use client'
-
-import { Carousel } from "@ark-ui/react/carousel";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const highlights = [
+const large = [
   {
     tag: "11 km away",
     title: "Walk the gorge of a lifetime",
-    description:
-      "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
+    description: "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
     image: "/caminito.jpg",
+    href: "#",
   },
   {
     tag: "GR-340 trail",
     title: "Ride out. Get lost. Find yourself.",
-    description:
-      "The GR-340 passes right through the village. Climb into the hills on two wheels or two feet, through olive groves, limestone ridges and zero crowds.",
+    description: "The GR-340 passes right through the village. Climb into the hills on two wheels or two feet, through olive groves, limestone ridges and zero crowds.",
     image: "/mb.jpg",
+    href: "#",
   },
+]
+
+const small = [
   {
     tag: "Within 1 hour",
     title: "Three cities, one base.",
-    description:
-      "Málaga's waterfront, Antequera's dolmens, Ronda's cliffside views. All within an hour. Stay here. Go everywhere.",
     image: "/malaga.jpg",
+    href: "#",
   },
   {
     tag: "Local life",
     title: "Spain as it used to be",
-    description:
-      "Valle de Abdalajís hasn't been packaged for tourists. And that's exactly the point. Sit on a terrace, order something cold, and let the afternoon disappear.",
     image: "/local.jpg",
+    href: "#",
   },
-];
+  {
+    tag: "30 min away",
+    title: "El Torcal Natural Park",
+    image: "/torcal.jpg",
+    href: "#",
+  },
+  {
+    tag: "15 min away",
+    title: "El Chorro lakes",
+    image: "/chorro.jpg",
+    href: "#",
+  },
+]
 
 export default function SurroundingsCarousel() {
   return (
     <div>
-      <div className="flex items-end justify-between mb-10">
-        <div>
-          <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The surroundings</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text leading-tight">
-            Step outside. There's a lot to do.
-          </h2>
-        </div>
+      <div className="mb-10">
+        <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The surroundings</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text leading-tight">
+          Step outside. There&apos;s a lot to do.
+        </h2>
       </div>
 
-      <Carousel.Root defaultPage={0} slideCount={highlights.length}>
-        <div className="relative">
-          <Carousel.ItemGroup className="overflow-hidden rounded-3xl">
-            {highlights.map((item, index) => (
-              <Carousel.Item key={index} index={index}>
-                <div className="relative h-[480px] md:h-[580px] w-full overflow-hidden rounded-3xl">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                    <span className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">
-                      {item.tag}
-                    </span>
-                    <h3 className="text-3xl md:text-4xl font-serif text-white mb-3 leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/75 text-base leading-relaxed max-w-xl">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </Carousel.Item>
-            ))}
-          </Carousel.ItemGroup>
-
-          {/* Top arrows */}
-          <Carousel.Control className="absolute top-5 left-0 right-0 flex items-start justify-between px-5 pointer-events-none">
-            <Carousel.PrevTrigger className="pointer-events-auto p-3 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-all">
-              <ChevronLeft size={22} />
-            </Carousel.PrevTrigger>
-            <Carousel.NextTrigger className="pointer-events-auto p-3 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-all">
-              <ChevronRight size={22} />
-            </Carousel.NextTrigger>
-          </Carousel.Control>
-        </div>
-
-        <Carousel.IndicatorGroup className="flex justify-center items-center mt-5 gap-2">
-          {highlights.map((_, index) => (
-            <Carousel.Indicator
-              key={index}
-              index={index}
-              className="h-1.5 w-6 rounded-full bg-gray-300 data-[current]:bg-casa-teal data-[current]:w-10 transition-all cursor-pointer"
+      {/* 2 large cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+        {large.map((item) => (
+          <a key={item.title} href={item.href} className="relative h-[340px] md:h-[420px] rounded-3xl overflow-hidden block group">
+            <img
+              src={item.image}
+              alt={item.title}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-          ))}
-        </Carousel.IndicatorGroup>
-      </Carousel.Root>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9">
+              <span className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">
+                {item.tag}
+              </span>
+              <h3 className="text-2xl md:text-3xl font-serif text-white mb-2 leading-tight">
+                {item.title}
+              </h3>
+              <p className="text-white/75 text-sm leading-relaxed max-w-md">
+                {item.description}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* 4 small cards — horizontal scroll on mobile, 4-col grid on desktop */}
+      <div className="hidden md:grid md:grid-cols-4 gap-3">
+        {small.map((item) => (
+          <a key={item.title} href={item.href} className="relative h-[200px] rounded-2xl overflow-hidden block group">
+            <img
+              src={item.image}
+              alt={item.title}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <span className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-2">
+                {item.tag}
+              </span>
+              <h3 className="text-base font-serif text-white leading-snug">
+                {item.title}
+              </h3>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile: horizontal scroll strip */}
+      <div className="md:hidden flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
+        {small.map((item) => (
+          <a
+            key={item.title}
+            href={item.href}
+            className="relative shrink-0 w-56 h-[180px] rounded-2xl overflow-hidden block snap-start group"
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4">
+              <span className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-2">
+                {item.tag}
+              </span>
+              <h3 className="text-sm font-serif text-white leading-snug">
+                {item.title}
+              </h3>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
-  );
+  )
 }
