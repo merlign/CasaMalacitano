@@ -235,59 +235,42 @@ export default function Page() {
 
       {/* Hosts */}
       <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <div>
             <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Your hosts</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text">Meet Jans &amp; Minouche</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-6">Meet Jans &amp; Minouche</h2>
+            <p className="text-casa-text-light text-lg leading-relaxed mb-8">
+              [Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <div>
+                <p className="font-semibold text-casa-text mb-2">Jans</p>
+                <div className="flex gap-2 flex-wrap">
+                  {['English', 'German', 'Dutch'].map((lang) => (
+                    <span key={lang} className="text-xs font-medium bg-casa-stone px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="font-semibold text-casa-text mb-2">Minouche</p>
+                <div className="flex gap-2 flex-wrap">
+                  {['English', 'German', 'Dutch', 'French'].map((lang) => (
+                    <span key={lang} className="text-xs font-medium bg-casa-stone px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col gap-6">
-            {/* Jans */}
-            <div className="bg-casa-stone rounded-3xl p-8 flex flex-col sm:flex-row items-start gap-8">
-              <div className="flex-1 flex flex-col gap-5">
-                <div>
-                  <h3 className="text-2xl font-serif text-casa-text mb-1">Jans</h3>
-                  <p className="text-casa-text-light text-sm">Co-host</p>
-                </div>
-                <p className="text-casa-text-light leading-relaxed">
-                  [Placeholder: short personal introduction about Jans. Who he is, what he loves about Valle de Abdalajís, what he enjoys sharing with guests.]
-                </p>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-2">Languages</p>
-                  <div className="flex gap-2 flex-wrap">
-                    {['English', 'German', 'Dutch'].map((lang) => (
-                      <span key={lang} className="text-xs font-medium bg-white px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="w-full sm:w-48 h-48 rounded-2xl bg-casa-stone-dark shrink-0 flex items-center justify-center text-5xl font-serif text-casa-text-light/40">
-                J
-              </div>
-            </div>
 
-            {/* Minouche */}
-            <div className="bg-casa-stone rounded-3xl p-8 flex flex-col sm:flex-row items-start gap-8">
-              <div className="flex-1 flex flex-col gap-5">
-                <div>
-                  <h3 className="text-2xl font-serif text-casa-text mb-1">Minouche</h3>
-                  <p className="text-casa-text-light text-sm">Co-host</p>
-                </div>
-                <p className="text-casa-text-light leading-relaxed">
-                  [Placeholder: short personal introduction about Minouche. Who she is, what she loves about the area, what she brings to the guest experience.]
-                </p>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-2">Languages</p>
-                  <div className="flex gap-2 flex-wrap">
-                    {['English', 'German', 'Dutch', 'French'].map((lang) => (
-                      <span key={lang} className="text-xs font-medium bg-white px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="w-full sm:w-48 h-48 rounded-2xl bg-casa-stone-dark shrink-0 flex items-center justify-center text-5xl font-serif text-casa-text-light/40">
-                M
-              </div>
-            </div>
+          {/* Photo placeholder — replace src with /hosts.jpg when ready */}
+          <div className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
+            <img
+              src="/hosts.jpg"
+              alt="Jans and Minouche"
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+            <p className="text-casa-text-light/40 font-serif text-lg select-none">Photo coming soon</p>
           </div>
         </div>
       </section>
