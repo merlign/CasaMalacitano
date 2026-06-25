@@ -230,9 +230,6 @@ export default function CasitaPage() {
                 <a href="#book" className="block w-full bg-casa-teal-dark hover:opacity-90 text-white text-center px-6 py-4 rounded-2xl font-bold transition-opacity mb-3">
                   Book now
                 </a>
-                <a href="https://www.airbnb.nl/rooms/947665014354184314" target="_blank" rel="noreferrer" className="block w-full text-center text-sm text-casa-text-light hover:text-casa-teal underline underline-offset-4 transition-colors">
-                  View on Airbnb (higher price)
-                </a>
                 <div className="mt-6 pt-6 border-t border-gray-100 space-y-2.5">
                   {['2 guests', '1 bedroom (double bed)', '1 bathroom (walk-in shower)', 'Private entrance & garden', 'Free parking (2 spots)', 'Shared pool (Apr–Oct)'].map((item) => (
                     <div key={item} className="flex items-center gap-2 text-sm text-casa-text-light">
