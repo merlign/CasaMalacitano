@@ -349,7 +349,6 @@ export default function Page() {
             <a href="mailto:info@casamalacitano.com" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
               info@casamalacitano.com
             </a>
-            <span className="text-casa-text-light text-sm flex items-center gap-2"><MapPin size={16} /> Valle de Abdalajís, Andalusia</span>
           </div>
         </div>
       </section>
