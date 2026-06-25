@@ -4,14 +4,14 @@ const large = [
     title: "Walk the gorge of a lifetime",
     description: "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
     image: "/caminito.jpg",
-    href: "#",
+    href: "/activities/caminito-del-rey",
   },
   {
     tag: "GR-340 trail",
     title: "Ride out. Get lost. Find yourself.",
     description: "The GR-340 passes right through the village. Climb into the hills on two wheels or two feet, through olive groves, limestone ridges and zero crowds.",
     image: "/mb.jpg",
-    href: "#",
+    href: "/activities/gr-340",
   },
 ]
 
@@ -20,25 +20,25 @@ const small = [
     tag: "Within 1 hour",
     title: "Three cities, one base.",
     image: "/malaga.jpg",
-    href: "#",
+    href: "/activities/three-cities",
   },
   {
     tag: "Local life",
     title: "Spain as it used to be",
     image: "/local.jpg",
-    href: "#",
+    href: "/activities/local-life",
   },
   {
     tag: "30 min away",
     title: "El Torcal Natural Park",
     image: "/torcal.jpg",
-    href: "#",
+    href: "/activities/el-torcal",
   },
   {
     tag: "15 min away",
     title: "El Chorro lakes",
     image: "/chorro.jpg",
-    href: "#",
+    href: "/activities/el-chorro",
   },
 ]
 
@@ -77,7 +77,7 @@ export default function SurroundingsCarousel() {
         ))}
       </div>
 
-      {/* 4 small cards — horizontal scroll on mobile, 4-col grid on desktop */}
+      {/* 4 small cards — 4-col grid on desktop */}
       <div className="hidden md:grid md:grid-cols-4 gap-3">
         {small.map((item) => (
           <a key={item.title} href={item.href} className="relative h-[200px] rounded-2xl overflow-hidden block group">
@@ -123,6 +123,16 @@ export default function SurroundingsCarousel() {
             </div>
           </a>
         ))}
+      </div>
+
+      {/* Link to all activities */}
+      <div className="mt-8 text-center">
+        <a
+          href="/activities"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-casa-text text-casa-text text-sm font-semibold hover:bg-casa-text hover:text-white transition-all"
+        >
+          View all activities
+        </a>
       </div>
     </div>
   )
