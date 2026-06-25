@@ -54,7 +54,7 @@ export default function Page() {
                 </div>
               )}
             </div>
-            <a href="#surroundings" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Surroundings</a>
+            <a href="/activities" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Activities</a>
             <a href="#contact" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Contact</a>
           </div>
 
@@ -80,7 +80,7 @@ export default function Page() {
             <Link href="/casita" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casita Malacitano</Link>
             <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
             <div className={`w-8 h-px my-2 ${scrolled ? 'bg-gray-200' : 'bg-white/20'}`} />
-            <a href="#surroundings" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Surroundings</a>
+            <a href="/activities" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Activities</a>
             <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</a>
           </div>
         )}
@@ -370,7 +370,7 @@ export default function Page() {
             <ul className="space-y-3">
               <li><a href="#" className="hover:text-casa-teal transition-colors">Home</a></li>
               <li><a href="#accommodations" className="hover:text-casa-teal transition-colors">Accommodations</a></li>
-              <li><a href="#surroundings" className="hover:text-casa-teal transition-colors">Surroundings</a></li>
+              <li><a href="/activities" className="hover:text-casa-teal transition-colors">Activities</a></li>
               <li><a href="#contact" className="hover:text-casa-teal transition-colors">Contact</a></li>
             </ul>
           </div>

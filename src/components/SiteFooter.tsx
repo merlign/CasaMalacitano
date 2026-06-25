@@ -21,7 +21,6 @@ export default function SiteFooter() {
             <li><Link href="/casita" className="hover:text-casa-teal transition-colors">Casita Malacitano</Link></li>
             <li><Link href="/casa" className="hover:text-casa-teal transition-colors">Casa Malacitano</Link></li>
             <li><Link href="/activities" className="hover:text-casa-teal transition-colors">Activities</Link></li>
-            <li><Link href="/#surroundings" className="hover:text-casa-teal transition-colors">Surroundings</Link></li>
             <li><Link href="/#contact" className="hover:text-casa-teal transition-colors">Contact</Link></li>
           </ul>
         </div>

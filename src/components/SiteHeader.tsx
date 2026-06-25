@@ -58,7 +58,7 @@ export default function SiteHeader() {
             )}
           </div>
 
-          <Link href="/#surroundings" className="px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">Surroundings</Link>
+          <Link href="/activities" className="px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">Activities</Link>
           <Link href="/#contact" className="px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">Contact</Link>
         </div>
 
@@ -78,7 +78,7 @@ export default function SiteHeader() {
           <Link href="/casita" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casita Malacitano</Link>
           <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
           <div className="w-8 h-px bg-gray-200 my-2" />
-          <Link href="/#surroundings" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Surroundings</Link>
+          <Link href="/activities" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Activities</Link>
           <Link href="/#contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</Link>
         </div>
       )}

@@ -46,7 +46,7 @@ export default function SurroundingsCarousel() {
   return (
     <div>
       <div className="mb-10">
-        <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The surroundings</p>
+        <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Activities</p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text leading-tight">
           Step outside. There&apos;s a lot to do.
         </h2>
