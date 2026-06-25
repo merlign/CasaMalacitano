@@ -268,24 +268,6 @@ export default function Page() {
             <p className="text-casa-text-light text-lg leading-relaxed mb-8">
               [Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]
             </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <div>
-                <p className="font-semibold text-casa-text mb-2">Jans</p>
-                <div className="flex gap-2 flex-wrap">
-                  {['English', 'German', 'Dutch'].map((lang) => (
-                    <span key={lang} className="text-xs font-medium bg-casa-stone px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="font-semibold text-casa-text mb-2">Minouche</p>
-                <div className="flex gap-2 flex-wrap">
-                  {['English', 'German', 'Dutch', 'French'].map((lang) => (
-                    <span key={lang} className="text-xs font-medium bg-casa-stone px-3 py-1.5 rounded-full text-casa-text-light">{lang}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Photo placeholder — replace src with /hosts.jpg when ready */}
