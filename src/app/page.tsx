@@ -122,7 +122,7 @@ export default function Page() {
             className="text-base sm:text-lg md:text-xl text-white font-light max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}
           >
-            Escape the crowds. Enjoy peace, authentic atmosphere and comfortable accommodations near the Caminito del Rey.
+            A place where you don&apos;t just stay. A place where you truly come back to yourself.
           </motion.p>
 
           <motion.div
@@ -172,6 +172,15 @@ export default function Page() {
           </button>
         </div>
       </div>
+
+      {/* Pullquote */}
+      <section className="py-16 md:py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text leading-snug">
+            Not a place where you <span className="italic text-casa-teal-dark">have to</span>.<br className="hidden sm:block" /> A place where you <span className="italic text-casa-teal-dark">get to</span>.
+          </p>
+        </div>
+      </section>
 
       {/* Facilities */}
       <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
@@ -294,7 +303,8 @@ export default function Page() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
             <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The village</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text">Valle de Abdalajís</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-3">Valle de Abdalajís</h2>
+            <p className="text-casa-text-light text-lg italic">Quiet, authentic, surrounded by nature.</p>
           </div>
 
           <div className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg mb-12">
