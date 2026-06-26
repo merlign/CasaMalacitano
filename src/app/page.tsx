@@ -173,22 +173,13 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Pullquote */}
-      <section className="py-16 md:py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text leading-snug">
-            Not a place where you <span className="italic text-casa-teal-dark">have to</span>.<br className="hidden sm:block" /> A place where you <span className="italic text-casa-teal-dark">get to</span>.
-          </p>
-        </div>
-      </section>
-
       {/* Facilities */}
       <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-serif text-casa-text mb-6">Your own place under the Andalusian sun</h2>
             <p className="text-casa-text-light text-lg mb-8 leading-relaxed">
-              At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. No mass tourism, but genuine Spanish hospitality and peace.
+              At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to — a place where you get to. Genuine Spanish hospitality, no mass tourism.
             </p>
             <div className="grid grid-cols-2 gap-6">
               <div className="flex items-start gap-3">
