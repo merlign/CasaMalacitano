@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import MapEmbed from '@/components/MapEmbed'
 
 export const metadata = {
   title: 'Contact — Casa Malacitano',
@@ -74,18 +75,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right: map */}
-            <div className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
-              <iframe
-                src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=15"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Casa Malacitano location"
-              />
-            </div>
+            <MapEmbed className="rounded-3xl shadow-lg h-[420px] md:h-[560px]" />
 
           </div>
         </div>
