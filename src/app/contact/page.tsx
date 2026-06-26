@@ -76,7 +76,7 @@ export default function ContactPage() {
             {/* Right: map */}
             <div className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
               <iframe
-                src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=16"
+                src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=15"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

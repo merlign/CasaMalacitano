@@ -230,7 +230,7 @@ export default function Page() {
             <div className="bg-white rounded-3xl overflow-hidden shadow-lg group hover:shadow-xl transition-all flex flex-col">
               <div className="h-64 overflow-hidden relative">
                 <img src="/casita.jpg" alt="Casita Malacitano" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide">Detached</div>
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide">Detached</div>
               </div>
               <div className="p-8 flex flex-col flex-1">
                 <h3 className="text-2xl font-serif mb-3">Casita Malacitano</h3>
@@ -243,7 +243,7 @@ export default function Page() {
             <div className="bg-white rounded-3xl overflow-hidden shadow-lg group hover:shadow-xl transition-all flex flex-col">
               <div className="h-64 overflow-hidden relative">
                 <img src="/casa.jpg" alt="Casa Malacitano Studio" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide">Private entrance</div>
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide">Private entrance</div>
               </div>
               <div className="p-8 flex flex-col flex-1">
                 <h3 className="text-2xl font-serif mb-3">Casa Malacitano</h3>
@@ -298,7 +298,7 @@ export default function Page() {
 
           <div className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg mb-12">
             <iframe
-              src="https://maps.google.com/maps?q=Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=13"
+              src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+SpainValle+de+Abdalajis,+Malaga,+Spain&output=embed&z=13output=embedValle+de+Abdalajis,+Malaga,+Spain&output=embed&z=13z=15"
               width="100%"
               height="100%"
               style={{ border: 0 }}
