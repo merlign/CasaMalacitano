@@ -18,8 +18,8 @@ export default function SiteHeader() {
   }
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 pt-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-5 py-3 rounded-full bg-white/90 backdrop-blur-md border border-gray-200/80 shadow-sm text-casa-text">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3 text-casa-text">
         <Link href="/" className="flex items-center gap-3">
           <img src="/logo-1.png" alt="Casa Malacitano" className="h-9 md:h-10 w-auto" />
           <span className="font-brand text-xl tracking-wide font-bold hidden sm:block text-casa-text">Casa Malacitano</span>
@@ -73,7 +73,7 @@ export default function SiteHeader() {
       </div>
 
       {menuOpen && (
-        <div className="max-w-5xl mx-auto mt-2 rounded-2xl bg-white/90 backdrop-blur-md md:hidden flex flex-col items-center py-5 gap-1 border border-gray-200/80 text-casa-text">
+        <div className="border-t border-gray-100 bg-white md:hidden flex flex-col items-center py-5 gap-1 text-casa-text">
           <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-1">Accommodations</p>
           <Link href="/casita" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casita Malacitano</Link>
           <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
