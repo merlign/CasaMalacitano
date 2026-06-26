@@ -237,7 +237,6 @@ export default function Page() {
                 <p className="text-casa-text-light mb-8 line-clamp-3 flex-1">A beautiful, stylishly furnished detached house with its own veranda. Equipped with a spacious living room with open kitchen, bedroom and a modern bathroom. Enjoy the breathtaking view in complete privacy.</p>
                 <div className="flex items-center gap-4">
                   <a href="/casita" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-6 py-3 rounded-full font-medium transition-colors">View details</a>
-                  <a href="https://www.airbnb.nl/rooms/947665014354184314" target="_blank" rel="noreferrer" className="text-casa-text-light hover:text-casa-teal underline underline-offset-4 text-sm font-medium transition-colors">or view on Airbnb</a>
                 </div>
               </div>
             </div>
@@ -251,7 +250,6 @@ export default function Page() {
                 <p className="text-casa-text-light mb-8 line-clamp-3 flex-1">A cozy and beautifully renovated studio apartment. Connected to the main building, but with a private entrance and terrace. Perfect as a comfortable base for hikers and active travelers.</p>
                 <div className="flex items-center gap-4">
                   <a href="/casa" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-6 py-3 rounded-full font-medium transition-colors">View details</a>
-                  <a href="https://www.airbnb.nl/rooms/711527784364828762" target="_blank" rel="noreferrer" className="text-casa-text-light hover:text-casa-teal underline underline-offset-4 text-sm font-medium transition-colors">or view on Airbnb</a>
                 </div>
               </div>
             </div>
