@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MapPin, Sun, Coffee, Waves, Snowflake, Calendar, Users, Menu, X, Mail, ChevronDown } from 'lucide-react';
 import SurroundingsCarousel from '../components/SurroundingsCarousel'
-import MapEmbed from '../components/MapEmbed';
+;
 
 export default function Page() {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -297,7 +297,18 @@ export default function Page() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text">Valle de Abdalajís</h2>
           </div>
 
-          <MapEmbed className="rounded-3xl h-80 md:h-[480px] shadow-lg mb-12" title="Valle de Abdalajís map" />
+          <div className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg mb-12">
+            <iframe
+              src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=15"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Valle de Abdalajís map"
+            />
+          </div>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
             <div>

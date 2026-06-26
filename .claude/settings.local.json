@@ -25,7 +25,10 @@
       "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/components/SurroundingsCarousel.tsx\")",
       "Bash(xargs sed -i '' 's/info@casamalacitano\\\\.com/info.malacitano@gmail.com/g')",
       "Bash(xargs sed -i '' 's/mailto:info\\\\.malacitano@gmail\\\\.com/mailto:info.malacitano@gmail.com/g')",
-      "Bash(xargs sed -i '' 's/CR\\\\/MA\\\\/02488 \\(Andalusia\\)/CTC-2022245591/g')"
+      "Bash(xargs sed -i '' 's/CR\\\\/MA\\\\/02488 \\(Andalusia\\)/CTC-2022245591/g')",
+      "Bash(sed -i '' 's/absolute top-4 right-4 bg-white\\\\/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide/absolute top-4 left-4 bg-white\\\\/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide/g' src/app/page.tsx)",
+      "Bash(sed -i '' 's|__TRACKED_VAR__|__TRACKED_VAR__|g' src/app/page.tsx src/app/casita/page.tsx src/app/casa/page.tsx)",
+      "Bash(sed -i '' 's/output=embed&z=16/output=embed\\\\&z=15/g' src/app/contact/page.tsx)"
     ]
   }
 }
