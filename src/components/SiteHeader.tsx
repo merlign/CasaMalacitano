@@ -59,14 +59,14 @@ export default function SiteHeader() {
           </div>
 
           <Link href="/activities" className="px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">Activities</Link>
-          <Link href="/#contact" className="px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">Contact</Link>
+          <Link href="/contact" className="px-4 py-2 rounded-full text-sm font-medium tracking-wide text-casa-text-light hover:bg-gray-100 hover:text-casa-text transition-all">Contact</Link>
         </div>
 
         <div className="flex items-center gap-3">
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden focus:outline-none text-casa-text">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <Link href="/#contact" className="bg-casa-teal text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm hover:bg-casa-teal/90">
+          <Link href="/contact" className="bg-casa-teal text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm hover:bg-casa-teal/90">
             Book now
           </Link>
         </div>
@@ -79,7 +79,7 @@ export default function SiteHeader() {
           <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
           <div className="w-8 h-px bg-gray-200 my-2" />
           <Link href="/activities" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Activities</Link>
-          <Link href="/#contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</Link>
+          <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</Link>
         </div>
       )}
     </header>

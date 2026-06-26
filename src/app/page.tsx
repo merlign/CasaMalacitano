@@ -55,7 +55,7 @@ export default function Page() {
               )}
             </div>
             <a href="/activities" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Activities</a>
-            <a href="#contact" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Contact</a>
+            <a href="/contact" className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${scrolled ? 'text-casa-text-light hover:bg-gray-100 hover:text-casa-text' : 'text-white/90 hover:bg-white/15'}`}>Contact</a>
           </div>
 
           <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ export default function Page() {
             <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
             <div className={`w-8 h-px my-2 ${scrolled ? 'bg-gray-200' : 'bg-white/20'}`} />
             <a href="/activities" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Activities</a>
-            <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</a>
+            <a href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</a>
           </div>
         )}
       </header>
@@ -369,7 +369,7 @@ export default function Page() {
               <li><a href="#" className="hover:text-casa-teal transition-colors">Home</a></li>
               <li><a href="#accommodations" className="hover:text-casa-teal transition-colors">Accommodations</a></li>
               <li><a href="/activities" className="hover:text-casa-teal transition-colors">Activities</a></li>
-              <li><a href="#contact" className="hover:text-casa-teal transition-colors">Contact</a></li>
+              <li><a href="/contact" className="hover:text-casa-teal transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>
