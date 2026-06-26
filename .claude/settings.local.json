@@ -22,7 +22,10 @@
       "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/app/casa/page.tsx\")",
       "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/app/page.tsx\")",
       "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/components/SiteHeader.tsx\")",
-      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/components/SurroundingsCarousel.tsx\")"
+      "Bash(sed -i '' 's/ — /, /g' \"/Users/merlign/Documents/Redesign | Casa Malacitano/src/components/SurroundingsCarousel.tsx\")",
+      "Bash(xargs sed -i '' 's/info@casamalacitano\\\\.com/info.malacitano@gmail.com/g')",
+      "Bash(xargs sed -i '' 's/mailto:info\\\\.malacitano@gmail\\\\.com/mailto:info.malacitano@gmail.com/g')",
+      "Bash(xargs sed -i '' 's/CR\\\\/MA\\\\/02488 \\(Andalusia\\)/CTC-2022245591/g')"
     ]
   }
 }

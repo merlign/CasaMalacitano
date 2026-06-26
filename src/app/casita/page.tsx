@@ -286,9 +286,9 @@ export default function CasitaPage() {
               <div className="p-4 bg-casa-teal/10 text-casa-teal rounded-2xl w-fit mb-6"><Mail size={28} /></div>
               <h2 className="text-2xl md:text-3xl font-serif text-casa-text mb-3">Questions? Just ask.</h2>
               <p className="text-casa-text-light mb-8 leading-relaxed">Curious about availability, arrival or the area? We respond quickly and personally.</p>
-              <a href="mailto:info@casamalacitano.com" className="inline-flex items-center gap-2 bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
+              <a href="mailto:info.malacitano@gmail.com" className="inline-flex items-center gap-2 bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
                 <Mail size={18} />
-                info@casamalacitano.com
+                info.malacitano@gmail.com
               </a>
             </div>
             <div className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">

@@ -29,7 +29,7 @@ export default function SiteFooter() {
           <ul className="space-y-3">
             <li className="flex items-center gap-2"><MapPin size={14} /> Valle de Abdalajís</li>
             <li>Andalusia, Spain</li>
-            <li><a href="mailto:info@casamalacitano.com" className="hover:text-casa-teal transition-colors">info@casamalacitano.com</a></li>
+            <li><a href="mailto:info.malacitano@gmail.com" className="hover:text-casa-teal transition-colors">info.malacitano@gmail.com</a></li>
           </ul>
         </div>
       </div>
@@ -37,7 +37,7 @@ export default function SiteFooter() {
         <div className="flex flex-col md:flex-row items-center gap-4">
           <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
           <span className="hidden md:inline text-gray-200">·</span>
-          <p className="text-xs text-gray-400">Tourism licence: CR/MA/02488 (Andalusia)</p>
+          <p className="text-xs text-gray-400">Tourism licence: CTC-2022245591</p>
         </div>
         <div className="flex gap-6">
           <a href="#" className="hover:text-casa-text transition-colors">Privacy policy</a>

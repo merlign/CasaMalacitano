@@ -32,8 +32,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-casa-text mb-0.5">Email</p>
-                    <a href="mailto:info@casamalacitano.com" className="text-casa-text-light hover:text-casa-teal transition-colors">
-                      info@casamalacitano.com
+                    <a href="mailto:info.malacitano@gmail.com" className="text-casa-text-light hover:text-casa-teal transition-colors">
+                      info.malacitano@gmail.com
                     </a>
                   </div>
                 </div>
@@ -44,7 +44,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-casa-text mb-0.5">Phone / WhatsApp</p>
-                    <p className="text-casa-text-light">[Placeholder: +34 XXX XXX XXX]</p>
+                    <a href="tel:+34680922373" className="text-casa-text-light hover:text-casa-teal transition-colors block">+34 680 922 373</a>
+                    <a href="tel:+31647100061" className="text-casa-text-light hover:text-casa-teal transition-colors block">+31 647 100 061</a>
                   </div>
                 </div>
 
@@ -54,8 +55,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-casa-text mb-0.5">Address</p>
-                    <p className="text-casa-text-light">[Placeholder: street and number]</p>
-                    <p className="text-casa-text-light">Valle de Abdalajís, 29550</p>
+                    <p className="text-casa-text-light">Cam. de la Fuente de La Zarza</p>
+                    <p className="text-casa-text-light">29240 Valle de Abdalajís</p>
                     <p className="text-casa-text-light">Málaga, Spain</p>
                   </div>
                 </div>
@@ -63,7 +64,7 @@ export default function ContactPage() {
 
               <div className="mt-10">
                 <a
-                  href="mailto:info@casamalacitano.com"
+                  href="mailto:info.malacitano@gmail.com"
                   className="inline-flex items-center gap-2 bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5"
                 >
                   <Mail size={18} />
@@ -75,7 +76,7 @@ export default function ContactPage() {
             {/* Right: map */}
             <div className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
               <iframe
-                src="https://maps.google.com/maps?q=Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=14"
+                src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=16"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

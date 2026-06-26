@@ -344,8 +344,8 @@ export default function Page() {
           <h2 className="text-3xl sm:text-4xl font-serif text-casa-text mb-4">Get in touch</h2>
           <p className="text-casa-text-light text-lg mb-8 leading-relaxed">Questions about availability, arrival or the area? We&apos;re happy to help. Reach out directly and we&apos;ll get back to you quickly.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="mailto:info@casamalacitano.com" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
-              info@casamalacitano.com
+            <a href="mailto:info.malacitano@gmail.com" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
+              info.malacitano@gmail.com
             </a>
           </div>
         </div>
@@ -377,7 +377,7 @@ export default function Page() {
             <ul className="space-y-3">
               <li>Valle de Abdalajís</li>
               <li>Andalusia, Spain</li>
-              <li><a href="mailto:info@casamalacitano.com" className="hover:text-casa-teal transition-colors">info@casamalacitano.com</a></li>
+              <li><a href="mailto:info.malacitano@gmail.com" className="hover:text-casa-teal transition-colors">info.malacitano@gmail.com</a></li>
             </ul>
           </div>
         </div>
@@ -385,7 +385,7 @@ export default function Page() {
           <div className="flex flex-col md:flex-row items-center gap-4">
             <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
             <span className="hidden md:inline text-gray-200">·</span>
-            <p className="text-xs text-gray-400">Tourism licence: CR/MA/02488 (Andalusia)</p>
+            <p className="text-xs text-gray-400">Tourism licence: CTC-2022245591</p>
           </div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-casa-text transition-colors">Privacy policy</a>
