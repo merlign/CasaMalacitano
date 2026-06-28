@@ -22,7 +22,7 @@ export default function ContactPage() {
               <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Contact</p>
               <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-6 leading-tight">Get in touch</h1>
               <p className="text-casa-text-light text-lg leading-relaxed mb-10">
-                [Placeholder: a short, warm sentence about how Jans and Minouche love to hear from guests — questions about availability, the area, arrival, or anything else.]
+                Questions about availability, the area or your arrival? Jans and Minouche are happy to help. They respond personally and quickly, in English, Dutch, German or French.
               </p>
 
               <div className="space-y-6">
