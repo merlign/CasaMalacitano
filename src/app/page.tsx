@@ -11,6 +11,7 @@ export default function Page() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [accomOpen, setAccomOpen] = React.useState(false);
+  const [mobileAccomOpen, setMobileAccomOpen] = React.useState(false);
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openAccom = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setAccomOpen(true); };
@@ -77,22 +78,30 @@ export default function Page() {
           <div className={`max-w-5xl mx-auto mt-2 rounded-2xl backdrop-blur-md md:hidden border overflow-hidden ${
             scrolled ? 'bg-white/95 border-gray-200/80 text-casa-text' : 'bg-black/60 border-white/10 text-white'
           }`}>
-            <div className="px-5 pt-5 pb-2">
-              <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Accommodations</p>
-              <Link href="/casita" onClick={() => setMenuOpen(false)} className={`flex items-center py-3 border-b hover:text-casa-teal transition-colors ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
-                <span className="font-semibold text-base">Casita Malacitano</span>
-                <span className={`text-xs ml-auto ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Detached casita</span>
-              </Link>
-              <Link href="/casa" onClick={() => setMenuOpen(false)} className="flex items-center py-3 hover:text-casa-teal transition-colors">
-                <span className="font-semibold text-base">Casa Malacitano</span>
-                <span className={`text-xs ml-auto ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Studio</span>
-              </Link>
-            </div>
-            <div className={`border-t px-5 py-2 ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
+            <div className="px-5 py-2">
+              <button
+                onClick={() => setMobileAccomOpen(!mobileAccomOpen)}
+                className={`flex items-center w-full py-3 border-b text-base font-medium hover:text-casa-teal transition-colors ${scrolled ? 'border-gray-100' : 'border-white/10'}`}
+              >
+                Accommodations
+                <ChevronDown size={16} className={`ml-auto transition-transform duration-200 ${mobileAccomOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileAccomOpen && (
+                <div className={`pl-3 border-b ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
+                  <Link href="/casita" onClick={() => setMenuOpen(false)} className={`flex items-center py-3 border-b hover:text-casa-teal transition-colors ${scrolled ? 'border-gray-50' : 'border-white/5'}`}>
+                    <span className="text-sm font-semibold">Casita Malacitano</span>
+                    <span className={`text-xs ml-auto ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Detached casita</span>
+                  </Link>
+                  <Link href="/casa" onClick={() => setMenuOpen(false)} className="flex items-center py-3 hover:text-casa-teal transition-colors">
+                    <span className="text-sm font-semibold">Casa Malacitano</span>
+                    <span className={`text-xs ml-auto ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Studio</span>
+                  </Link>
+                </div>
+              )}
               <a href="/activities" onClick={() => setMenuOpen(false)} className={`flex items-center py-3 border-b text-base font-medium hover:text-casa-teal transition-colors ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>Activities</a>
               <a href="/contact" onClick={() => setMenuOpen(false)} className="flex items-center py-3 text-base font-medium hover:text-casa-teal transition-colors">Contact</a>
             </div>
-            <div className="px-5 pb-5 pt-2">
+            <div className="px-5 pb-4">
               <a href="#accommodations" onClick={() => setMenuOpen(false)} className="block w-full text-center bg-casa-teal text-white py-3 rounded-full font-semibold hover:bg-casa-teal/90 transition-colors">Book now</a>
             </div>
           </div>
