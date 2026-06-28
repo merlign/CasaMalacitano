@@ -96,12 +96,24 @@ export default function CasitaPage() {
   const [lightboxIndex, setLightboxIndex] = React.useState<number | null>(null)
   const [showBar, setShowBar] = React.useState(false)
   const [showAllAmenities, setShowAllAmenities] = React.useState(false)
+  const touchStartX = React.useRef<number | null>(null)
 
   React.useEffect(() => {
     const handleScroll = () => setShowBar(window.scrollY > 500)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  React.useEffect(() => {
+    if (lightboxIndex === null) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') setLightboxIndex(p => p !== null ? (p - 1 + PHOTOS.length) % PHOTOS.length : 0)
+      if (e.key === 'ArrowRight') setLightboxIndex(p => p !== null ? (p + 1) % PHOTOS.length : 0)
+      if (e.key === 'Escape') setLightboxIndex(null)
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [lightboxIndex])
 
   const openLightbox = (i: number) => setLightboxIndex(i)
   const closeLightbox = () => setLightboxIndex(null)
@@ -112,6 +124,16 @@ export default function CasitaPage() {
   const nextPhoto = (e: React.MouseEvent) => {
     e.stopPropagation()
     setLightboxIndex((prev) => prev !== null ? (prev + 1) % PHOTOS.length : 0)
+  }
+  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX }
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) setLightboxIndex(p => p !== null ? (p + 1) % PHOTOS.length : 0)
+      else setLightboxIndex(p => p !== null ? (p - 1 + PHOTOS.length) % PHOTOS.length : 0)
+    }
+    touchStartX.current = null
   }
 
   return (
@@ -325,7 +347,7 @@ export default function CasitaPage() {
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4" onClick={closeLightbox} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <button onClick={prevPhoto} className="absolute left-4 md:left-8 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors z-10">
             <ChevronLeft size={28} />
           </button>

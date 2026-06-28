@@ -13,6 +13,17 @@ export default function Page() {
   const [accomOpen, setAccomOpen] = React.useState(false);
   const [mobileAccomOpen, setMobileAccomOpen] = React.useState(false);
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const heroBgRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleParallax = () => {
+      if (heroBgRef.current) {
+        heroBgRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`
+      }
+    }
+    window.addEventListener('scroll', handleParallax, { passive: true })
+    return () => window.removeEventListener('scroll', handleParallax)
+  }, []);
 
   const openAccom = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setAccomOpen(true); };
   const closeAccom = () => { closeTimer.current = setTimeout(() => setAccomOpen(false), 180); };
@@ -110,7 +121,7 @@ export default function Page() {
 
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pb-32 md:pb-40">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/view.jpg")' }}></div>
+        <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: 'url("/view.jpg")' }}></div>
         <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/20"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-casa-stone via-transparent to-transparent opacity-90 h-48 bottom-0 top-auto"></div>
