@@ -197,7 +197,7 @@ export default function Page() {
       {/* Facilities */}
       <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <FadeIn>
+          <FadeIn from="left">
             <h2 className="text-3xl md:text-4xl font-serif text-casa-text mb-6">Your own place under the Andalusian sun</h2>
             <p className="text-casa-text-light text-lg mb-8 leading-relaxed">
               At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to — a place where you get to. Genuine Spanish hospitality, no mass tourism.
@@ -233,7 +233,7 @@ export default function Page() {
               </div>
             </div>
           </FadeIn>
-          <FadeIn delay={0.15}>
+          <FadeIn from="right" delay={0.1}>
             <div className="relative">
             <img src="/zwembad.jpg" alt="Pool and terrace" className="rounded-2xl shadow-2xl object-cover h-[300px] md:h-[500px] w-full" />
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-casa-yellow rounded-full mix-blend-multiply opacity-50 blur-2xl"></div>
@@ -284,7 +284,7 @@ export default function Page() {
       {/* Hosts */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <FadeIn>
+          <FadeIn from="left">
             <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Your hosts</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-6">Meet Jans &amp; Minouche</h2>
             <p className="text-casa-text-light text-lg leading-relaxed mb-8">

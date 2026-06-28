@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FadeIn from '@/components/FadeIn'
 
 // ─── Drop your photos here ────────────────────────────────────────────────────
 const PHOTOS = [
@@ -134,7 +135,7 @@ export default function CasitaPage() {
         </div>
 
         {/* Title block */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8 md:mt-12">
+        <FadeIn className="max-w-7xl mx-auto px-4 md:px-8 mt-8 md:mt-12">
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
@@ -160,14 +161,14 @@ export default function CasitaPage() {
               <span className="text-casa-text-light text-sm">· 18 reviews</span>
             </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Two-column layout: content + sticky booking card */}
         {/* Sticky card stops naturally when this grid ends (after amenities) */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20 grid md:grid-cols-[1fr_360px] gap-12 md:gap-16">
           <div className="space-y-14 min-w-0">
 
-            <section>
+            <FadeIn><section>
               <h2 className="text-2xl font-serif mb-5">About this space</h2>
               <div className="space-y-4 text-casa-text-light leading-relaxed">
                 <p>A completely, stylishly furnished casita with a magnificent view of the friendly village of Valle de Abdalajís. Centrally located between the historic cities of Málaga, Ronda, Granada, Seville and Córdoba.</p>
@@ -176,9 +177,9 @@ export default function CasitaPage() {
                 <p>The casita can only be reached by car. The village centre is a 5-minute walk away.</p>
                 <p className="text-sm bg-casa-stone-dark rounded-2xl p-4">Pets are welcome on request. Please get in touch before booking.</p>
               </div>
-            </section>
+            </section></FadeIn>
 
-            <section className="pt-14 border-t border-gray-100">
+            <FadeIn><section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-2">Pack light. Everything is here.</h2>
               <p className="text-casa-text-light mb-6">This is a complete stay. You don&apos;t need to bring towels, linen, or toiletries.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -194,9 +195,9 @@ export default function CasitaPage() {
                   </div>
                 ))}
               </div>
-            </section>
+            </section></FadeIn>
 
-            <section className="pt-14 border-t border-gray-100">
+            <FadeIn><section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
                 {(showAllAmenities ? AMENITIES : AMENITIES.slice(0, 3)).map((group) => (
@@ -222,7 +223,7 @@ export default function CasitaPage() {
               >
                 {showAllAmenities ? '↑ Show less' : 'Show all amenities'}
               </button>
-            </section>
+            </section></FadeIn>
 
           </div>
 
@@ -287,7 +288,7 @@ export default function CasitaPage() {
         {/* Contact */}
         <section className="mt-16 md:mt-24 py-16 md:py-24 px-4 bg-casa-stone-dark">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-            <div>
+            <FadeIn from="left">
               <div className="p-4 bg-casa-teal/10 text-casa-teal rounded-2xl w-fit mb-6"><Mail size={28} /></div>
               <h2 className="text-2xl md:text-3xl font-serif text-casa-text mb-3">Questions? Just ask.</h2>
               <p className="text-casa-text-light mb-8 leading-relaxed">Curious about availability, arrival or the area? We respond quickly and personally.</p>
@@ -295,8 +296,8 @@ export default function CasitaPage() {
                 <Mail size={18} />
                 info.malacitano@gmail.com
               </a>
-            </div>
-            <div className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
+            </FadeIn>
+            <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
               <iframe
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
                 width="100%"
@@ -307,7 +308,7 @@ export default function CasitaPage() {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Casa Malacitano location"
               />
-            </div>
+            </FadeIn>
           </div>
         </section>
 

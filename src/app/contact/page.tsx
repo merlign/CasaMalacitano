@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FadeIn from '@/components/FadeIn'
 
 export const metadata = {
   title: 'Contact — Casa Malacitano',
@@ -18,7 +19,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
 
             {/* Left: contact info */}
-            <div>
+            <FadeIn from="left">
               <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Contact</p>
               <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-6 leading-tight">Get in touch</h1>
               <p className="text-casa-text-light text-lg leading-relaxed mb-10">
@@ -71,10 +72,10 @@ export default function ContactPage() {
                   Send us a message
                 </a>
               </div>
-            </div>
+            </FadeIn>
 
             {/* Right: map */}
-            <div className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
+            <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
               <iframe
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
                 width="100%"
@@ -85,7 +86,7 @@ export default function ContactPage() {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Casa Malacitano location"
               />
-            </div>
+            </FadeIn>
 
           </div>
         </div>
