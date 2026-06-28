@@ -27,7 +27,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-casa-text mb-3">1. Parties</h2>
               <p>
-                These terms apply to all bookings made with <strong>[Full legal name(s) of owners — e.g. Jan and Minouche de Vries]</strong>,
+                These terms apply to all bookings made with <strong>Jans Pijbes and Minouche van den Bor</strong>,
                 owners of Casa Malacitano, Cam. de la Fuente de La Zarza, 29240 Valle de Abdalajís, Málaga, Spain
                 (hereinafter "we", "us" or "the owner").
               </p>

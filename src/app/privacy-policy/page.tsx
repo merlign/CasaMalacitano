@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-xl font-semibold text-casa-text mb-3">1. Who we are</h2>
               <p>
-                This website is operated by <strong>[Full name(s) of owners — e.g. Jan and Minouche de Vries]</strong>, trading as Casa Malacitano,
+                This website is operated by <strong>Jans Pijbes and Minouche van den Bor</strong>, trading as Casa Malacitano,
                 located at Cam. de la Fuente de La Zarza, 29240 Valle de Abdalajís, Málaga, Spain.
               </p>
               <p className="mt-2">
