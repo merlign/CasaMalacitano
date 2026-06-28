@@ -4,7 +4,6 @@ import SiteFooter from '@/components/SiteFooter'
 export const metadata = {
   title: 'Privacy Policy',
   description: 'Privacy policy for Casa Malacitano — how we collect, use and protect your personal data.',
-  robots: { index: false },
 }
 
 export default function PrivacyPolicyPage() {

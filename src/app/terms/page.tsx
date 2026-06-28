@@ -4,7 +4,6 @@ import SiteFooter from '@/components/SiteFooter'
 export const metadata = {
   title: 'Terms and Conditions',
   description: 'Booking terms and conditions for Casa Malacitano vacation rental in Valle de Abdalajís, Andalusia.',
-  robots: { index: false },
 }
 
 export default function TermsPage() {
