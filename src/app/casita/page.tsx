@@ -10,23 +10,10 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 
 // ─── Drop your photos here ────────────────────────────────────────────────────
-const PHOTOS = [
-  { src: '/casita/photo-1.jpg', alt: 'Casita exterior with terrace' },
-  { src: '/casita/photo-2.jpg', alt: 'Living room with open kitchen' },
-  { src: '/casita/photo-3.jpg', alt: 'Bedroom' },
-  { src: '/casita/photo-4.jpg', alt: 'Bathroom with walk-in shower' },
-  { src: '/casita/photo-5.jpg', alt: 'View over Valle de Abdalajís' },
-  { src: '/casita/photo-6.jpg', alt: 'Terrace at sunset' },
-  { src: '/casita/photo-7.jpg', alt: 'Kitchen detail' },
-  { src: '/casita/photo-8.jpg', alt: 'Pool area' },
-  { src: '/casita/photo-9.jpg', alt: 'Garden' },
-  { src: '/casita/photo-10.jpg', alt: 'Outdoor dining area' },
-  { src: '/casita/photo-11.jpg', alt: 'Solarium' },
-  { src: '/casita/photo-12.jpg', alt: 'Village view from terrace' },
-  { src: '/casita/photo-13.jpg', alt: 'Living room seating' },
-  { src: '/casita/photo-14.jpg', alt: 'Bedroom detail' },
-  { src: '/casita/photo-15.jpg', alt: 'Honesty bar' },
-]
+const PHOTOS = Array.from({ length: 20 }, (_, i) => ({
+  src: `/casita/photo-${i + 1}.avif`,
+  alt: `Casita Malacitano — photo ${i + 1}`,
+}))
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AMENITIES = [

@@ -10,23 +10,10 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 
 // ─── Drop your photos here ────────────────────────────────────────────────────
-const PHOTOS = [
-  { src: '/casa/photo-1.jpg', alt: 'Casa exterior with private terrace' },
-  { src: '/casa/photo-2.jpg', alt: 'Bedroom with valley view' },
-  { src: '/casa/photo-3.jpg', alt: 'Kitchenette and dining area' },
-  { src: '/casa/photo-4.jpg', alt: 'Bathroom' },
-  { src: '/casa/photo-5.jpg', alt: 'Terrace with garden furniture' },
-  { src: '/casa/photo-6.jpg', alt: 'Terrace at sunset' },
-  { src: '/casa/photo-7.jpg', alt: 'Kitchen detail' },
-  { src: '/casa/photo-8.jpg', alt: 'Pool area' },
-  { src: '/casa/photo-9.jpg', alt: 'Garden view' },
-  { src: '/casa/photo-10.jpg', alt: 'Outdoor dining area' },
-  { src: '/casa/photo-11.jpg', alt: 'Solarium' },
-  { src: '/casa/photo-12.jpg', alt: 'Village view from terrace' },
-  { src: '/casa/photo-13.jpg', alt: 'Living area' },
-  { src: '/casa/photo-14.jpg', alt: 'Bedroom detail' },
-  { src: '/casa/photo-15.jpg', alt: 'Mountain view' },
-]
+const PHOTOS = Array.from({ length: 19 }, (_, i) => ({
+  src: `/casa/photo-${i + 1}.avif`,
+  alt: `Casa Malacitano — photo ${i + 1}`,
+}))
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AMENITIES = [
