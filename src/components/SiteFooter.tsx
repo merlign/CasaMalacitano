@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
 
@@ -42,6 +44,7 @@ export default function SiteFooter() {
         <div className="flex gap-6">
           <Link href="/privacy-policy" className="hover:text-casa-text transition-colors">Privacy policy</Link>
           <Link href="/terms" className="hover:text-casa-text transition-colors">Terms and conditions</Link>
+          <button id="cookie-preferences" onClick={() => { localStorage.removeItem('cookie-consent'); window.location.reload() }} className="hover:text-casa-text transition-colors">Cookie preferences</button>
         </div>
       </div>
     </footer>
