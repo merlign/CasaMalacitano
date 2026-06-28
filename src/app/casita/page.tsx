@@ -10,10 +10,28 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 
 // ─── Drop your photos here ────────────────────────────────────────────────────
-const PHOTOS = Array.from({ length: 20 }, (_, i) => ({
-  src: `/casita/photo-${i + 1}.avif`,
-  alt: `Casita Malacitano — photo ${i + 1}`,
-}))
+const PHOTOS = [
+  { src: '/casita/photo-1.avif',  alt: 'Casita Malacitano — exterior with pergola and yellow door' },
+  { src: '/casita/photo-2.avif',  alt: 'Pool with mountain backdrop' },
+  { src: '/casita/photo-3.avif',  alt: 'Pool with pink arched wall' },
+  { src: '/casita/photo-4.avif',  alt: 'Terrace with pergola and village view' },
+  { src: '/casita/photo-5.avif',  alt: 'Casita exterior with reed pergola' },
+  { src: '/casita/photo-6.avif',  alt: 'Open-plan living room and kitchen' },
+  { src: '/casita/photo-7.avif',  alt: 'Living room with yellow door and sideboard' },
+  { src: '/casita/photo-8.avif',  alt: 'Dining corner with yellow door' },
+  { src: '/casita/photo-9.avif',  alt: 'Kitchen with mountain view' },
+  { src: '/casita/photo-10.avif', alt: 'Bedroom with double bed and air conditioning' },
+  { src: '/casita/photo-11.avif', alt: 'Bathroom with walk-in shower' },
+  { src: '/casita/photo-12.avif', alt: 'Sun terrace with loungers and pool' },
+  { src: '/casita/photo-13.avif', alt: 'Solarium loungers under reed parasols' },
+  { src: '/casita/photo-14.avif', alt: 'Pool area with loungers and cactus' },
+  { src: '/casita/photo-15.avif', alt: 'Outdoor kitchen and honesty bar dining area' },
+  { src: '/casita/photo-16.avif', alt: 'Living room window with village and mountain view' },
+  { src: '/casita/photo-17.avif', alt: 'Private terrace with white beach chairs' },
+  { src: '/casita/photo-18.avif', alt: 'Garden and honesty bar from outside' },
+  { src: '/casita/photo-19.avif', alt: 'Aerial view of the property' },
+  { src: '/casita/photo-20.avif', alt: 'Illuminated staircase at night under the stars' },
+]
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AMENITIES = [
