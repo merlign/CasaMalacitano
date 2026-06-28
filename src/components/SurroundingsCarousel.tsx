@@ -1,6 +1,6 @@
 const large = [
   {
-    tag: "11 km away",
+    tag: "15 min away",
     title: "Walk the gorge of a lifetime",
     description: "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
     image: "/caminito.jpg",
