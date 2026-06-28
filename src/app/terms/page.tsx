@@ -45,11 +45,11 @@ export default function TermsPage() {
               <p>Casa Malacitano offers two holiday accommodations on the same estate:</p>
               <ul className="list-disc pl-5 space-y-2 mt-2">
                 <li>
-                  <strong>Casita Malacitano</strong> — boutique guesthouse, maximum <strong>3 guests</strong>.
+                  <strong>Casita Malacitano</strong> — boutique guesthouse, maximum <strong>2 guests</strong>.
                   Private terrace, pool access, mountain views.
                 </li>
                 <li>
-                  <strong>Casa Malacitano</strong> — villa, maximum <strong>6 guests</strong>.
+                  <strong>Casa Malacitano</strong> — villa, maximum <strong>2 guests</strong>.
                   Large private terrace, shared pool, panoramic views.
                 </li>
               </ul>
@@ -126,7 +126,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-casa-text mb-3">7. Maximum occupancy</h2>
               <p>
-                The maximum number of guests must not be exceeded at any time: Casita Malacitano (3 guests), Casa Malacitano (6 guests).
+                The maximum number of guests must not be exceeded at any time: Casita Malacitano (2 guests), Casa Malacitano (2 guests).
                 Exceeding the stated occupancy is not permitted and may result in immediate termination of the rental without refund.
               </p>
             </section>

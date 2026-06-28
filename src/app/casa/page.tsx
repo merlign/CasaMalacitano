@@ -157,7 +157,7 @@ export default function CasaPage() {
       addressCountry: 'ES',
     },
     geo: { '@type': 'GeoCoordinates', latitude: 36.94303149390095, longitude: -4.6681067012908875 },
-    occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
+    occupancy: { '@type': 'QuantitativeValue', maxValue: 2 },
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
