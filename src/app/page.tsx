@@ -74,15 +74,27 @@ export default function Page() {
         </div>
 
         {menuOpen && (
-          <div className={`max-w-5xl mx-auto mt-2 rounded-2xl backdrop-blur-md md:hidden flex flex-col items-center py-5 gap-1 border ${
-            scrolled ? 'bg-white/90 border-gray-200/80 text-casa-text' : 'bg-black/40 border-white/10 text-white'
+          <div className={`max-w-5xl mx-auto mt-2 rounded-2xl backdrop-blur-md md:hidden border overflow-hidden ${
+            scrolled ? 'bg-white/95 border-gray-200/80 text-casa-text' : 'bg-black/60 border-white/10 text-white'
           }`}>
-            <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Accommodations</p>
-            <Link href="/casita" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casita Malacitano</Link>
-            <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
-            <div className={`w-8 h-px my-2 ${scrolled ? 'bg-gray-200' : 'bg-white/20'}`} />
-            <a href="/activities" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Activities</a>
-            <a href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</a>
+            <div className="px-5 pt-5 pb-2">
+              <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Accommodations</p>
+              <Link href="/casita" onClick={() => setMenuOpen(false)} className={`flex items-center py-3 border-b hover:text-casa-teal transition-colors ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
+                <span className="font-semibold text-base">Casita Malacitano</span>
+                <span className={`text-xs ml-auto ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Detached casita</span>
+              </Link>
+              <Link href="/casa" onClick={() => setMenuOpen(false)} className="flex items-center py-3 hover:text-casa-teal transition-colors">
+                <span className="font-semibold text-base">Casa Malacitano</span>
+                <span className={`text-xs ml-auto ${scrolled ? 'text-casa-text-light' : 'text-white/50'}`}>Studio</span>
+              </Link>
+            </div>
+            <div className={`border-t px-5 py-2 ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
+              <a href="/activities" onClick={() => setMenuOpen(false)} className={`flex items-center py-3 border-b text-base font-medium hover:text-casa-teal transition-colors ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>Activities</a>
+              <a href="/contact" onClick={() => setMenuOpen(false)} className="flex items-center py-3 text-base font-medium hover:text-casa-teal transition-colors">Contact</a>
+            </div>
+            <div className="px-5 pb-5 pt-2">
+              <a href="#accommodations" onClick={() => setMenuOpen(false)} className="block w-full text-center bg-casa-teal text-white py-3 rounded-full font-semibold hover:bg-casa-teal/90 transition-colors">Book now</a>
+            </div>
           </div>
         )}
       </header>

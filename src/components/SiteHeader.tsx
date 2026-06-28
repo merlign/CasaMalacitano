@@ -73,13 +73,25 @@ export default function SiteHeader() {
       </div>
 
       {menuOpen && (
-        <div className="mt-2 rounded-2xl bg-white/95 backdrop-blur-md md:hidden flex flex-col items-center py-5 gap-1 border border-gray-200/80 text-casa-text">
-          <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-1">Accommodations</p>
-          <Link href="/casita" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casita Malacitano</Link>
-          <Link href="/casa" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base font-medium">Casa Malacitano</Link>
-          <div className="w-8 h-px bg-gray-200 my-2" />
-          <Link href="/activities" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Activities</Link>
-          <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-casa-teal transition-colors text-base">Contact</Link>
+        <div className="mt-2 rounded-2xl bg-white/95 backdrop-blur-md md:hidden border border-gray-200/80 text-casa-text overflow-hidden">
+          <div className="px-5 pt-5 pb-2">
+            <p className="text-xs font-bold uppercase tracking-widest text-casa-text-light mb-2">Accommodations</p>
+            <Link href="/casita" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 py-3 border-b border-gray-100 hover:text-casa-teal transition-colors">
+              <span className="font-semibold text-base">Casita Malacitano</span>
+              <span className="text-xs text-casa-text-light ml-auto">Detached casita</span>
+            </Link>
+            <Link href="/casa" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 py-3 hover:text-casa-teal transition-colors">
+              <span className="font-semibold text-base">Casa Malacitano</span>
+              <span className="text-xs text-casa-text-light ml-auto">Studio</span>
+            </Link>
+          </div>
+          <div className="border-t border-gray-100 px-5 py-2">
+            <Link href="/activities" onClick={() => setMenuOpen(false)} className="flex items-center py-3 border-b border-gray-100 text-base font-medium hover:text-casa-teal transition-colors">Activities</Link>
+            <Link href="/contact" onClick={() => setMenuOpen(false)} className="flex items-center py-3 text-base font-medium hover:text-casa-teal transition-colors">Contact</Link>
+          </div>
+          <div className="px-5 pb-5 pt-2">
+            <Link href="/contact" onClick={() => setMenuOpen(false)} className="block w-full text-center bg-casa-teal text-white py-3 rounded-full font-semibold hover:bg-casa-teal/90 transition-colors">Book now</Link>
+          </div>
         </div>
       )}
     </header>
