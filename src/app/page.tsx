@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MapPin, Sun, Coffee, Waves, Snowflake, Calendar, Users, Menu, X, Mail, ChevronDown } from 'lucide-react';
 import SurroundingsCarousel from '../components/SurroundingsCarousel'
-;
+import FadeIn from '../components/FadeIn'
 
 export default function Page() {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -197,7 +197,7 @@ export default function Page() {
       {/* Facilities */}
       <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div>
+          <FadeIn>
             <h2 className="text-3xl md:text-4xl font-serif text-casa-text mb-6">Your own place under the Andalusian sun</h2>
             <p className="text-casa-text-light text-lg mb-8 leading-relaxed">
               At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to — a place where you get to. Genuine Spanish hospitality, no mass tourism.
@@ -232,24 +232,26 @@ export default function Page() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="relative">
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="relative">
             <img src="/zwembad.jpg" alt="Pool and terrace" className="rounded-2xl shadow-2xl object-cover h-[300px] md:h-[500px] w-full" />
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-casa-yellow rounded-full mix-blend-multiply opacity-50 blur-2xl"></div>
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-casa-pink rounded-full mix-blend-multiply opacity-30 blur-2xl"></div>
-          </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Accommodations */}
       <section id="accommodations" className="py-24 bg-casa-stone-dark px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <FadeIn className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-4">Our accommodations</h2>
             <p className="text-lg text-casa-text-light max-w-2xl mx-auto">Choose the stay that suits you and easily book directly or via Airbnb.</p>
-          </div>
+          </FadeIn>
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg group hover:shadow-xl transition-all flex flex-col">
+            <FadeIn delay={0.05} className="bg-white rounded-3xl overflow-hidden shadow-lg group hover:shadow-xl transition-all flex flex-col">
               <div className="h-64 overflow-hidden relative">
                 <img src="/casita.jpg" alt="Casita Malacitano" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide">Detached</div>
@@ -261,8 +263,8 @@ export default function Page() {
                   <a href="/casita" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-6 py-3 rounded-full font-medium transition-colors">View details</a>
                 </div>
               </div>
-            </div>
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg group hover:shadow-xl transition-all flex flex-col">
+            </FadeIn>
+            <FadeIn delay={0.15} className="bg-white rounded-3xl overflow-hidden shadow-lg group hover:shadow-xl transition-all flex flex-col">
               <div className="h-64 overflow-hidden relative">
                 <img src="/casa.jpg" alt="Casa Malacitano Studio" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-casa-text uppercase tracking-wide">Private entrance</div>
@@ -274,7 +276,7 @@ export default function Page() {
                   <a href="/casa" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-6 py-3 rounded-full font-medium transition-colors">View details</a>
                 </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -282,16 +284,16 @@ export default function Page() {
       {/* Hosts */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div>
+          <FadeIn>
             <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Your hosts</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-6">Meet Jans &amp; Minouche</h2>
             <p className="text-casa-text-light text-lg leading-relaxed mb-8">
               [Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]
             </p>
-          </div>
+          </FadeIn>
 
           {/* Photo placeholder — replace src with /hosts.jpg when ready */}
-          <div className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
+          <FadeIn delay={0.15} className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
             <img
               src="/hosts.jpg"
               alt="Jans and Minouche"
@@ -299,21 +301,21 @@ export default function Page() {
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
             <p className="text-casa-text-light/40 font-serif text-lg select-none">Photo coming soon</p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Surroundings */}
       <section id="surroundings" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <SurroundingsCarousel />
+          <FadeIn><SurroundingsCarousel /></FadeIn>
         </div>
       </section>
 
       {/* Village & Map */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-end mb-10">
+          <FadeIn className="grid md:grid-cols-2 gap-10 md:gap-16 items-end mb-10">
             <div>
               <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The village</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-3">Valle de Abdalajís</h2>
@@ -322,9 +324,9 @@ export default function Page() {
             <p className="text-casa-text-light text-lg leading-relaxed">
               Nestled between mountain ridges in the province of Málaga, Valle de Abdalajís is an authentic Andalusian village that tourism has largely passed by. Around 2,000 residents, a handful of bars, and a pace of life that slows you down the moment you arrive.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg">
+          <FadeIn delay={0.1} className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg">
             <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
               width="100%"
@@ -335,7 +337,7 @@ export default function Page() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Valle de Abdalajís map"
             />
-          </div>
+          </FadeIn>
         </div>
       </section>
 
