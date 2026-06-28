@@ -76,7 +76,7 @@ export default function ContactPage() {
             {/* Right: map */}
             <div className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
               <iframe
-                src="https://maps.google.com/maps?q=Cam.+de+la+Fuente+de+La+Zarza,+29240+Valle+de+Abdalajis,+Malaga,+Spain&output=embed&z=15"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
