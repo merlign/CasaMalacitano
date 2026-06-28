@@ -140,7 +140,37 @@ export default function CasaPage() {
     touchStartX.current = null
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VacationRental',
+    '@id': 'https://casamalacitano.com/casa#property',
+    name: 'Casa Malacitano',
+    description: 'Spacious villa with large private terrace, shared pool and sweeping views over Valle de Abdalajís, Andalusia. Perfect for families or groups seeking peace and authentic character.',
+    url: 'https://casamalacitano.com/casa',
+    image: 'https://casamalacitano.com/casa/photo-1.avif',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Cam. de la Fuente de La Zarza',
+      addressLocality: 'Valle de Abdalajís',
+      addressRegion: 'Málaga',
+      postalCode: '29240',
+      addressCountry: 'ES',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 36.94303149390095, longitude: -4.6681067012908875 },
+    occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
+    amenityFeature: [
+      { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Air conditioning', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Large private terrace', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Mountain view', value: true },
+    ],
+    containedInPlace: { '@id': 'https://casamalacitano.com/#lodging' },
+  }
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
       <SiteHeader />
 
@@ -325,7 +355,7 @@ export default function CasaPage() {
             </FadeIn>
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.682%2C36.933%2C-4.654%2C36.953&layer=mapnik&marker=36.94303%2C-4.66811"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -374,5 +404,6 @@ export default function CasaPage() {
 
       <SiteFooter />
     </div>
+    </>
   )
 }

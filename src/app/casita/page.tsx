@@ -136,7 +136,37 @@ export default function CasitaPage() {
     touchStartX.current = null
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VacationRental',
+    '@id': 'https://casamalacitano.com/casita#property',
+    name: 'Casita Malacitano',
+    description: 'Boutique guesthouse with private terrace, pool access and panoramic mountain views in Valle de Abdalajís, Andalusia. Ideal for couples or solo travellers.',
+    url: 'https://casamalacitano.com/casita',
+    image: 'https://casamalacitano.com/casita/photo-1.avif',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Cam. de la Fuente de La Zarza',
+      addressLocality: 'Valle de Abdalajís',
+      addressRegion: 'Málaga',
+      postalCode: '29240',
+      addressCountry: 'ES',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 36.94303149390095, longitude: -4.6681067012908875 },
+    occupancy: { '@type': 'QuantitativeValue', maxValue: 3 },
+    amenityFeature: [
+      { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Air conditioning', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Private terrace', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Mountain view', value: true },
+    ],
+    containedInPlace: { '@id': 'https://casamalacitano.com/#lodging' },
+  }
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
       <SiteHeader />
 
@@ -321,7 +351,7 @@ export default function CasitaPage() {
             </FadeIn>
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.682%2C36.933%2C-4.654%2C36.953&layer=mapnik&marker=36.94303%2C-4.66811"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -370,5 +400,6 @@ export default function CasitaPage() {
 
       <SiteFooter />
     </div>
+    </>
   )
 }

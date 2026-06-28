@@ -77,7 +77,7 @@ export default function ContactPage() {
             {/* Right: map */}
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.690%2C36.928%2C-4.666%2C36.948&layer=mapnik&marker=36.9376%2C-4.678"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.682%2C36.933%2C-4.654%2C36.953&layer=mapnik&marker=36.94303%2C-4.66811"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

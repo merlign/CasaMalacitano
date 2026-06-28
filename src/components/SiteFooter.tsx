@@ -40,8 +40,8 @@ export default function SiteFooter() {
           <p className="text-xs text-gray-400">Tourism licence: CTC-2022245591</p>
         </div>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-casa-text transition-colors">Privacy policy</a>
-          <a href="#" className="hover:text-casa-text transition-colors">Terms and conditions</a>
+          <Link href="/privacy-policy" className="hover:text-casa-text transition-colors">Privacy policy</Link>
+          <Link href="/terms" className="hover:text-casa-text transition-colors">Terms and conditions</Link>
         </div>
       </div>
     </footer>

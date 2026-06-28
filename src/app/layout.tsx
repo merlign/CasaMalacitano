@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Fredoka } from 'next/font/google'
+import CookieBanner from '@/components/CookieBanner'
 import './globals.css'
 
 const inter = Inter({
@@ -21,17 +22,88 @@ const fredoka = Fredoka({
 })
 
 export const metadata: Metadata = {
-  title: 'Casa Malacitano - Valle de Abdalajís, Andalusia',
-  description: 'A fresh, breathing oasis in southern Spain. Escape the crowds and enjoy peace, authentic atmosphere and comfortable accommodations near the Caminito del Rey.',
+  metadataBase: new URL('https://casamalacitano.com'),
+  title: {
+    default: 'Casa Malacitano — Vacation Rental in Valle de Abdalajís, Andalusia',
+    template: '%s — Casa Malacitano',
+  },
+  description: 'Quiet, authentic and surrounded by nature. Casa Malacitano offers two holiday accommodations with private pool in Valle de Abdalajís, Andalusia — near Caminito del Rey, El Torcal and Málaga.',
+  keywords: ['vacation rental Andalusia', 'holiday home Valle de Abdalajís', 'casa rural Málaga', 'Caminito del Rey accommodation', 'private pool Spain', 'El Torcal nearby', 'holiday villa Andalusia'],
   openGraph: {
-    title: 'Casa Malacitano',
-    description: 'A fresh, breathing oasis in southern Spain.',
+    title: 'Casa Malacitano — Valle de Abdalajís, Andalusia',
+    description: 'Quiet, authentic and surrounded by nature. Two holiday accommodations with private pool near Caminito del Rey and El Torcal.',
     url: 'https://casamalacitano.com',
     siteName: 'Casa Malacitano',
-    images: [{ url: '/view.jpg' }],
+    images: [{ url: '/view.jpg', width: 1200, height: 800, alt: 'Casa Malacitano — view over Valle de Abdalajís' }],
     locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Casa Malacitano — Valle de Abdalajís, Andalusia',
+    description: 'Quiet, authentic and surrounded by nature. Two holiday accommodations with private pool near Caminito del Rey.',
+    images: ['/view.jpg'],
+  },
+  alternates: {
+    canonical: 'https://casamalacitano.com',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  '@id': 'https://casamalacitano.com/#lodging',
+  name: 'Casa Malacitano',
+  description: 'Quiet, authentic vacation rental estate in Valle de Abdalajís, Andalusia. Two holiday accommodations with private pool, panoramic mountain views and easy access to Caminito del Rey and El Torcal.',
+  url: 'https://casamalacitano.com',
+  telephone: ['+34680922373', '+31647100061'],
+  email: 'info.malacitano@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Cam. de la Fuente de La Zarza',
+    addressLocality: 'Valle de Abdalajís',
+    addressRegion: 'Málaga',
+    postalCode: '29240',
+    addressCountry: 'ES',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 36.94303149390095,
+    longitude: -4.6681067012908875,
+  },
+  image: 'https://casamalacitano.com/view.jpg',
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Air conditioning', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Mountain view', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Private parking', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Outdoor kitchen', value: true },
+  ],
+  containsPlace: [
+    {
+      '@type': 'VacationRental',
+      '@id': 'https://casamalacitano.com/casita#property',
+      name: 'Casita Malacitano',
+      url: 'https://casamalacitano.com/casita',
+      description: 'Boutique guesthouse with private terrace, pool access and panoramic mountain views. Ideal for couples or solo travellers seeking authentic Andalusian character.',
+      image: 'https://casamalacitano.com/casita/photo-1.avif',
+      occupancy: { '@type': 'QuantitativeValue', maxValue: 3 },
+    },
+    {
+      '@type': 'VacationRental',
+      '@id': 'https://casamalacitano.com/casa#property',
+      name: 'Casa Malacitano',
+      url: 'https://casamalacitano.com/casa',
+      description: 'Spacious villa with large private terrace, shared pool and sweeping views over Valle de Abdalajís. Perfect for families or groups.',
+      image: 'https://casamalacitano.com/casa/photo-1.avif',
+      occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
+    },
+  ],
+  checkinTime: 'T15:00',
+  checkoutTime: 'T11:00',
+  availableLanguage: ['English', 'Dutch', 'German', 'French'],
+  touristType: ['Couples', 'Families', 'Nature lovers', 'Hikers'],
 }
 
 export default function RootLayout({
@@ -43,8 +115,15 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${fredoka.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/logo-1.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   )
 }
