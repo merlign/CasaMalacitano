@@ -18,7 +18,7 @@ export default function TermsPage() {
           <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-4 leading-tight">Terms and Conditions</h1>
           <p className="text-casa-text-light mb-3">Last updated: June 2026</p>
           <p className="text-sm bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-amber-800 mb-12">
-            Items marked <strong>[FILL IN]</strong> need to be completed by the property owners before publication.
+            Items marked <strong>[FILL IN]</strong> need to be completed by Jans and Minouche before publication.
           </p>
 
           <div className="prose prose-lg max-w-none text-casa-text-light space-y-10">
