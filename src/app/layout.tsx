@@ -96,7 +96,7 @@ const jsonLd = {
       name: 'Casa Malacitano',
       url: 'https://casamalacitano.com/casa',
       description: 'Spacious villa with large private terrace, shared pool and sweeping views over Valle de Abdalajís. Ideal for couples.',
-      image: 'https://casamalacitano.com/casa/photo-1.avif',
+      image: 'https://casamalacitano.com/casa/photo-8.avif',
       occupancy: { '@type': 'QuantitativeValue', maxValue: 2 },
     },
   ],
