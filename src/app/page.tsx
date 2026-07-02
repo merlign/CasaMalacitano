@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Sun, Coffee, Waves, Snowflake, Calendar, Users, Mail } from 'lucide-react';
+import { MapPin, Sun, Coffee, Waves, Snowflake, Mail } from 'lucide-react';
 import SurroundingsCarousel from '../components/SurroundingsCarousel'
 import FadeIn from '../components/FadeIn'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import BookingWidget from '../components/BookingWidget'
 
 export default function Page() {
   const heroBgRef = React.useRef<HTMLDivElement>(null);
@@ -81,37 +82,7 @@ export default function Page() {
 
       {/* Booking Widget */}
       <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-16 md:-mt-24 mb-16 md:mb-24">
-        <div className="relative bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-4 sm:p-6 lg:p-8 flex flex-col md:flex-row gap-6 items-center justify-between border border-gray-100">
-          <div className="absolute -top-10 left-4 text-white text-sm font-semibold italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
-            * Opmerking: hier komt later jullie eigen boekingswidget
-          </div>
-          <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-2 md:mt-0">
-            <div className="flex items-center gap-4 group cursor-pointer">
-              <div className="p-3 bg-gray-50 rounded-full group-hover:bg-casa-teal/10 transition-colors text-casa-teal"><Calendar size={24} /></div>
-              <div>
-                <label className="block text-sm text-casa-text-light mb-0.5">Check in</label>
-                <div className="font-medium text-casa-text text-base">Add date</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 group cursor-pointer border-t sm:border-t-0 sm:border-l border-gray-100 pt-4 sm:pt-0 sm:pl-8">
-              <div className="p-3 bg-gray-50 rounded-full group-hover:bg-casa-teal/10 transition-colors text-casa-teal"><Calendar size={24} /></div>
-              <div>
-                <label className="block text-sm text-casa-text-light mb-0.5">Check out</label>
-                <div className="font-medium text-casa-text text-base">Add date</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 group cursor-pointer border-t sm:border-t-0 sm:border-l border-gray-100 pt-4 sm:pt-0 sm:pl-8">
-              <div className="p-3 bg-gray-50 rounded-full group-hover:bg-casa-teal/10 transition-colors text-casa-teal"><Users size={24} /></div>
-              <div>
-                <label className="block text-sm text-casa-text-light mb-0.5">Guests</label>
-                <div className="font-medium text-casa-text text-base">2 guests</div>
-              </div>
-            </div>
-          </div>
-          <button className="w-full md:w-auto bg-casa-text hover:bg-black text-white px-10 py-5 rounded-2xl font-medium transition-colors whitespace-nowrap shadow-lg">
-            Check availability
-          </button>
-        </div>
+        <BookingWidget />
       </div>
 
       {/* Facilities */}
