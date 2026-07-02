@@ -1,26 +1,28 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, Minus, Plus, Loader2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Minus, Plus, Loader2, X } from 'lucide-react'
 import {
   LP_API_BASE, LP_API_KEY, PROPERTIES, PropertyKey,
   dayCache, fetchMonthAvailability, buildBookingUrl, formatDisplay,
   MONTHS, DAYS,
 } from '@/lib/lodgepilot'
 
-function DatePicker({ label, value, onChange, min, onMonthChange }: {
-  label: string
-  value: string
-  onChange: (v: string) => void
-  min?: string
+function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
+  checkIn: string
+  checkOut: string
+  onSelect: (date: string) => void
   onMonthChange: (y: number, m: number) => void
 }) {
   const today = new Date().toISOString().split('T')[0]
   const [open, setOpen] = useState(false)
+  const [hover, setHover] = useState('')
   const ref = useRef<HTMLDivElement>(null)
-  const initial = value ? new Date(value + 'T12:00:00') : new Date()
+  const initial = checkIn ? new Date(checkIn + 'T12:00:00') : new Date()
   const [view, setView] = useState({ year: initial.getFullYear(), month: initial.getMonth() })
   const [, forceRender] = useState(0)
+
+  const selectingOut = !!(checkIn && !checkOut)
 
   useEffect(() => {
     const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false) }
@@ -54,51 +56,73 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
     return `${view.year}-${String(view.month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`
   }
 
+  function handleClick(str: string) {
+    onSelect(str)
+    if (selectingOut && str > checkIn) setOpen(false)
+  }
+
+  const rangeEnd = checkOut || (selectingOut ? hover : '')
+
+  const label = checkIn && checkOut
+    ? `${formatDisplay(checkIn)} → ${formatDisplay(checkOut)}`
+    : checkIn
+      ? `${formatDisplay(checkIn)} → check-out`
+      : undefined
+
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative flex-1">
       <button onClick={() => setOpen(o => !o)} className="w-full text-left group">
-        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">{label}</span>
-        <span className={`text-sm font-medium ${value ? 'text-casa-text' : 'text-gray-400 group-hover:text-gray-500'}`}>
-          {formatDisplay(value) ?? 'Add date'}
+        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Dates</span>
+        <span className={`text-sm font-medium ${checkIn ? 'text-casa-text' : 'text-gray-400 group-hover:text-gray-500'}`}>
+          {label ?? 'Add dates'}
         </span>
       </button>
 
       {open && (
-        <>
-        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-40" onClick={() => setOpen(false)} />
         <div className="absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 w-80">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-1">
             <button onClick={() => navigate(-1)} className="p-1.5 hover:bg-gray-100 rounded-full text-casa-text-light"><ChevronLeft size={15} /></button>
             <span className="text-sm font-semibold text-casa-text">{MONTHS[view.month]} {view.year}</span>
             <button onClick={() => navigate(1)} className="p-1.5 hover:bg-gray-100 rounded-full text-casa-text-light"><ChevronRight size={15} /></button>
           </div>
+          <p className="text-center text-xs text-casa-teal font-medium mb-3">
+            {selectingOut ? 'Select check-out date' : 'Select check-in date'}
+          </p>
           <div className="grid grid-cols-7 mb-2">
             {DAYS.map(d => <span key={d} className="text-center text-xs text-casa-text-light font-medium py-1">{d}</span>)}
           </div>
-          <div className="grid grid-cols-7 gap-y-1">
+          <div className="grid grid-cols-7 gap-y-0.5">
             {cells.map((day, i) => {
               if (!day) return <div key={i} />
               const str = toStr(day)
-              const disabled = str < (min || today)
-              const selected = str === value
+              const disabled = str < today || (selectingOut && str <= checkIn)
+              const isIn = str === checkIn
+              const isOut = str === checkOut
+              const inRange = !!(checkIn && rangeEnd && str > checkIn && str < rangeEnd)
               const avail = dayCache.get(str)
               const neitherAvail = avail && !avail.casa && !avail.casita
               return (
-                <button key={i} disabled={disabled} onClick={() => { onChange(str); setOpen(false) }}
-                  className={`w-full flex flex-col items-center justify-center pt-1.5 pb-1 rounded-xl text-xs font-medium transition-colors
-                    ${selected ? 'bg-casa-teal text-white' : ''}
-                    ${!selected && !disabled && !neitherAvail ? 'hover:bg-gray-50 text-casa-text' : ''}
-                    ${disabled || (!selected && neitherAvail) ? 'text-gray-300 cursor-not-allowed' : ''}
+                <button
+                  key={i}
+                  disabled={disabled}
+                  onClick={() => handleClick(str)}
+                  onMouseEnter={() => setHover(str)}
+                  onMouseLeave={() => setHover('')}
+                  className={`w-full flex flex-col items-center justify-center pt-1.5 pb-1 text-xs font-medium transition-colors
+                    ${isIn || isOut ? 'bg-casa-teal text-white rounded-xl' : ''}
+                    ${inRange ? 'bg-casa-teal/15 text-casa-text' : ''}
+                    ${!isIn && !isOut && !inRange && !disabled && !neitherAvail ? 'hover:bg-gray-50 text-casa-text rounded-xl' : ''}
+                    ${disabled || (!isIn && !isOut && !inRange && neitherAvail) ? 'text-gray-300 cursor-not-allowed rounded-xl' : ''}
                   `}
                 >
                   <span>{day}</span>
-                  {!disabled && !selected && (
+                  {!disabled && !isIn && !isOut && (
                     <span className="flex gap-0.5 mt-0.5 h-1.5">
                       {avail?.casa && <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: PROPERTIES.casa.color }} />}
                       {avail?.casita && <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: PROPERTIES.casita.color }} />}
                     </span>
                   )}
-                  {!disabled && !selected && !avail && <span className="h-1.5 mt-0.5" />}
+                  {!disabled && !isIn && !isOut && !avail && <span className="h-1.5 mt-0.5" />}
                 </button>
               )
             })}
@@ -113,7 +137,6 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
             <span className="ml-auto text-gray-400 italic">no dot = fully booked</span>
           </div>
         </div>
-        </>
       )}
     </div>
   )
@@ -130,7 +153,6 @@ export default function BookingWidget() {
   const [, forceRender] = useState(0)
 
   const today = new Date()
-  const todayStr = today.toISOString().split('T')[0]
   const datesReady = !!(checkIn && checkOut)
 
   useEffect(() => {
@@ -145,6 +167,26 @@ export default function BookingWidget() {
   const handleMonthChange = useCallback((y: number, m: number) => {
     fetchMonthAvailability(y, m).then(() => forceRender(n => n + 1))
   }, [])
+
+  function handleDateSelect(date: string) {
+    if (!checkIn || checkOut) {
+      setCheckIn(date)
+      setCheckOut('')
+      setAvail(null)
+    } else {
+      if (date > checkIn) {
+        setCheckOut(date)
+      } else {
+        setCheckIn(date)
+      }
+    }
+  }
+
+  function clearDates() {
+    setCheckIn('')
+    setCheckOut('')
+    setAvail(null)
+  }
 
   useEffect(() => {
     if (!datesReady) { setAvail(null); return }
@@ -179,14 +221,14 @@ export default function BookingWidget() {
       {/* Booking bar */}
       <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col sm:flex-row overflow-visible">
         <div className="flex-1 px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
-          <DatePicker label="Check in" value={checkIn} min={todayStr} onMonthChange={handleMonthChange}
-            onChange={v => { setCheckIn(v); if (checkOut && v >= checkOut) setCheckOut('') }} />
+          <RangePicker
+            checkIn={checkIn}
+            checkOut={checkOut}
+            onSelect={handleDateSelect}
+            onMonthChange={handleMonthChange}
+          />
         </div>
-        <div className="flex-1 px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
-          <DatePicker label="Check out" value={checkOut} min={checkIn || todayStr} onMonthChange={handleMonthChange}
-            onChange={setCheckOut} />
-        </div>
-        <div className="flex-1 px-6 py-5">
+        <div className="px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
           <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Guests</span>
           <div className="flex items-center gap-3">
             <button onClick={() => setGuests(g => Math.max(1, g - 1))} disabled={guests <= 1}
@@ -200,9 +242,17 @@ export default function BookingWidget() {
             </button>
           </div>
         </div>
+        {datesReady && (
+          <div className="px-4 py-5 flex items-center justify-center">
+            <button onClick={clearDates} title="Clear dates"
+              className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:border-red-300 hover:text-red-400 transition-colors text-casa-text-light">
+              <X size={14} />
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Property cards — appear when dates are selected, 1 col on mobile, 2 col on sm+ */}
+      {/* Property cards */}
       <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-all duration-500 overflow-hidden ${datesReady ? 'opacity-100 max-h-[600px]' : 'opacity-0 max-h-0 pointer-events-none'}`}>
         {(Object.keys(PROPERTIES) as PropertyKey[]).map(prop => {
           const s = status(prop)

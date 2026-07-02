@@ -38,7 +38,7 @@ export default function Page() {
 
         <div className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto mt-32 md:mt-40">
           <motion.a
-            href="https://maps.google.com/maps?q=36.943031,-4.668107"
+            href="https://maps.google.com/maps?q=36.93785025045244,-4.677895900349077"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
@@ -198,7 +198,7 @@ export default function Page() {
 
           <FadeIn delay={0.1} className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg">
             <iframe
-              src="https://maps.google.com/maps?q=36.943031,-4.668107&t=k&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=36.93785025045244,-4.677895900349077&t=k&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
