@@ -95,7 +95,7 @@ export default function Page() {
           <FadeIn from="left">
             <h2 className="text-3xl md:text-4xl font-serif text-casa-text mb-6">Your own place under the Andalusian sun</h2>
             <p className="text-casa-text-light text-lg mb-8 leading-relaxed">
-              At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to — a place where you get to. Genuine Spanish hospitality, no mass tourism.
+              At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to, a place where you get to. Genuine Spanish hospitality, no mass tourism.
             </p>
             <div className="grid grid-cols-2 gap-6">
               <div className="flex items-start gap-3">

@@ -12,13 +12,13 @@ export type Activity = {
 const activities: Activity[] = [
   {
     slug: 'caminito-del-rey',
-    tag: '11 km away',
+    tag: '15 min away',
     title: 'Walk the gorge of a lifetime',
     shortDescription:
       "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
     description: [
       'A boardwalk trail fixed to the sheer walls of the El Chorro gorge, originally built for workers maintaining the hydroelectric dam. Restored and reopened in 2015, it has become one of the most iconic walks in Spain.',
-      'The route runs through the gorge for around 8 km, with exposed sections, suspension bridges, and views that are hard to forget. Casa Malacitano is 11 km away, making it an easy half-day trip.',
+      'The route runs through the gorge for around 8 km, with exposed sections, suspension bridges, and views that are hard to forget. Casa Malacitano is a 15-minute drive away, making it an easy half-day trip.',
     ],
     tips: [
       'Book tickets online at least 1 to 2 weeks ahead. Slots sell out fast in spring and autumn.',
@@ -45,7 +45,7 @@ const activities: Activity[] = [
     ],
     tips: [
       'Pick up a trail map at the village bar or ask Jans and Minouche for the best route for your level.',
-      'Spring is spectacular when the wildflowers are in bloom. Avoid the height of summer — the heat above the treeline can be intense.',
+      'Spring is spectacular when the wildflowers are in bloom. Avoid the height of summer: the heat above the treeline can be intense.',
       'For mountain biking, the section towards Antequera is particularly good.',
     ],
     practical: [
@@ -68,7 +68,7 @@ const activities: Activity[] = [
     ],
     tips: [
       'Ronda is best midweek. Weekend crowds on the famous bridge can be overwhelming.',
-      "Málaga's old town is very walkable from the port — park at the harbour and explore on foot.",
+      "Málaga's old town is very walkable from the port. Park at the harbour and explore on foot.",
       "Antequera's dolmens (Menga, Viera, El Romeral) are a UNESCO World Heritage Site and often quietly deserted.",
     ],
     practical: [
@@ -137,7 +137,7 @@ const activities: Activity[] = [
     ],
     tips: [
       'The best swimming spots are a 10-minute walk from the main car park. Follow the path along the water.',
-      'Early morning is magical — the water is glassy and the gorge walls catch the first light.',
+      'Early morning is magical: the water is glassy and the gorge walls catch the first light.',
       'Combine with the Caminito del Rey for a full day: walk in the morning, swim in the afternoon.',
     ],
     practical: [

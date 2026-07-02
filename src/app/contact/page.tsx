@@ -4,8 +4,8 @@ import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
 
 export const metadata = {
-  title: 'Contact — Casa Malacitano',
-  description: 'Get in touch with Jans and Minouche. Questions about availability, arrival or the area — we respond quickly.',
+  title: 'Contact | Casa Malacitano',
+  description: 'Get in touch with Jans and Minouche. Questions about availability, arrival or the area? We respond quickly.',
 }
 
 export default function ContactPage() {
