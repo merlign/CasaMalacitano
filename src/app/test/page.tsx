@@ -279,8 +279,8 @@ export default function BookingTest() {
         </div>
       </div>
 
-      {/* Property cards — always visible, update live */}
-      <div className="w-full max-w-4xl grid grid-cols-2 gap-4">
+      {/* Property cards — appear when dates are selected */}
+      <div className={`w-full max-w-4xl grid grid-cols-2 gap-4 transition-all duration-500 ${datesReady ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-2'}`}>
         {(Object.keys(PROPERTIES) as Array<keyof typeof PROPERTIES>).map(prop => {
           const s = status(prop)
           const bookingHref = avail?.bookingLinks[PROPERTIES[prop].id] ?? buildBookingUrl(prop, checkIn, checkOut, guests)
