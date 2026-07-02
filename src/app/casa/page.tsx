@@ -9,6 +9,7 @@ import {
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
+import PropertyBookingCard from '@/components/PropertyBookingCard'
 
 // ─── Drop your photos here ────────────────────────────────────────────────────
 const PHOTOS = [
@@ -283,42 +284,23 @@ export default function CasaPage() {
 
           </div>
 
-          {/* Sticky booking card, sticks until this grid ends */}
+          {/* Sticky booking card */}
           <div className="hidden md:block">
             <div className="sticky top-32">
-              <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-8">
-                <p className="text-xs font-bold uppercase tracking-widest text-casa-teal mb-1">Book direct</p>
-                <p className="text-casa-text-light text-sm mb-6 leading-relaxed">No Airbnb or Booking.com service fees. Direct contact with the hosts.</p>
-                <a href="#book" className="block w-full bg-casa-teal-dark hover:opacity-90 text-white text-center px-6 py-4 rounded-2xl font-bold transition-opacity mb-3">
-                  Book now
-                </a>
-                <div className="mt-6 pt-6 border-t border-gray-100 space-y-2.5">
-                  {['2 guests', '1 bedroom (1 bed)', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-sm text-casa-text-light">
-                      <Check size={13} className="text-casa-teal shrink-0" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <PropertyBookingCard
+                property="casa"
+                highlights={['2 guests', '1 bedroom (1 bed)', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)']}
+              />
             </div>
           </div>
         </div>
 
-        {/* Book direct banner, full width, sticky card stops here */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20">
-          <div className="bg-casa-teal-dark rounded-3xl px-8 md:px-12 py-8 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Book direct and save</p>
-              <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">No platform fees. Just a better price.</h2>
-              <p className="text-white/80 text-sm max-w-xl leading-relaxed">
-                Booking directly here skips Airbnb and Booking.com service fees, typically saving you 10–15%. Same property, same hosts, better deal.
-              </p>
-            </div>
-            <a href="#book" className="bg-white text-casa-teal-dark px-8 py-4 rounded-full font-bold text-base whitespace-nowrap hover:bg-casa-stone transition-colors shadow-sm shrink-0">
-              Book now
-            </a>
-          </div>
+        {/* Mobile booking card (visible on mobile only) */}
+        <div className="md:hidden max-w-7xl mx-auto px-4 mt-14">
+          <PropertyBookingCard
+            property="casa"
+            highlights={['2 guests', '1 bedroom (1 bed)', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)']}
+          />
         </div>
 
         {/* Photo gallery, full width, click to open lightbox */}

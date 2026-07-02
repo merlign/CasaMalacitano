@@ -2,75 +2,18 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight, Minus, Plus, Loader2 } from 'lucide-react'
-
-const LP_API_BASE = 'https://lodgepilot-app-api-996176857190.europe-west1.run.app'
-const LP_API_KEY = 'ffeb71e8-4ab9-4cff-8c45-09624d2d0781'
-
-const PROPERTIES = {
-  casita: {
-    id: 'b4b10945-90ed-4ba9-b773-d4e155fd2e80',
-    name: 'Casita Malacitano',
-    type: 'Detached casita',
-    image: '/casita.jpg',
-    bookingUrl: 'https://guests.lodgepilot.com/reservations/create/?reservationWidgetId=667b0d0c-98c5-4874-adc0-5fda89d7f090',
-    color: '#5b9bd5',
-  },
-  casa: {
-    id: '037a6377-e705-460c-acca-aa79878a2ded',
-    name: 'Casa Malacitano',
-    type: 'Studio',
-    image: '/casa.jpg',
-    bookingUrl: 'https://guests.lodgepilot.com/reservations/create/?reservationWidgetId=db1c7bd3-7359-4139-a31c-61bd58509db6',
-    color: '#e07b3a',
-  },
-}
-
-const dayCache = new Map<string, { casa: boolean; casita: boolean }>()
-const fetchingMonths = new Set<string>()
-
-async function fetchMonthAvailability(year: number, month: number): Promise<void> {
-  const key = `${year}-${month}`
-  if (fetchingMonths.has(key)) return
-  fetchingMonths.add(key)
-  const today = new Date().toISOString().split('T')[0]
-  const daysInMonth = new Date(year, month + 1, 0).getDate()
-  await Promise.all(
-    Array.from({ length: daysInMonth }, (_, i) => {
-      const day = i + 1
-      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-      if (dateStr < today || dayCache.has(dateStr)) return Promise.resolve()
-      const next = new Date(year, month, day + 1)
-      const nextStr = `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}-${String(next.getDate()).padStart(2, '0')}`
-      return fetch(`${LP_API_BASE}/public/v1/availability?start=${dateStr}&end=${nextStr}`, {
-        headers: { 'X-API-Key': LP_API_KEY },
-      })
-        .then(r => r.json())
-        .then(data => {
-          dayCache.set(dateStr, {
-            casa: (data.availableResourceIds ?? []).includes(PROPERTIES.casa.id),
-            casita: (data.availableResourceIds ?? []).includes(PROPERTIES.casita.id),
-          })
-        })
-        .catch(() => {})
-    })
-  )
-}
-
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const DAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-
-function formatDisplay(v: string) {
-  if (!v) return null
-  const [year, month, day] = v.split('-')
-  return `${parseInt(day)} ${MONTHS[parseInt(month) - 1].slice(0, 3)} ${year}`
-}
+import {
+  LP_API_BASE, LP_API_KEY, PROPERTIES, PropertyKey,
+  dayCache, fetchMonthAvailability, buildBookingUrl, formatDisplay,
+  MONTHS, DAYS,
+} from '@/lib/lodgepilot'
 
 function DatePicker({ label, value, onChange, min, onMonthChange }: {
   label: string
   value: string
   onChange: (v: string) => void
   min?: string
-  onMonthChange: (year: number, month: number) => void
+  onMonthChange: (y: number, m: number) => void
 }) {
   const today = new Date().toISOString().split('T')[0]
   const [open, setOpen] = useState(false)
@@ -80,17 +23,15 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
   const [, forceRender] = useState(0)
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false) }
+    document.addEventListener('mousedown', h)
+    return () => document.removeEventListener('mousedown', h)
   }, [])
 
   useEffect(() => {
     if (!open) return
-    const interval = setInterval(() => forceRender(n => n + 1), 300)
-    return () => clearInterval(interval)
+    const id = setInterval(() => forceRender(n => n + 1), 300)
+    return () => clearInterval(id)
   }, [open, view])
 
   function navigate(dir: 1 | -1) {
@@ -109,8 +50,8 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
   const offset = (firstDay + 6) % 7
   const cells = [...Array(offset).fill(null), ...Array.from({ length: daysInMonth }, (_, i) => i + 1)]
 
-  function toStr(day: number) {
-    return `${view.year}-${String(view.month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+  function toStr(d: number) {
+    return `${view.year}-${String(view.month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`
   }
 
   return (
@@ -125,13 +66,9 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
       {open && (
         <div className="absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 w-80">
           <div className="flex items-center justify-between mb-4">
-            <button onClick={() => navigate(-1)} className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-casa-text-light">
-              <ChevronLeft size={15} />
-            </button>
+            <button onClick={() => navigate(-1)} className="p-1.5 hover:bg-gray-100 rounded-full text-casa-text-light"><ChevronLeft size={15} /></button>
             <span className="text-sm font-semibold text-casa-text">{MONTHS[view.month]} {view.year}</span>
-            <button onClick={() => navigate(1)} className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-casa-text-light">
-              <ChevronRight size={15} />
-            </button>
+            <button onClick={() => navigate(1)} className="p-1.5 hover:bg-gray-100 rounded-full text-casa-text-light"><ChevronRight size={15} /></button>
           </div>
           <div className="grid grid-cols-7 mb-2">
             {DAYS.map(d => <span key={d} className="text-center text-xs text-casa-text-light font-medium py-1">{d}</span>)}
@@ -145,10 +82,7 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
               const avail = dayCache.get(str)
               const neitherAvail = avail && !avail.casa && !avail.casita
               return (
-                <button
-                  key={i}
-                  disabled={disabled}
-                  onClick={() => { onChange(str); setOpen(false) }}
+                <button key={i} disabled={disabled} onClick={() => { onChange(str); setOpen(false) }}
                   className={`w-full flex flex-col items-center justify-center pt-1.5 pb-1 rounded-xl text-xs font-medium transition-colors
                     ${selected ? 'bg-casa-teal text-white' : ''}
                     ${!selected && !disabled && !neitherAvail ? 'hover:bg-gray-50 text-casa-text' : ''}
@@ -169,12 +103,10 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
           </div>
           <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-4 text-xs text-casa-text-light">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: PROPERTIES.casa.color }} />
-              Casa
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: PROPERTIES.casa.color }} />Casa
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: PROPERTIES.casita.color }} />
-              Casita
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: PROPERTIES.casita.color }} />Casita
             </span>
             <span className="ml-auto text-gray-400 italic">no dot = fully booked</span>
           </div>
@@ -182,12 +114,6 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
       )}
     </div>
   )
-}
-
-function buildBookingUrl(prop: keyof typeof PROPERTIES, checkIn: string, checkOut: string, guests: number) {
-  const base = PROPERTIES[prop].bookingUrl
-  const params = new URLSearchParams({ checkIn, checkOut, guests: String(guests), language: 'nl' })
-  return `${base}&${params.toString()}`
 }
 
 type AvailResult = { available: string[]; unavailable: string[]; bookingLinks: Record<string, string> }
@@ -213,8 +139,8 @@ export default function BookingWidget() {
     ]).then(() => forceRender(n => n + 1))
   }, [])
 
-  const handleMonthChange = useCallback((year: number, month: number) => {
-    fetchMonthAvailability(year, month).then(() => forceRender(n => n + 1))
+  const handleMonthChange = useCallback((y: number, m: number) => {
+    fetchMonthAvailability(y, m).then(() => forceRender(n => n + 1))
   }, [])
 
   useEffect(() => {
@@ -236,7 +162,7 @@ export default function BookingWidget() {
     return () => ctrl.abort()
   }, [checkIn, checkOut])
 
-  function status(prop: keyof typeof PROPERTIES) {
+  function status(prop: PropertyKey) {
     if (!datesReady) return 'neutral'
     if (checking) return 'loading'
     if (!avail) return 'neutral'
@@ -273,12 +199,11 @@ export default function BookingWidget() {
         </div>
       </div>
 
-      {/* Property cards */}
-      <div className={`grid grid-cols-2 gap-4 transition-all duration-500 ${datesReady ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-2'}`}>
-        {(Object.keys(PROPERTIES) as Array<keyof typeof PROPERTIES>).map(prop => {
+      {/* Property cards — appear when dates are selected, 1 col on mobile, 2 col on sm+ */}
+      <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-all duration-500 ${datesReady ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-2'}`}>
+        {(Object.keys(PROPERTIES) as PropertyKey[]).map(prop => {
           const s = status(prop)
-          const bookingHref = avail?.bookingLinks[PROPERTIES[prop].id] ?? buildBookingUrl(prop, checkIn, checkOut, guests)
-
+          const href = avail?.bookingLinks[PROPERTIES[prop].id] ?? buildBookingUrl(prop, checkIn, checkOut, guests)
           return (
             <div key={prop} className={`bg-white rounded-3xl border-2 overflow-hidden transition-all duration-300 shadow-sm
               ${s === 'available' ? 'border-green-400 shadow-green-100' : ''}
@@ -286,11 +211,8 @@ export default function BookingWidget() {
               ${s === 'neutral' || s === 'loading' ? 'border-gray-100' : ''}
             `}>
               <div className="relative h-44 overflow-hidden">
-                <img
-                  src={PROPERTIES[prop].image}
-                  alt={PROPERTIES[prop].name}
-                  className={`w-full h-full object-cover transition-all duration-500 ${s === 'unavailable' ? 'grayscale' : ''}`}
-                />
+                <img src={PROPERTIES[prop].image} alt={PROPERTIES[prop].name}
+                  className={`w-full h-full object-cover transition-all duration-500 ${s === 'unavailable' ? 'grayscale' : ''}`} />
                 {s === 'available' && (
                   <div className="absolute top-3 left-3">
                     <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow">Available</span>
@@ -313,7 +235,7 @@ export default function BookingWidget() {
                   <p className="text-xs text-casa-text-light mt-1">{PROPERTIES[prop].type} · max. 2 guests</p>
                 </div>
                 {s === 'available' && (
-                  <a href={bookingHref} target="_blank" rel="noopener noreferrer"
+                  <a href={href} target="_blank" rel="noopener noreferrer"
                     className="flex-shrink-0 bg-casa-teal hover:bg-casa-teal-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm">
                     Book →
                   </a>
