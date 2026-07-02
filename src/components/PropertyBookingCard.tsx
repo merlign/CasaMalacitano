@@ -55,8 +55,6 @@ function DatePicker({ label, value, onChange, min, propKey, onMonthChange }: {
     return `${view.year}-${String(view.month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`
   }
 
-  const propColor = PROPERTIES[propKey].color
-
   return (
     <div ref={ref} className="relative">
       <button onClick={() => setOpen(o => !o)} className="w-full text-left group">
@@ -89,7 +87,6 @@ function DatePicker({ label, value, onChange, min, propKey, onMonthChange }: {
               const disabled = str < (min || today)
               const selected = str === value
               const avail = dayCache.get(str)
-              const propAvail = avail?.[propKey]
               const fullyBooked = avail && !avail.casa && !avail.casita
               return (
                 <button
@@ -103,19 +100,9 @@ function DatePicker({ label, value, onChange, min, propKey, onMonthChange }: {
                   `}
                 >
                   <span>{day}</span>
-                  {!disabled && !selected && (
-                    <span className="mt-0.5 h-1.5 flex">
-                      {propAvail && <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: propColor }} />}
-                    </span>
-                  )}
-                  {!disabled && !selected && !avail && <span className="h-1.5 mt-0.5" />}
                 </button>
               )
             })}
-          </div>
-          <div className="mt-3 pt-2.5 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400">
-            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: propColor }} />
-            <span>Available · no dot = fully booked</span>
           </div>
         </div>
         </>
