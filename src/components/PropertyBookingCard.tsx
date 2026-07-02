@@ -67,6 +67,8 @@ function DatePicker({ label, value, onChange, min, propKey, onMonthChange }: {
       </button>
 
       {open && (
+        <>
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-40" onClick={() => setOpen(false)} />
         <div className="absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 z-50 w-72">
           <div className="flex items-center justify-between mb-3">
             <button onClick={() => navigate(-1)} className="p-1.5 hover:bg-gray-100 rounded-full text-casa-text-light">
@@ -116,6 +118,7 @@ function DatePicker({ label, value, onChange, min, propKey, onMonthChange }: {
             <span>Available · no dot = fully booked</span>
           </div>
         </div>
+        </>
       )}
     </div>
   )

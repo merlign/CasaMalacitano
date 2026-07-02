@@ -64,6 +64,8 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
       </button>
 
       {open && (
+        <>
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-40" onClick={() => setOpen(false)} />
         <div className="absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 w-80">
           <div className="flex items-center justify-between mb-4">
             <button onClick={() => navigate(-1)} className="p-1.5 hover:bg-gray-100 rounded-full text-casa-text-light"><ChevronLeft size={15} /></button>
@@ -111,6 +113,7 @@ function DatePicker({ label, value, onChange, min, onMonthChange }: {
             <span className="ml-auto text-gray-400 italic">no dot = fully booked</span>
           </div>
         </div>
+        </>
       )}
     </div>
   )
@@ -200,7 +203,7 @@ export default function BookingWidget() {
       </div>
 
       {/* Property cards — appear when dates are selected, 1 col on mobile, 2 col on sm+ */}
-      <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-all duration-500 ${datesReady ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-2'}`}>
+      <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-all duration-500 overflow-hidden ${datesReady ? 'opacity-100 max-h-[600px]' : 'opacity-0 max-h-0 pointer-events-none'}`}>
         {(Object.keys(PROPERTIES) as PropertyKey[]).map(prop => {
           const s = status(prop)
           const href = avail?.bookingLinks[PROPERTIES[prop].id] ?? buildBookingUrl(prop, checkIn, checkOut, guests)
