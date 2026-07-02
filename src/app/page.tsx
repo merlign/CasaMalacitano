@@ -82,14 +82,15 @@ export default function Page() {
           </motion.div>
         </div>
 
-        {/* Booking widget lives inside the hero so no white gap below */}
-        <div className="relative z-20 max-w-5xl w-full mx-auto px-4 mt-12 md:mt-16 pb-16 md:pb-24">
-          <BookingWidget />
-        </div>
       </section>
 
+      {/* Booking Widget — in cream zone below hero */}
+      <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-20 md:-mt-28 mb-16 md:mb-24">
+        <BookingWidget />
+      </div>
+
       {/* Facilities */}
-      <section className="pt-16 md:pt-24 pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
+      <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn from="left">
             <h2 className="text-3xl md:text-4xl font-serif text-casa-text mb-6">Your own place under the Andalusian sun</h2>
