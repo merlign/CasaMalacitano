@@ -85,7 +85,7 @@ export default function Page() {
       </section>
 
       {/* Booking Widget — in cream zone below hero */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-20 md:-mt-28 mb-16 md:mb-24">
+      <div className="relative z-20 max-w-5xl mx-auto px-4 pt-10 md:pt-14 pb-12 md:pb-20">
         <BookingWidget />
       </div>
 

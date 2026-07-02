@@ -71,7 +71,7 @@ function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
         onClick={() => setOpen(true)}
         className="flex-1 px-6 py-5 text-left group border-b sm:border-b-0 sm:border-r border-gray-100"
       >
-        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Check in</span>
+        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2 whitespace-nowrap">Check in</span>
         <span className={`text-sm font-medium ${checkIn ? 'text-casa-text' : 'text-gray-400 group-hover:text-gray-500'}`}>
           {formatDisplay(checkIn) ?? 'Add date'}
         </span>
@@ -82,7 +82,7 @@ function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
         onClick={() => setOpen(true)}
         className="flex-1 px-6 py-5 text-left group border-b sm:border-b-0"
       >
-        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Check out</span>
+        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2 whitespace-nowrap">Check out</span>
         <span className={`text-sm font-medium ${checkOut ? 'text-casa-text' : 'text-gray-400 group-hover:text-gray-500'}`}>
           {formatDisplay(checkOut) ?? 'Add date'}
         </span>
