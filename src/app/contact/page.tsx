@@ -82,7 +82,7 @@ export default function ContactPage() {
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
-                loading="lazy"
+                loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Casa Malacitano location"
               />
