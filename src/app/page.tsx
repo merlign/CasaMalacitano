@@ -33,15 +33,18 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-t from-casa-stone via-transparent to-transparent opacity-90 h-48 bottom-0 top-auto"></div>
 
         <div className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto mt-20 md:mt-12">
-          <motion.div
+          <motion.a
+            href="https://maps.google.com/maps?q=36.943031,-4.668107"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 text-casa-teal font-bold tracking-widest uppercase text-xs mb-8 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10"
+            className="inline-flex items-center gap-2 text-casa-teal font-bold tracking-widest uppercase text-xs mb-8 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10 hover:bg-black/60 transition-colors"
           >
             <MapPin size={16} />
             <span>Valle de Abdalajís, Andalusia</span>
-          </motion.div>
+          </motion.a>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -198,30 +201,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Hosts */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <FadeIn from="left">
-            <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Your hosts</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-6">Meet Jans &amp; Minouche</h2>
-            <p className="text-casa-text-light text-lg leading-relaxed mb-8">
-              [Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]
-            </p>
-          </FadeIn>
-
-          {/* Photo placeholder — replace src with /hosts.jpg when ready */}
-          <FadeIn delay={0.15} className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
-            <img
-              src="/hosts.jpg"
-              alt="Jans and Minouche"
-              className="absolute inset-0 w-full h-full object-cover"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
-            <p className="text-casa-text-light/40 font-serif text-lg select-none">Photo coming soon</p>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* Surroundings */}
       <section id="surroundings" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
@@ -239,21 +218,44 @@ export default function Page() {
               <p className="text-casa-text-light text-lg italic">Quiet, authentic, surrounded by nature.</p>
             </div>
             <p className="text-casa-text-light text-lg leading-relaxed">
-              Nestled between mountain ridges in the province of Málaga, Valle de Abdalajís is an authentic Andalusian village that tourism has largely passed by. Around 2,000 residents, a handful of bars, and a pace of life that slows you down the moment you arrive.
+              Valle de Abdalajís, nestled between mountain ridges in the province of Málaga, is an authentic Andalusian village that tourism has largely passed by. With around 2,500 residents, a handful of bars, several restaurants, two supermarkets for daily groceries, a bakery, a pharmacy and a greengrocer, it is a typical Spanish village with a pace of life that calms you down the moment you arrive.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.1} className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg">
             <iframe
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-4.682%2C36.933%2C-4.654%2C36.953&layer=mapnik&marker=36.94303%2C-4.66811"
+              src="https://maps.google.com/maps?q=36.943031,-4.668107&t=k&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Valle de Abdalajís map"
+              title="Casa Malacitano locatie"
             />
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Hosts */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 md:gap-16 items-center">
+          <FadeIn from="left" className="md:col-span-2">
+            <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Your hosts</p>
+            <h2 className="text-3xl sm:text-4xl font-serif text-casa-text mb-6">Meet Jans &amp; Minouche</h2>
+            <p className="text-casa-text-light text-lg leading-relaxed">
+              [Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.15} className="relative h-64 md:h-72 rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
+            <img
+              src="/hosts.jpg"
+              alt="Jans and Minouche"
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+            <p className="text-casa-text-light/40 font-serif text-lg select-none">Photo coming soon</p>
           </FadeIn>
         </div>
       </section>
