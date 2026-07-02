@@ -85,7 +85,7 @@ export default function Page() {
       </section>
 
       {/* Booking Widget — straddles hero/cream border */}
-      <div className="relative z-20 max-w-3xl mx-auto px-4 -mt-10 pb-12 md:pb-20">
+      <div id="booking" className="relative z-20 max-w-3xl mx-auto px-4 -mt-10 pb-12 md:pb-20">
         <BookingWidget />
       </div>
 
@@ -204,7 +204,7 @@ export default function Page() {
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
-              loading="lazy"
+              loading="eager"
               referrerPolicy="no-referrer-when-downgrade"
               title="Casa Malacitano locatie"
             />
