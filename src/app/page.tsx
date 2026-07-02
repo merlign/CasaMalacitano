@@ -27,7 +27,7 @@ export default function Page() {
       <SiteHeader hero />
 
       {/* Hero + Booking Widget */}
-      <section className="relative min-h-screen flex flex-col justify-center">
+      <section className="relative min-h-screen flex flex-col justify-center pb-32 md:pb-48">
         {/* Background — clipped separately so calendar dropdowns aren't cut off */}
         <div className="absolute inset-0 overflow-hidden">
           <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: 'url("/view.jpg")' }}></div>
@@ -36,7 +36,7 @@ export default function Page() {
           <div className="absolute inset-0 bg-gradient-to-t from-casa-stone via-transparent to-transparent opacity-90 h-48 bottom-0 top-auto"></div>
         </div>
 
-        <div className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto mt-32 md:mt-40">
+        <div className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto mt-20 md:mt-24">
           <motion.a
             href="https://maps.google.com/maps?q=36.93785025045244,-4.677895900349077"
             target="_blank"
