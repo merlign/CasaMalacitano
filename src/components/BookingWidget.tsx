@@ -63,21 +63,32 @@ function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
 
   const rangeEnd = checkOut || (selectingOut ? hover : '')
 
-  const label = checkIn && checkOut
-    ? `${formatDisplay(checkIn)} → ${formatDisplay(checkOut)}`
-    : checkIn
-      ? `${formatDisplay(checkIn)} → check-out`
-      : undefined
-
   return (
-    <div ref={ref} className="relative flex-1">
-      <button onClick={() => setOpen(o => !o)} className="w-full text-left group">
-        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Dates</span>
+    // Wrapper is relative so the floating calendar anchors to it
+    <div ref={ref} className="relative flex flex-col sm:flex-row sm:border-r border-gray-100">
+      {/* Check-in field */}
+      <button
+        onClick={() => setOpen(true)}
+        className="flex-1 px-6 py-5 text-left group border-b sm:border-b-0 sm:border-r border-gray-100"
+      >
+        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Check in</span>
         <span className={`text-sm font-medium ${checkIn ? 'text-casa-text' : 'text-gray-400 group-hover:text-gray-500'}`}>
-          {label ?? 'Add dates'}
+          {formatDisplay(checkIn) ?? 'Add date'}
         </span>
       </button>
 
+      {/* Check-out field */}
+      <button
+        onClick={() => setOpen(true)}
+        className="flex-1 px-6 py-5 text-left group border-b sm:border-b-0"
+      >
+        <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Check out</span>
+        <span className={`text-sm font-medium ${checkOut ? 'text-casa-text' : 'text-gray-400 group-hover:text-gray-500'}`}>
+          {formatDisplay(checkOut) ?? 'Add date'}
+        </span>
+      </button>
+
+      {/* Single shared calendar popup */}
       {open && (
         <div className="absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 w-80">
           <div className="flex items-center justify-between mb-1">
@@ -220,14 +231,15 @@ export default function BookingWidget() {
     <div className="flex flex-col gap-4">
       {/* Booking bar */}
       <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col sm:flex-row overflow-visible">
-        <div className="flex-1 px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
-          <RangePicker
-            checkIn={checkIn}
-            checkOut={checkOut}
-            onSelect={handleDateSelect}
-            onMonthChange={handleMonthChange}
-          />
-        </div>
+        {/* CHECK IN + CHECK OUT share one calendar via RangePicker */}
+        <RangePicker
+          checkIn={checkIn}
+          checkOut={checkOut}
+          onSelect={handleDateSelect}
+          onMonthChange={handleMonthChange}
+        />
+
+        {/* GUESTS */}
         <div className="px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
           <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Guests</span>
           <div className="flex items-center gap-3">
@@ -242,6 +254,8 @@ export default function BookingWidget() {
             </button>
           </div>
         </div>
+
+        {/* CLEAR — only visible when dates are set */}
         {datesReady && (
           <div className="px-4 py-5 flex items-center justify-center">
             <button onClick={clearDates} title="Clear dates"
