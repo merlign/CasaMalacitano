@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, X, Minus, Plus, Loader2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Minus, Plus, Loader2 } from 'lucide-react'
 
 const LP_API_BASE = 'https://lodgepilot-app-api-996176857190.europe-west1.run.app'
 const LP_API_KEY = 'ffeb71e8-4ab9-4cff-8c45-09624d2d0781'
@@ -13,8 +13,7 @@ const PROPERTIES = {
     type: 'Detached casita',
     image: '/casita.jpg',
     bookingUrl: 'https://guests.lodgepilot.com/reservations/create/?reservationWidgetId=667b0d0c-98c5-4874-adc0-5fda89d7f090',
-    color: '#5b9bd5',        // blue
-    colorLight: '#dbeafe',
+    color: '#5b9bd5',
     label: 'Casita',
   },
   casa: {
@@ -23,13 +22,12 @@ const PROPERTIES = {
     type: 'Studio',
     image: '/casa.jpg',
     bookingUrl: 'https://guests.lodgepilot.com/reservations/create/?reservationWidgetId=db1c7bd3-7359-4139-a31c-61bd58509db6',
-    color: '#e07b3a',        // warm orange
-    colorLight: '#fde8d8',
+    color: '#e07b3a',
     label: 'Casa',
   },
 }
 
-// Module-level cache so we don't re-fetch across re-renders
+// Module-level cache: per-day dots
 const dayCache = new Map<string, { casa: boolean; casita: boolean }>()
 const fetchingMonths = new Set<string>()
 
@@ -37,30 +35,28 @@ async function fetchMonthAvailability(year: number, month: number): Promise<void
   const key = `${year}-${month}`
   if (fetchingMonths.has(key)) return
   fetchingMonths.add(key)
-
   const today = new Date().toISOString().split('T')[0]
   const daysInMonth = new Date(year, month + 1, 0).getDate()
-
-  const calls = Array.from({ length: daysInMonth }, (_, i) => {
-    const day = i + 1
-    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-    if (dateStr < today || dayCache.has(dateStr)) return Promise.resolve()
-    const nextDay = new Date(year, month, day + 1)
-    const nextStr = `${nextDay.getFullYear()}-${String(nextDay.getMonth() + 1).padStart(2, '0')}-${String(nextDay.getDate()).padStart(2, '0')}`
-    return fetch(`${LP_API_BASE}/public/v1/availability?start=${dateStr}&end=${nextStr}`, {
-      headers: { 'X-API-Key': LP_API_KEY },
-    })
-      .then(r => r.json())
-      .then(data => {
-        dayCache.set(dateStr, {
-          casa: (data.availableResourceIds ?? []).includes(PROPERTIES.casa.id),
-          casita: (data.availableResourceIds ?? []).includes(PROPERTIES.casita.id),
-        })
+  await Promise.all(
+    Array.from({ length: daysInMonth }, (_, i) => {
+      const day = i + 1
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+      if (dateStr < today || dayCache.has(dateStr)) return Promise.resolve()
+      const next = new Date(year, month, day + 1)
+      const nextStr = `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}-${String(next.getDate()).padStart(2, '0')}`
+      return fetch(`${LP_API_BASE}/public/v1/availability?start=${dateStr}&end=${nextStr}`, {
+        headers: { 'X-API-Key': LP_API_KEY },
       })
-      .catch(() => {})
-  })
-
-  await Promise.all(calls)
+        .then(r => r.json())
+        .then(data => {
+          dayCache.set(dateStr, {
+            casa: (data.availableResourceIds ?? []).includes(PROPERTIES.casa.id),
+            casita: (data.availableResourceIds ?? []).includes(PROPERTIES.casita.id),
+          })
+        })
+        .catch(() => {})
+    })
+  )
 }
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -72,12 +68,11 @@ function formatDisplay(v: string) {
   return `${parseInt(day)} ${MONTHS[parseInt(month) - 1].slice(0, 3)} ${year}`
 }
 
-function DatePicker({ label, value, onChange, min, dayAvailability, onMonthChange }: {
+function DatePicker({ label, value, onChange, min, onMonthChange }: {
   label: string
   value: string
   onChange: (v: string) => void
   min?: string
-  dayAvailability: Map<string, { casa: boolean; casita: boolean }>
   onMonthChange: (year: number, month: number) => void
 }) {
   const today = new Date().toISOString().split('T')[0]
@@ -95,7 +90,6 @@ function DatePicker({ label, value, onChange, min, dayAvailability, onMonthChang
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  // Trigger re-render when cache updates for this month
   useEffect(() => {
     if (!open) return
     const interval = setInterval(() => forceRender(n => n + 1), 300)
@@ -142,23 +136,17 @@ function DatePicker({ label, value, onChange, min, dayAvailability, onMonthChang
               <ChevronRight size={15} />
             </button>
           </div>
-
           <div className="grid grid-cols-7 mb-2">
             {DAYS.map(d => <span key={d} className="text-center text-xs text-casa-text-light font-medium py-1">{d}</span>)}
           </div>
-
           <div className="grid grid-cols-7 gap-y-1">
             {cells.map((day, i) => {
               if (!day) return <div key={i} />
               const str = toStr(day)
               const disabled = str < (min || today)
               const selected = str === value
-              const avail = dayAvailability.get(str)
-
-              const casaAvail = avail?.casa ?? null
-              const casitaAvail = avail?.casita ?? null
-              const neitherAvail = avail && !casaAvail && !casitaAvail
-
+              const avail = dayCache.get(str)
+              const neitherAvail = avail && !avail.casa && !avail.casita
               return (
                 <button
                   key={i}
@@ -167,30 +155,21 @@ function DatePicker({ label, value, onChange, min, dayAvailability, onMonthChang
                   className={`w-full flex flex-col items-center justify-center pt-1.5 pb-1 rounded-xl text-xs font-medium transition-colors
                     ${selected ? 'bg-casa-teal text-white' : ''}
                     ${!selected && !disabled && !neitherAvail ? 'hover:bg-gray-50 text-casa-text' : ''}
-                    ${disabled ? 'text-gray-300 cursor-not-allowed' : ''}
-                    ${!selected && !disabled && neitherAvail ? 'text-gray-300' : ''}
+                    ${disabled || (!selected && neitherAvail) ? 'text-gray-300 cursor-not-allowed' : ''}
                   `}
                 >
                   <span>{day}</span>
                   {!disabled && !selected && (
                     <span className="flex gap-0.5 mt-0.5 h-1.5">
-                      {casaAvail && (
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: PROPERTIES.casa.color }} />
-                      )}
-                      {casitaAvail && (
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: PROPERTIES.casita.color }} />
-                      )}
+                      {avail?.casa && <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: PROPERTIES.casa.color }} />}
+                      {avail?.casita && <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: PROPERTIES.casita.color }} />}
                     </span>
                   )}
-                  {!disabled && !selected && !avail && (
-                    <span className="flex mt-0.5 h-1.5" />
-                  )}
+                  {!disabled && !selected && !avail && <span className="h-1.5 mt-0.5" />}
                 </button>
               )
             })}
           </div>
-
-          {/* Legend */}
           <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-4 text-xs text-casa-text-light">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: PROPERTIES.casa.color }} />
@@ -200,9 +179,7 @@ function DatePicker({ label, value, onChange, min, dayAvailability, onMonthChang
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: PROPERTIES.casita.color }} />
               Casita
             </span>
-            <span className="flex items-center gap-1.5 ml-auto text-gray-400 italic">
-              no dot = fully booked
-            </span>
+            <span className="ml-auto text-gray-400 italic">no dot = fully booked</span>
           </div>
         </div>
       )}
@@ -212,117 +189,81 @@ function DatePicker({ label, value, onChange, min, dayAvailability, onMonthChang
 
 function buildBookingUrl(prop: keyof typeof PROPERTIES, checkIn: string, checkOut: string, guests: number) {
   const base = PROPERTIES[prop].bookingUrl
-  const params = new URLSearchParams({
-    checkIn: checkIn || 'null',
-    checkOut: checkOut || 'null',
-    guests: String(guests),
-    language: 'nl',
-  })
+  const params = new URLSearchParams({ checkIn, checkOut, guests: String(guests), language: 'nl' })
   return `${base}&${params.toString()}`
 }
 
-async function checkAvailability(checkIn: string, checkOut: string): Promise<{ available: string[]; unavailable: string[]; bookingLinks: Record<string, string> }> {
-  const url = `${LP_API_BASE}/public/v1/availability?start=${checkIn}&end=${checkOut}`
-  const res = await fetch(url, { headers: { 'X-API-Key': LP_API_KEY } })
-  if (!res.ok) throw new Error('API error')
-  const data = await res.json()
-  return {
-    available: data.availableResourceIds ?? [],
-    unavailable: data.unavailableResourceIds ?? [],
-    bookingLinks: data.bookingLinks ?? {},
-  }
-}
+type AvailResult = { available: string[]; unavailable: string[]; bookingLinks: Record<string, string> }
 
 export default function BookingTest() {
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [guests, setGuests] = useState(2)
-  const [modalOpen, setModalOpen] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [availability, setAvailability] = useState<{ available: string[]; unavailable: string[]; bookingLinks: Record<string, string> } | null>(null)
-  const [error, setError] = useState(false)
+  const [avail, setAvail] = useState<AvailResult | null>(null)
+  const [checking, setChecking] = useState(false)
   const [, forceRender] = useState(0)
 
-  const today = new Date().toISOString().split('T')[0]
-  const todayDate = new Date()
-  const datesSelected = !!(checkIn && checkOut)
+  const today = new Date()
+  const todayStr = today.toISOString().split('T')[0]
+  const datesReady = !!(checkIn && checkOut)
 
-  // Pre-load current month + next 2 months on mount
+  // Pre-load current + next 2 months
   useEffect(() => {
-    const year = todayDate.getFullYear()
-    const month = todayDate.getMonth()
-    const months = [
-      { year, month },
-      { year: month + 1 > 11 ? year + 1 : year, month: (month + 1) % 12 },
-      { year: month + 2 > 11 ? year + 1 : year, month: (month + 2) % 12 },
-    ]
-    Promise.all(months.map(m => fetchMonthAvailability(m.year, m.month)))
-      .then(() => forceRender(n => n + 1))
+    const y = today.getFullYear(), m = today.getMonth()
+    Promise.all([
+      fetchMonthAvailability(y, m),
+      fetchMonthAvailability(m + 1 > 11 ? y + 1 : y, (m + 1) % 12),
+      fetchMonthAvailability(m + 2 > 11 ? y + 1 : y, (m + 2) % 12),
+    ]).then(() => forceRender(n => n + 1))
   }, [])
 
   const handleMonthChange = useCallback((year: number, month: number) => {
     fetchMonthAvailability(year, month).then(() => forceRender(n => n + 1))
   }, [])
 
-  async function handleCheck() {
-    if (!datesSelected) {
-      setAvailability(null)
-      setModalOpen(true)
-      return
-    }
-    setLoading(true)
-    setError(false)
-    try {
-      const result = await checkAvailability(checkIn, checkOut)
-      setAvailability(result)
-    } catch {
-      setError(true)
-      setAvailability(null)
-    } finally {
-      setLoading(false)
-      setModalOpen(true)
-    }
-  }
+  // Auto-check availability when both dates are set
+  useEffect(() => {
+    if (!datesReady) { setAvail(null); return }
+    setChecking(true)
+    const ctrl = new AbortController()
+    fetch(`${LP_API_BASE}/public/v1/availability?start=${checkIn}&end=${checkOut}`, {
+      headers: { 'X-API-Key': LP_API_KEY },
+      signal: ctrl.signal,
+    })
+      .then(r => r.json())
+      .then(data => setAvail({
+        available: data.availableResourceIds ?? [],
+        unavailable: data.unavailableResourceIds ?? [],
+        bookingLinks: data.bookingLinks ?? {},
+      }))
+      .catch(() => {})
+      .finally(() => setChecking(false))
+    return () => ctrl.abort()
+  }, [checkIn, checkOut])
 
-  function isAvailable(prop: keyof typeof PROPERTIES) {
-    if (!availability || !datesSelected) return true
-    return availability.available.includes(PROPERTIES[prop].id)
-  }
-
-  function isUnavailable(prop: keyof typeof PROPERTIES) {
-    if (!availability || !datesSelected) return false
-    return availability.unavailable.includes(PROPERTIES[prop].id)
+  function status(prop: keyof typeof PROPERTIES) {
+    if (!datesReady) return 'neutral'
+    if (checking) return 'loading'
+    if (!avail) return 'neutral'
+    if (avail.available.includes(PROPERTIES[prop].id)) return 'available'
+    if (avail.unavailable.includes(PROPERTIES[prop].id)) return 'unavailable'
+    return 'neutral'
   }
 
   return (
-    <div className="min-h-screen bg-casa-stone font-sans flex items-start justify-center pt-32 p-8">
+    <div className="min-h-screen bg-casa-stone font-sans flex flex-col items-center pt-32 p-8 gap-6">
 
       {/* Booking bar */}
       <div className="w-full max-w-4xl bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col sm:flex-row overflow-visible">
-
         <div className="flex-1 px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
-          <DatePicker
-            label="Check in"
-            value={checkIn}
-            min={today}
-            dayAvailability={dayCache}
-            onMonthChange={handleMonthChange}
-            onChange={v => { setCheckIn(v); if (checkOut && v >= checkOut) setCheckOut(''); setAvailability(null) }}
-          />
+          <DatePicker label="Check in" value={checkIn} min={todayStr} onMonthChange={handleMonthChange}
+            onChange={v => { setCheckIn(v); if (checkOut && v >= checkOut) setCheckOut('') }} />
         </div>
-
         <div className="flex-1 px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
-          <DatePicker
-            label="Check out"
-            value={checkOut}
-            min={checkIn || today}
-            dayAvailability={dayCache}
-            onMonthChange={handleMonthChange}
-            onChange={v => { setCheckOut(v); setAvailability(null) }}
-          />
+          <DatePicker label="Check out" value={checkOut} min={checkIn || todayStr} onMonthChange={handleMonthChange}
+            onChange={setCheckOut} />
         </div>
-
-        <div className="flex-1 px-6 py-5 border-b sm:border-b-0 sm:border-r border-gray-100">
+        <div className="flex-1 px-6 py-5">
           <span className="block text-xs font-semibold uppercase tracking-wider text-casa-text-light mb-2">Guests</span>
           <div className="flex items-center gap-3">
             <button onClick={() => setGuests(g => Math.max(1, g - 1))} disabled={guests <= 1}
@@ -336,94 +277,71 @@ export default function BookingTest() {
             </button>
           </div>
         </div>
-
-        <div className="px-4 py-4 flex items-center justify-center">
-          <button onClick={handleCheck} disabled={loading}
-            className="px-8 py-3.5 rounded-2xl text-sm font-semibold transition-all whitespace-nowrap bg-casa-teal text-white hover:bg-casa-teal-dark shadow-md disabled:opacity-60 flex items-center gap-2">
-            {loading && <Loader2 size={15} className="animate-spin" />}
-            {loading ? 'Checking...' : 'Check availability'}
-          </button>
-        </div>
       </div>
 
-      {/* Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setModalOpen(false)}>
-          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+      {/* Property cards — always visible, update live */}
+      <div className="w-full max-w-4xl grid grid-cols-2 gap-4">
+        {(Object.keys(PROPERTIES) as Array<keyof typeof PROPERTIES>).map(prop => {
+          const s = status(prop)
+          const bookingHref = avail?.bookingLinks[PROPERTIES[prop].id] ?? buildBookingUrl(prop, checkIn, checkOut, guests)
 
-            <div className="flex items-center gap-3 px-6 py-4 border-b border-gray-100">
-              <div className="flex-1">
-                <h2 className="text-base font-semibold text-casa-text">Which accommodation?</h2>
-                {datesSelected && (
-                  <p className="text-xs text-casa-text-light mt-0.5">
-                    {formatDisplay(checkIn)} → {formatDisplay(checkOut)} · {guests} {guests === 1 ? 'guest' : 'guests'}
-                  </p>
+          return (
+            <div key={prop} className={`bg-white rounded-3xl border-2 overflow-hidden transition-all duration-300 shadow-sm
+              ${s === 'available' ? 'border-green-400 shadow-green-100' : ''}
+              ${s === 'unavailable' ? 'border-gray-100 opacity-50' : ''}
+              ${s === 'neutral' || s === 'loading' ? 'border-gray-100' : ''}
+            `}>
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src={PROPERTIES[prop].image}
+                  alt={PROPERTIES[prop].name}
+                  className={`w-full h-full object-cover transition-all duration-500 ${s === 'unavailable' ? 'grayscale' : ''}`}
+                />
+                {s === 'available' && (
+                  <div className="absolute top-3 left-3">
+                    <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow">Available</span>
+                  </div>
+                )}
+                {s === 'unavailable' && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="bg-white/90 text-casa-text text-xs font-semibold px-4 py-2 rounded-full shadow">Not available</span>
+                  </div>
+                )}
+                {s === 'loading' && (
+                  <div className="absolute inset-0 bg-white/40 flex items-center justify-center">
+                    <Loader2 size={20} className="animate-spin text-casa-teal" />
+                  </div>
                 )}
               </div>
-              <button onClick={() => setModalOpen(false)} className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-casa-text-light">
-                <X size={18} />
-              </button>
-            </div>
 
-            {error && (
-              <div className="px-6 py-4 bg-red-50 text-red-600 text-sm">
-                Could not check availability. Please try again or contact us directly.
-              </div>
-            )}
-
-            <div className="p-6 grid grid-cols-2 gap-4">
-              {(Object.keys(PROPERTIES) as Array<keyof typeof PROPERTIES>).map(prop => {
-                const unavailable = isUnavailable(prop)
-                const available = isAvailable(prop)
-                return unavailable ? (
-                  <div key={prop} className="border-2 border-gray-100 rounded-2xl overflow-hidden opacity-45 cursor-not-allowed">
-                    <div className="h-36 overflow-hidden relative">
-                      <img src={PROPERTIES[prop].image} alt="" className="w-full h-full object-cover grayscale" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="bg-white/90 text-casa-text text-xs font-semibold px-3 py-1.5 rounded-full">Not available</span>
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-casa-text text-sm">{PROPERTIES[prop].name}</h3>
-                      <p className="text-xs text-casa-text-light mt-1">{PROPERTIES[prop].type} · max. 2 guests</p>
-                    </div>
-                  </div>
-                ) : (
+              <div className="p-5 flex items-end justify-between gap-4">
+                <div>
+                  <h3 className="font-semibold text-casa-text text-base">{PROPERTIES[prop].name}</h3>
+                  <p className="text-xs text-casa-text-light mt-1">{PROPERTIES[prop].type} · max. 2 guests</p>
+                </div>
+                {s === 'available' ? (
                   <a
-                    key={prop}
-                    href={availability?.bookingLinks[PROPERTIES[prop].id] ?? buildBookingUrl(prop, checkIn, checkOut, guests)}
+                    href={bookingHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border-2 border-gray-100 hover:border-casa-teal rounded-2xl text-left transition-all group overflow-hidden block"
+                    className="flex-shrink-0 bg-casa-teal hover:bg-casa-teal-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm"
                   >
-                    <div className="h-36 overflow-hidden relative">
-                      <img src={PROPERTIES[prop].image} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      {datesSelected && available && (
-                        <div className="absolute top-3 left-3">
-                          <span className="bg-green-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full">Available</span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-casa-text group-hover:text-casa-teal transition-colors text-sm">{PROPERTIES[prop].name}</h3>
-                      <p className="text-xs text-casa-text-light mt-1">{PROPERTIES[prop].type} · max. 2 guests</p>
-                    </div>
+                    Book →
                   </a>
-                )
-              })}
-            </div>
-
-            {datesSelected && availability && availability.available.length === 0 && !error && (
-              <div className="px-6 pb-6 text-center">
-                <p className="text-sm text-casa-text-light">Neither accommodation is available for these dates.</p>
-                <a href="mailto:info.malacitano@gmail.com" className="mt-3 inline-block text-sm font-semibold text-casa-teal hover:underline">
-                  Contact us for alternatives
-                </a>
+                ) : s === 'neutral' || s === 'loading' ? (
+                  <a
+                    href={`/casita`}
+                    onClick={e => e.preventDefault()}
+                    className="flex-shrink-0 border border-gray-200 text-casa-text-light text-sm font-medium px-5 py-2.5 rounded-full cursor-default"
+                  >
+                    {datesReady ? '...' : 'Select dates'}
+                  </a>
+                ) : null}
               </div>
-            )}
-          </div>
-        </div>
-      )}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
