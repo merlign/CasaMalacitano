@@ -26,14 +26,17 @@ export default function Page() {
     <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
       <SiteHeader hero />
 
-      {/* Hero */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pb-32 md:pb-40">
-        <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: 'url("/view.jpg")' }}></div>
-        <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-casa-stone via-transparent to-transparent opacity-90 h-48 bottom-0 top-auto"></div>
+      {/* Hero + Booking Widget */}
+      <section className="relative min-h-screen flex flex-col justify-center">
+        {/* Background — clipped separately so calendar dropdowns aren't cut off */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: 'url("/view.jpg")' }}></div>
+          <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-casa-stone via-transparent to-transparent opacity-90 h-48 bottom-0 top-auto"></div>
+        </div>
 
-        <div className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto mt-20 md:mt-12">
+        <div className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto mt-32 md:mt-40">
           <motion.a
             href="https://maps.google.com/maps?q=36.943031,-4.668107"
             target="_blank"
@@ -78,15 +81,15 @@ export default function Page() {
             </a>
           </motion.div>
         </div>
+
+        {/* Booking widget lives inside the hero so no white gap below */}
+        <div className="relative z-20 max-w-5xl w-full mx-auto px-4 mt-12 md:mt-16 pb-16 md:pb-24">
+          <BookingWidget />
+        </div>
       </section>
 
-      {/* Booking Widget */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-16 md:-mt-24 mb-16 md:mb-24">
-        <BookingWidget />
-      </div>
-
       {/* Facilities */}
-      <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
+      <section className="pt-16 md:pt-24 pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn from="left">
             <h2 className="text-3xl md:text-4xl font-serif text-casa-text mb-6">Your own place under the Andalusian sun</h2>
