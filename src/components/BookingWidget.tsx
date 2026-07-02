@@ -65,7 +65,7 @@ function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
 
   return (
     // Wrapper is relative so the floating calendar anchors to it
-    <div ref={ref} className="relative flex flex-col sm:flex-row sm:border-r border-gray-100">
+    <div ref={ref} className="relative flex-1 flex flex-col sm:flex-row sm:border-r border-gray-100">
       {/* Check-in field */}
       <button
         onClick={() => setOpen(true)}
