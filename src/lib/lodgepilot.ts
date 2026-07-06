@@ -22,36 +22,65 @@ export const PROPERTIES = {
 
 export type PropertyKey = keyof typeof PROPERTIES
 
+// ICS calendar export IDs: one file per property lists all booked/closed
+// periods, so two requests fill the entire calendar at once
+const ICS_IDS: Record<PropertyKey, string> = {
+  casita: 'bb8c02d0-143d-48e6-8244-34e254e8ffe8',
+  casa: '12caaddd-d463-4cdf-b89e-8eeb4930bb39',
+}
+
+// How far ahead the calendar dots are computed
+const HORIZON_DAYS = 550
+
 // Shared module-level cache so all components share one fetch pool
 export const dayCache = new Map<string, { casa: boolean; casita: boolean }>()
-const fetchingMonths = new Set<string>()
+let icsLoading: Promise<void> | null = null
 
-export async function fetchMonthAvailability(year: number, month: number): Promise<void> {
-  const key = `${year}-${month}`
-  if (fetchingMonths.has(key)) return
-  fetchingMonths.add(key)
-  const today = new Date().toISOString().split('T')[0]
-  const daysInMonth = new Date(year, month + 1, 0).getDate()
+function toDateStr(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
+// Collect every booked night from an ICS export (DTEND is exclusive)
+function parseBookedNights(ics: string, booked: Set<string>) {
+  for (const event of ics.split('BEGIN:VEVENT').slice(1)) {
+    const start = event.match(/DTSTART;VALUE=DATE:(\d{4})(\d{2})(\d{2})/)
+    const end = event.match(/DTEND;VALUE=DATE:(\d{4})(\d{2})(\d{2})/)
+    if (!start || !end) continue
+    const cur = new Date(+start[1], +start[2] - 1, +start[3])
+    const until = new Date(+end[1], +end[2] - 1, +end[3])
+    while (cur < until) {
+      booked.add(toDateStr(cur))
+      cur.setDate(cur.getDate() + 1)
+    }
+  }
+}
+
+async function loadCalendars(): Promise<void> {
+  const bookedByProp: Record<PropertyKey, Set<string>> = { casita: new Set(), casa: new Set() }
   await Promise.all(
-    Array.from({ length: daysInMonth }, (_, i) => {
-      const day = i + 1
-      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-      if (dateStr < today || dayCache.has(dateStr)) return Promise.resolve()
-      const next = new Date(year, month, day + 1)
-      const nextStr = `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}-${String(next.getDate()).padStart(2, '0')}`
-      return fetch(`${LP_API_BASE}/public/v1/availability?start=${dateStr}&end=${nextStr}`, {
-        headers: { 'X-API-Key': LP_API_KEY },
-      })
-        .then(r => r.json())
-        .then(data => {
-          dayCache.set(dateStr, {
-            casa: (data.availableResourceIds ?? []).includes(PROPERTIES.casa.id),
-            casita: (data.availableResourceIds ?? []).includes(PROPERTIES.casita.id),
-          })
-        })
+    (Object.keys(ICS_IDS) as PropertyKey[]).map(prop =>
+      fetch(`${LP_API_BASE}/ics/export/${ICS_IDS[prop]}/`)
+        .then(r => r.text())
+        .then(ics => parseBookedNights(ics, bookedByProp[prop]))
         .catch(() => {})
-    })
+    )
   )
+  const cur = new Date()
+  for (let i = 0; i < HORIZON_DAYS; i++) {
+    const str = toDateStr(cur)
+    dayCache.set(str, {
+      casa: !bookedByProp.casa.has(str),
+      casita: !bookedByProp.casita.has(str),
+    })
+    cur.setDate(cur.getDate() + 1)
+  }
+}
+
+// Signature kept for the calendar components; the two ICS fetches fill the
+// whole horizon on the first call, later calls resolve instantly
+export async function fetchMonthAvailability(_year: number, _month: number): Promise<void> {
+  if (!icsLoading) icsLoading = loadCalendars()
+  await icsLoading
 }
 
 export function buildBookingUrl(prop: PropertyKey, checkIn: string, checkOut: string, guests: number) {
