@@ -292,7 +292,7 @@ export default function CasitaPage() {
         </div>
 
         {/* Mobile booking card (visible on mobile only) */}
-        <div className="md:hidden max-w-7xl mx-auto px-4 mt-14">
+        <div id="book" className="md:hidden max-w-7xl mx-auto px-4 mt-14 scroll-mt-24">
           <PropertyBookingCard
             property="casita"
             highlights={['2 guests', '1 bedroom (double bed)', '1 bathroom (walk-in shower)', 'Private entrance & garden', 'Free parking (2 spots)', 'Shared pool (Apr–Oct)']}
@@ -351,7 +351,16 @@ export default function CasitaPage() {
       {/* Floating book bar, mobile only, slides up after scrolling */}
       <div className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-300 ${showBar ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.10)] px-4 py-3">
-          <a href="#book" className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold text-base">
+          <a
+            href="#book"
+            onClick={(e) => {
+              // Plain hash navigation gets reverted by the Next.js router's
+              // scroll restoration, so scroll to the card directly
+              e.preventDefault()
+              document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            className="block w-full bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold text-base"
+          >
             Book now, no platform fees
           </a>
         </div>

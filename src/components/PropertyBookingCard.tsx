@@ -200,7 +200,7 @@ export default function PropertyBookingCard({ property, highlights }: {
   }, [checkIn, checkOut, property])
 
   return (
-    <div id="book" className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-6">
+    <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-6">
       <p className="text-xs font-bold uppercase tracking-widest text-casa-teal mb-1">Book direct</p>
       <p className="text-casa-text-light text-sm mb-5 leading-relaxed">No Airbnb or Booking.com fees. Direct contact with your hosts.</p>
 
