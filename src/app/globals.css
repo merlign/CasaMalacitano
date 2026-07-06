@@ -34,6 +34,12 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Prevent horizontal swipe on mobile from decorative elements and
+     FadeIn offsets that extend past the viewport. clip (not hidden)
+     keeps position:sticky working on the property pages. */
+  html, body {
+    overflow-x: clip;
+  }
   body {
     background-color: var(--color-casa-stone);
     color: var(--color-casa-text);
