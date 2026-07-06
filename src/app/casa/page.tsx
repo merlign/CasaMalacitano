@@ -157,7 +157,7 @@ export default function CasaPage() {
       postalCode: '29240',
       addressCountry: 'ES',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: 36.94303149390095, longitude: -4.6681067012908875 },
+    geo: { '@type': 'GeoCoordinates', latitude: 36.93785025045244, longitude: -4.677895900349077 },
     occupancy: { '@type': 'QuantitativeValue', maxValue: 2 },
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
@@ -337,7 +337,7 @@ export default function CasaPage() {
             </FadeIn>
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-4.682%2C36.933%2C-4.654%2C36.953&layer=mapnik&marker=36.94303%2C-4.66811"
+                src="https://maps.google.com/maps?q=36.93785025045244,-4.677895900349077&t=k&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

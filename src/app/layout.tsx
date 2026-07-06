@@ -68,8 +68,8 @@ const jsonLd = {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 36.94303149390095,
-    longitude: -4.6681067012908875,
+    latitude: 36.93785025045244,
+    longitude: -4.677895900349077,
   },
   image: 'https://casamalacitano.com/view.jpg',
   amenityFeature: [
