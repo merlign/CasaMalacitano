@@ -1,6 +1,6 @@
 # Casa Malacitano
 
-> A tranquil vacation rental estate in Valle de Abdalajís, Andalusia, Spain — peaceful, authentic and surrounded by nature. Near Caminito del Rey, El Torcal and Málaga.
+> A tranquil vacation rental estate in Valle de Abdalajís, Andalusia, Spain: peaceful, authentic and surrounded by nature. Near Caminito del Rey, El Torcal and Málaga.
 
 ## About
 
@@ -14,7 +14,7 @@ Both properties share a beautiful pool, outdoor kitchen, honesty bar and peacefu
 ## Location
 
 Valle de Abdalajís, Málaga province, Andalusia, Spain
-Coordinates: 36.9430°N, 4.6681°W
+Coordinates: 36.93785°N, 4.67790°W
 Address: Cam. de la Fuente de La Zarza, 29240 Valle de Abdalajís, Málaga
 
 ### Distances from nearby attractions

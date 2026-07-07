@@ -6,6 +6,9 @@ import activities from '@/data/activities'
 export const metadata = {
   title: 'Things to do near Casa Malacitano',
   description: 'Gorge walks, mountain trails, historic cities and authentic village life. Everything within easy reach of Valle de Abdalajís.',
+  alternates: {
+    canonical: 'https://casamalacitano.com/activities',
+  },
 }
 
 export default function ActivitiesPage() {
