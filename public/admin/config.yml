@@ -2,7 +2,7 @@ backend:
   name: github
   repo: merlign/CasaMalacitano
   branch: main
-  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  base_url: https://casa-malacitano-cms-auth.merlijnvandervleuten.workers.dev
   auth_endpoint: auth
 
 # New image uploads from the CMS land here; existing photos referenced
