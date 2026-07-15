@@ -1,0 +1,7 @@
+name = "casa-malacitano-cms-auth"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Set the real secrets after deploying, they must never be committed:
+#   wrangler secret put GITHUB_CLIENT_ID
+#   wrangler secret put GITHUB_CLIENT_SECRET

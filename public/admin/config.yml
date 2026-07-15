@@ -1,0 +1,265 @@
+backend:
+  name: github
+  repo: merlign/CasaMalacitano
+  branch: main
+  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  auth_endpoint: auth
+
+# New image uploads from the CMS land here; existing photos referenced
+# in content files keep their current /public paths untouched.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: simple
+site_url: https://casamalacitano.com
+
+collections:
+  - name: homepage
+    label: "Homepage"
+    files:
+      - name: homepage
+        label: "Homepage"
+        file: content/homepage.json
+        fields:
+          - label: "Hero"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Location tag", name: locationTag, widget: string }
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: text }
+              - { label: "Button label", name: ctaLabel, widget: string }
+              - { label: "Background image", name: backgroundImage, widget: image }
+
+          - label: "Facilities section"
+            name: facilities
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Text", name: text, widget: text }
+              - { label: "Image", name: image, widget: image }
+              - label: "Items"
+                name: items
+                widget: list
+                fields:
+                  - { label: "Icon", name: icon, widget: select, options: [Sun, Waves, Coffee, Snowflake, Bed, Utensils, Wind, Wifi, Leaf, Car, Shield, Key, Mountain, Check] }
+                  - { label: "Title", name: title, widget: string }
+                  - { label: "Text", name: text, widget: string }
+
+          - label: "Accommodations section"
+            name: accommodations
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+              - label: "Casita teaser"
+                name: casita
+                widget: object
+                fields:
+                  - { label: "Badge", name: badge, widget: string }
+                  - { label: "Title", name: title, widget: string }
+                  - { label: "Text", name: text, widget: text }
+                  - { label: "Image", name: image, widget: image }
+              - label: "Casa teaser"
+                name: casa
+                widget: object
+                fields:
+                  - { label: "Badge", name: badge, widget: string }
+                  - { label: "Title", name: title, widget: string }
+                  - { label: "Text", name: text, widget: text }
+                  - { label: "Image", name: image, widget: image }
+
+          - label: "Village section"
+            name: village
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Title", name: title, widget: string }
+              - { label: "Tagline", name: tagline, widget: string }
+              - { label: "Text", name: text, widget: text }
+
+          - label: "Hosts section"
+            name: hosts
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Title", name: title, widget: string }
+              - { label: "Text", name: text, widget: text }
+              - { label: "Photo", name: image, widget: image }
+
+          - label: "Contact section"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Text", name: text, widget: text }
+
+  - name: casa
+    label: "Casa Malacitano (studio)"
+    files:
+      - name: casa
+        label: "Casa Malacitano"
+        file: content/casa.json
+        fields: &property_fields
+          - label: "SEO"
+            name: seo
+            widget: object
+            fields:
+              - { label: "SEO title", name: title, widget: string }
+              - { label: "SEO description", name: description, widget: text }
+
+          - { label: "Badge", name: badge, widget: string }
+          - { label: "Title", name: title, widget: string }
+          - { label: "Location", name: location, widget: string }
+
+          - label: "Occupancy"
+            name: occupancy
+            widget: object
+            fields:
+              - { label: "Guests", name: guests, widget: number, value_type: int }
+              - { label: "Bedrooms", name: bedrooms, widget: number, value_type: int }
+              - { label: "Beds (text)", name: beds, widget: string }
+              - { label: "Bathrooms (text)", name: bathrooms, widget: string }
+
+          - label: "Rating"
+            name: rating
+            widget: object
+            fields:
+              - { label: "Score", name: score, widget: number, value_type: float }
+              - { label: "Reviews", name: reviews, widget: number, value_type: int }
+
+          - label: "About (paragraphs)"
+            name: about
+            widget: list
+            field: { label: Paragraph, name: paragraph, widget: text }
+
+          - { label: "Pets note", name: petsNote, widget: text }
+
+          - label: "Pack light section"
+            name: packLight
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Text", name: text, widget: string }
+
+          - label: "Highlights"
+            name: highlights
+            widget: list
+            fields:
+              - { label: "Icon", name: icon, widget: select, options: [Check, Coffee, Utensils, Waves, Snowflake, Bed, Wind, Wifi, Leaf, Car, Shield, Key, Mountain, Sun] }
+              - { label: "Text", name: text, widget: string }
+              - { label: "Subtext", name: sub, widget: string }
+
+          - label: "Amenities"
+            name: amenities
+            widget: list
+            fields:
+              - { label: "Category", name: category, widget: string }
+              - { label: "Icon", name: icon, widget: select, options: [Bed, Utensils, Wind, Snowflake, Wifi, Leaf, Car, Shield, Key, Mountain, Check, Coffee, Waves, Sun] }
+              - label: "Items"
+                name: items
+                widget: list
+                field: { label: Item, name: item, widget: string }
+
+          - label: "Booking card highlights"
+            name: bookingHighlights
+            widget: list
+            field: { label: Highlight, name: highlight, widget: string }
+
+          - label: "Contact section"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Text", name: text, widget: string }
+
+          - label: "Photos"
+            name: photos
+            widget: list
+            fields:
+              - { label: "Photo", name: src, widget: image }
+              - { label: "Alt text", name: alt, widget: string }
+
+  - name: casita
+    label: "Casita Malacitano (guesthouse)"
+    files:
+      - name: casita
+        label: "Casita Malacitano"
+        file: content/casita.json
+        fields: *property_fields
+
+  - name: activities
+    label: "Activities"
+    folder: content/activities
+    create: true
+    slug: "{{fields.slug}}"
+    fields:
+      - { label: "Slug (URL, no spaces)", name: slug, widget: string }
+      - { label: "Tag (small badge)", name: tag, widget: string }
+      - { label: "Title", name: title, widget: string }
+      - { label: "Short description (used in cards)", name: shortDescription, widget: text }
+
+      - label: "Description (paragraphs)"
+        name: description
+        widget: list
+        field: { label: Paragraph, name: paragraph, widget: text }
+
+      - label: "Tips"
+        name: tips
+        widget: list
+        field: { label: Tip, name: tip, widget: text }
+
+      - label: "Practical info"
+        name: practical
+        widget: list
+        fields:
+          - { label: "Label", name: label, widget: string }
+          - { label: "Value", name: value, widget: string }
+
+      - { label: "Image", name: image, widget: image }
+
+  - name: legal
+    label: "Legal pages"
+    files:
+      - name: terms
+        label: "Terms and Conditions"
+        file: content/legal/terms.md
+        fields:
+          - { label: "Last updated", name: lastUpdated, widget: string }
+          - { label: "Body", name: body, widget: markdown, body: true }
+      - name: privacy
+        label: "Privacy Policy"
+        file: content/legal/privacy-policy.md
+        fields:
+          - { label: "Last updated", name: lastUpdated, widget: string }
+          - { label: "Body", name: body, widget: markdown, body: true }
+
+  - name: settings
+    label: "Settings"
+    files:
+      - name: settings
+        label: "Contact & site settings"
+        file: content/settings.json
+        fields:
+          - { label: "Email", name: email, widget: string }
+          - { label: "Phone (primary)", name: phonePrimary, widget: string }
+          - { label: "Phone (secondary)", name: phoneSecondary, widget: string }
+
+          - label: "Address"
+            name: address
+            widget: object
+            fields:
+              - { label: "Street", name: street, widget: string }
+              - { label: "Postal code", name: postalCode, widget: string }
+              - { label: "City", name: city, widget: string }
+              - { label: "Region", name: region, widget: string }
+              - { label: "Country", name: country, widget: string }
+
+          - { label: "Tourism licence", name: tourismLicence, widget: string }
+
+          - label: "Coordinates"
+            name: coordinates
+            widget: object
+            fields:
+              - { label: "Latitude", name: latitude, widget: number, value_type: float }
+              - { label: "Longitude", name: longitude, widget: number, value_type: float }
