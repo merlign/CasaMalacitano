@@ -193,6 +193,8 @@ collections:
     folder: content/activities
     create: true
     slug: "{{fields.slug}}"
+    extension: json
+    format: json
     fields:
       - { label: "Slug (URL, no spaces)", name: slug, widget: string }
       - { label: "Tag (small badge)", name: tag, widget: string }
