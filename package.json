@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/copy-preview-css.js",
     "start": "next start",
     "lint": "next lint"
   },

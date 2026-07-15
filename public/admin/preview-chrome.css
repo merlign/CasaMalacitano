@@ -1,0 +1,24 @@
+/* Small preview-only additions on top of the site's real compiled CSS
+   (site.css, see scripts/copy-preview-css.js). Two things the real
+   build can't give us here:
+   1. next/font scopes --font-inter/--font-serif behind a content-hashed
+      class we don't have in this static preview, so font-sans/font-serif
+      would silently fall back to nothing. Point them at the same
+      typefaces directly instead.
+   2. A stand-in for lucide-react icons, since copying exact icon SVG
+      paths by hand is easy to get subtly wrong. */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+.font-sans { font-family: 'Inter', sans-serif !important; }
+.font-serif { font-family: 'Playfair Display', serif !important; }
+
+.cms-dot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  background: currentColor;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
