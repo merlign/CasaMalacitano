@@ -4,14 +4,17 @@
 (function () {
   CMS.registerPreviewStyle('/admin/preview.css')
 
+  // Decap stores entry data as Immutable.js structures. Nested objects and
+  // lists come back as Immutable Maps/Lists, not plain JS, so plain dot
+  // access (foo.bar) silently returns undefined unless we convert first.
   function get(entry, path, fallback) {
     var v = entry.getIn(['data'].concat(path))
-    return v === undefined || v === null ? fallback : v
+    if (v === undefined || v === null) return fallback
+    return v && typeof v.toJS === 'function' ? v.toJS() : v
   }
 
   function getList(entry, path) {
-    var v = entry.getIn(['data'].concat(path))
-    return v && v.toJS ? v.toJS() : []
+    return get(entry, path, [])
   }
 
   function assetUrl(props, value) {
