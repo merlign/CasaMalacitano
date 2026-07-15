@@ -2,100 +2,18 @@
 
 import React from 'react'
 import {
-  MapPin, Star, Users, Bed, Wifi, Car, Waves, Snowflake,
-  Wind, Utensils, Shield, Mountain, Leaf, Coffee, Check,
-  ChevronLeft, ChevronRight, Mail, Key, X,
+  MapPin, Star, Users, Bed, Check,
+  ChevronLeft, ChevronRight, Mail, X,
 } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
 import PropertyBookingCard from '@/components/PropertyBookingCard'
+import { getIcon } from '@/lib/icons'
+import content from '../../../content/casa.json'
+import settings from '../../../content/settings.json'
 
-// ─── Drop your photos here ────────────────────────────────────────────────────
-const PHOTOS = [
-  { src: '/casa/photo-8.avif',  alt: 'Casa Malacitano exterior with olive tree and palm tree' },
-  { src: '/casa/photo-9.avif',  alt: 'Casa exterior from the garden with oleanders' },
-  { src: '/casa/photo-1.avif',  alt: 'Pool with Casa Malacitano logo on pink wall' },
-  { src: '/casa/photo-2.avif',  alt: 'Pool and terrace with mountain backdrop' },
-  { src: '/casa/photo-3.avif',  alt: 'Pool area with loungers and purple plants' },
-  { src: '/casa/photo-4.avif',  alt: 'Private terrace at golden hour with village view' },
-  { src: '/casa/photo-5.avif',  alt: 'Private terrace with dining table and mountain view' },
-  { src: '/casa/photo-6.avif',  alt: 'Private terrace with bamboo ceiling and lounge area' },
-  { src: '/casa/photo-7.avif',  alt: 'Private terrace with rattan lamp and hanging plants' },
-  { src: '/casa/photo-10.avif', alt: 'Bedroom with double bed and rattan pendant lamp' },
-  { src: '/casa/photo-11.avif', alt: 'Kitchenette with shelving and rattan lamp' },
-  { src: '/casa/photo-12.avif', alt: 'Bathroom with walk-in shower' },
-  { src: '/casa/photo-13.avif', alt: 'Sun terrace with loungers and pool' },
-  { src: '/casa/photo-14.avif', alt: 'Solarium loungers under reed parasols' },
-  { src: '/casa/photo-15.avif', alt: 'View over Valle de Abdalajís with wildflowers' },
-  { src: '/casa/photo-16.avif', alt: 'Village view from the garden with palm tree' },
-  { src: '/casa/photo-17.avif', alt: 'Garden and landscape view with flowering shrubs' },
-  { src: '/casa/photo-18.avif', alt: 'Outdoor kitchen and honesty bar dining area' },
-  { src: '/casa/photo-19.avif', alt: 'Garden and honesty bar from outside' },
-]
-// ─────────────────────────────────────────────────────────────────────────────
-
-const AMENITIES = [
-  {
-    category: 'Bedroom & laundry',
-    icon: Bed,
-    items: ['Towels, linen, soap & toilet paper', 'Hangers', 'Cotton bedding', 'Extra pillows & blankets', 'Drying rack', 'Safe', 'Wardrobe'],
-  },
-  {
-    category: 'Kitchen',
-    icon: Utensils,
-    items: ['Fridge & mini-fridge', 'Bosch induction hob', 'Microwave', 'Kettle', 'Nespresso machine', 'Toaster', 'Wine glasses', 'Cooking essentials', 'Dishes & cutlery', 'Coffee included'],
-  },
-  {
-    category: 'Bathroom',
-    icon: Wind,
-    items: ['Hairdryer', 'Shampoo', 'Conditioner', 'Shower gel', 'Hot water'],
-  },
-  {
-    category: 'Heating & cooling',
-    icon: Snowflake,
-    items: ['Air conditioning (split system, included)', 'Heating (split system)'],
-  },
-  {
-    category: 'Internet',
-    icon: Wifi,
-    items: ['WiFi'],
-  },
-  {
-    category: 'Outdoor',
-    icon: Leaf,
-    items: ['Private terrace', 'Garden furniture', 'Outdoor dining area', 'Loungers'],
-  },
-  {
-    category: 'Parking & pool',
-    icon: Car,
-    items: ['Free parking on site, 1 spot', 'Shared outdoor pool (Apr–Oct, 10:00–19:00)'],
-  },
-  {
-    category: 'Safety',
-    icon: Shield,
-    items: ['Smoke detector', 'Fire extinguisher', 'First aid kit'],
-  },
-  {
-    category: 'Access',
-    icon: Key,
-    items: ['Private entrance (street level)', 'Self check-in (key box)', 'Ground floor, no stairs'],
-  },
-  {
-    category: 'Views',
-    icon: Mountain,
-    items: ['Garden view', 'Mountain view', 'Valley view'],
-  },
-]
-
-const HIGHLIGHTS = [
-  { icon: Check, text: 'Fresh towels & luxury linen', sub: 'Fully provided, no need to pack' },
-  { icon: Coffee, text: 'Nespresso + coffee included', sub: 'Ready from the moment you arrive' },
-  { icon: Check, text: 'Shampoo, conditioner & shower gel', sub: 'Quality toiletries provided' },
-  { icon: Utensils, text: 'Full kitchen essentials', sub: 'Oil, salt, pepper, pans, dishes' },
-  { icon: Waves, text: 'Pool access (Apr–Oct)', sub: 'Open daily 10:00–19:00' },
-  { icon: Snowflake, text: 'Air conditioning included', sub: 'Split system, no extra charge' },
-]
+const PHOTOS = content.photos
 
 export default function CasaPage() {
   const [lightboxIndex, setLightboxIndex] = React.useState<number | null>(null)
@@ -145,20 +63,20 @@ export default function CasaPage() {
     '@context': 'https://schema.org',
     '@type': 'VacationRental',
     '@id': 'https://casamalacitano.com/casa#property',
-    name: 'Casa Malacitano',
-    description: 'Spacious villa with large private terrace, shared pool and sweeping views over Valle de Abdalajís, Andalusia. Perfect for families or groups seeking peace and authentic character.',
+    name: content.title,
+    description: content.seo.description,
     url: 'https://casamalacitano.com/casa',
-    image: 'https://casamalacitano.com/casa/photo-8.avif',
+    image: `https://casamalacitano.com${PHOTOS[0].src}`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Cam. de la Fuente de La Zarza',
-      addressLocality: 'Valle de Abdalajís',
-      addressRegion: 'Málaga',
-      postalCode: '29240',
+      streetAddress: settings.address.street,
+      addressLocality: settings.address.city,
+      addressRegion: settings.address.region,
+      postalCode: settings.address.postalCode,
       addressCountry: 'ES',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: 36.93785025045244, longitude: -4.677895900349077 },
-    occupancy: { '@type': 'QuantitativeValue', maxValue: 2 },
+    geo: { '@type': 'GeoCoordinates', latitude: settings.coordinates.latitude, longitude: settings.coordinates.longitude },
+    occupancy: { '@type': 'QuantitativeValue', maxValue: content.occupancy.guests },
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
@@ -196,26 +114,26 @@ export default function CasaPage() {
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-              <span className="inline-block bg-casa-pink/10 text-casa-pink text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Studio with private entrance</span>
-              <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-3 leading-tight">Casa Malacitano</h1>
+              <span className="inline-block bg-casa-pink/10 text-casa-pink text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">{content.badge}</span>
+              <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-3 leading-tight">{content.title}</h1>
               <div className="flex items-center gap-2 text-casa-text-light mb-4">
                 <MapPin size={16} className="text-casa-teal shrink-0" />
-                <span>Valle de Abdalajís, Málaga, Spain</span>
+                <span>{content.location}</span>
               </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-casa-text-light">
-                <span className="flex items-center gap-1.5"><Users size={15} /> 2 guests</span>
+                <span className="flex items-center gap-1.5"><Users size={15} /> {content.occupancy.guests} guests</span>
                 <span className="text-gray-300">·</span>
-                <span className="flex items-center gap-1.5"><Bed size={15} /> 1 bedroom</span>
+                <span className="flex items-center gap-1.5"><Bed size={15} /> {content.occupancy.bedrooms} bedroom</span>
                 <span className="text-gray-300">·</span>
-                <span>1 bed</span>
+                <span>{content.occupancy.beds}</span>
                 <span className="text-gray-300">·</span>
-                <span>1 bathroom</span>
+                <span>{content.occupancy.bathrooms}</span>
               </div>
             </div>
             <div className="flex items-center gap-2 shrink-0 bg-white border border-gray-100 rounded-2xl px-4 py-3">
               <Star size={16} className="text-yellow-400 fill-yellow-400" />
-              <span className="font-semibold text-casa-text">4.97</span>
-              <span className="text-casa-text-light text-sm">· 74 reviews</span>
+              <span className="font-semibold text-casa-text">{content.rating.score}</span>
+              <span className="text-casa-text-light text-sm">· {content.rating.reviews} reviews</span>
             </div>
           </div>
         </FadeIn>
@@ -228,51 +146,54 @@ export default function CasaPage() {
             <FadeIn><section>
               <h2 className="text-2xl font-serif mb-5">About this space</h2>
               <div className="space-y-4 text-casa-text-light leading-relaxed">
-                <p>A beautifully renovated studio apartment with its own front door and terrace, overlooking the friendly village of Valle de Abdalajís. Centrally located between Málaga, Ronda, Granada, Seville and Córdoba.</p>
-                <p>The apartment has a cozy veranda where you can enjoy the setting sun. There is a comfortable bedroom, a kitchenette and a modern bathroom. Air conditioning is included.</p>
-                <p>You have your own space and entrance: your own bathroom, kitchen and bedroom. The apartment is connected to the main house. You have access to the shared pool from April to October.</p>
-                <p>The Torcal mountains and the Caminito del Rey walk are absolutely worth the visit. The natural scenery around the El Chorro lakes is spectacular.</p>
-                <p className="text-sm bg-casa-stone-dark rounded-2xl p-4">Pets are welcome on request. Please get in touch before booking.</p>
+                {content.about.map((p, i) => <p key={i}>{p}</p>)}
+                <p className="text-sm bg-casa-stone-dark rounded-2xl p-4">{content.petsNote}</p>
               </div>
             </section></FadeIn>
 
             <FadeIn><section className="pt-14 border-t border-gray-100">
-              <h2 className="text-2xl font-serif mb-2">Pack light. Everything is here.</h2>
-              <p className="text-casa-text-light mb-6">This is a complete stay. You don&apos;t need to bring towels, linen, or toiletries.</p>
+              <h2 className="text-2xl font-serif mb-2">{content.packLight.title}</h2>
+              <p className="text-casa-text-light mb-6">{content.packLight.text}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {HIGHLIGHTS.map((item) => (
-                  <div key={item.text} className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-gray-100">
-                    <div className="p-2 bg-casa-teal/10 text-casa-teal rounded-xl shrink-0 mt-0.5">
-                      <item.icon size={16} />
+                {content.highlights.map((item) => {
+                  const Icon = getIcon(item.icon)
+                  return (
+                    <div key={item.text} className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-gray-100">
+                      <div className="p-2 bg-casa-teal/10 text-casa-teal rounded-xl shrink-0 mt-0.5">
+                        <Icon size={16} />
+                      </div>
+                      <div>
+                        <p className="font-medium text-casa-text text-sm">{item.text}</p>
+                        <p className="text-xs text-casa-text-light mt-0.5">{item.sub}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-medium text-casa-text text-sm">{item.text}</p>
-                      <p className="text-xs text-casa-text-light mt-0.5">{item.sub}</p>
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </section></FadeIn>
 
             <FadeIn><section className="pt-14 border-t border-gray-100">
               <h2 className="text-2xl font-serif mb-8">What this place offers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-                {(showAllAmenities ? AMENITIES : AMENITIES.slice(0, 3)).map((group) => (
-                  <div key={group.category}>
-                    <div className="flex items-center gap-2 mb-3">
-                      <group.icon size={18} className="text-casa-teal" />
-                      <h3 className="font-semibold text-casa-text text-base">{group.category}</h3>
+                {(showAllAmenities ? content.amenities : content.amenities.slice(0, 3)).map((group) => {
+                  const Icon = getIcon(group.icon)
+                  return (
+                    <div key={group.category}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Icon size={18} className="text-casa-teal" />
+                        <h3 className="font-semibold text-casa-text text-base">{group.category}</h3>
+                      </div>
+                      <ul className="space-y-2.5">
+                        {group.items.map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-base text-casa-text-light">
+                            <Check size={15} className="text-casa-teal shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-2.5">
-                      {group.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-base text-casa-text-light">
-                          <Check size={15} className="text-casa-teal shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
               <button
                 onClick={() => setShowAllAmenities((v) => !v)}
@@ -289,7 +210,7 @@ export default function CasaPage() {
             <div className="sticky top-32">
               <PropertyBookingCard
                 property="casa"
-                highlights={['2 guests', '1 bedroom (1 bed)', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)']}
+                highlights={content.bookingHighlights}
               />
             </div>
           </div>
@@ -299,7 +220,7 @@ export default function CasaPage() {
         <div id="book" className="md:hidden max-w-7xl mx-auto px-4 mt-14 scroll-mt-24">
           <PropertyBookingCard
             property="casa"
-            highlights={['2 guests', '1 bedroom (1 bed)', '1 bathroom', 'Private terrace with views', 'Self check-in (key box)', 'Free parking (1 spot)', 'Shared pool (Apr–Oct)']}
+            highlights={content.bookingHighlights}
           />
         </div>
 
@@ -328,16 +249,16 @@ export default function CasaPage() {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <FadeIn from="left">
               <div className="p-4 bg-casa-teal/10 text-casa-teal rounded-2xl w-fit mb-6"><Mail size={28} /></div>
-              <h2 className="text-2xl md:text-3xl font-serif text-casa-text mb-3">Questions? Just ask.</h2>
-              <p className="text-casa-text-light mb-8 leading-relaxed">Curious about availability, arrival or the area? We respond quickly and personally.</p>
-              <a href="mailto:info.malacitano@gmail.com" className="inline-flex items-center gap-2 bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
+              <h2 className="text-2xl md:text-3xl font-serif text-casa-text mb-3">{content.contact.title}</h2>
+              <p className="text-casa-text-light mb-8 leading-relaxed">{content.contact.text}</p>
+              <a href={`mailto:${settings.email}`} className="inline-flex items-center gap-2 bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5">
                 <Mail size={18} />
-                info.malacitano@gmail.com
+                {settings.email}
               </a>
             </FadeIn>
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
               <iframe
-                src="https://maps.google.com/maps?q=36.93785025045244,-4.677895900349077&t=k&z=15&ie=UTF8&iwloc=&output=embed"
+                src={`https://maps.google.com/maps?q=${settings.coordinates.latitude},${settings.coordinates.longitude}&t=k&z=15&ie=UTF8&iwloc=&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

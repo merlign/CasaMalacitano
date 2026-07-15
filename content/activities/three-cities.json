@@ -1,0 +1,22 @@
+{
+  "slug": "three-cities",
+  "tag": "Within 1 hour",
+  "title": "Three cities, one base.",
+  "shortDescription": "Málaga's waterfront, Antequera's dolmens, Ronda's cliffside views. All within an hour. Stay here. Go everywhere.",
+  "description": [
+    "From Casa Malacitano you can reach three of Andalusia's most distinctive cities in under an hour. Málaga for seafood, culture, and the Picasso Museum. Antequera for prehistoric dolmens, a dramatic castle, and the UNESCO-listed landscape of El Torcal. Ronda for its breathtaking clifftop setting and one of Spain's oldest bullrings.",
+    "Each is different enough to deserve its own day. Base yourself here and you never have to choose."
+  ],
+  "tips": [
+    "Ronda is best midweek. Weekend crowds on the famous bridge can be overwhelming.",
+    "Málaga's old town is very walkable from the port. Park at the harbour and explore on foot.",
+    "Antequera's dolmens (Menga, Viera, El Romeral) are a UNESCO World Heritage Site and often quietly deserted."
+  ],
+  "practical": [
+    { "label": "Málaga", "value": "45 min" },
+    { "label": "Antequera", "value": "25 min" },
+    { "label": "Ronda", "value": "50 min" },
+    { "label": "Best season", "value": "Year-round" }
+  ],
+  "image": "/malaga.jpg"
+}

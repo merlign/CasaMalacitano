@@ -3,15 +3,15 @@ import Link from 'next/link'
 import { MapPin, Check } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import activities from '@/data/activities'
+import { getActivities, getActivity } from '@/lib/activities'
 
 export function generateStaticParams() {
-  return activities.map((a) => ({ slug: a.slug }))
+  return getActivities().map((a) => ({ slug: a.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const activity = activities.find((a) => a.slug === slug)
+  const activity = getActivity(slug)
   if (!activity) return {}
   return {
     title: activity.title,
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ActivityPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const activity = activities.find((a) => a.slug === slug)
+  const activity = getActivity(slug)
   if (!activity) notFound()
 
   return (

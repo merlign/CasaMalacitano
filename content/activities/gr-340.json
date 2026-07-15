@@ -1,0 +1,22 @@
+{
+  "slug": "gr-340",
+  "tag": "GR-340 trail",
+  "title": "Ride out. Get lost. Find yourself.",
+  "shortDescription": "The GR-340 passes right through the village. Climb into the hills on two wheels or two feet, through olive groves, limestone ridges and zero crowds.",
+  "description": [
+    "The GR-340 long-distance trail passes directly through Valle de Abdalajís, meaning you can step out of Casa Malacitano and be on the trail within minutes. The route winds through olive groves, limestone ridges and quiet mountain terrain.",
+    "Suitable for both hiking and mountain biking, the trail offers routes ranging from short loops to full-day epics. This is Andalusia away from the postcards."
+  ],
+  "tips": [
+    "Pick up a trail map at the village bar or ask Jans and Minouche for the best route for your level.",
+    "Spring is spectacular when the wildflowers are in bloom. Avoid the height of summer: the heat above the treeline can be intense.",
+    "For mountain biking, the section towards Antequera is particularly good."
+  ],
+  "practical": [
+    { "label": "Distance from Casa", "value": "Starts from the village" },
+    { "label": "Duration", "value": "Flexible" },
+    { "label": "Best season", "value": "Spring and autumn" },
+    { "label": "Difficulty", "value": "Easy to challenging" }
+  ],
+  "image": "/mb.jpg"
+}

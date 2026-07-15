@@ -1,0 +1,17 @@
+{
+  "email": "info.malacitano@gmail.com",
+  "phonePrimary": "+34 680 922 373",
+  "phoneSecondary": "+31 647 100 061",
+  "address": {
+    "street": "Cam. de la Fuente de La Zarza",
+    "postalCode": "29240",
+    "city": "Valle de Abdalajís",
+    "region": "Málaga",
+    "country": "Spain"
+  },
+  "tourismLicence": "CTC-2022245591",
+  "coordinates": {
+    "latitude": 36.93785025045244,
+    "longitude": -4.677895900349077
+  }
+}

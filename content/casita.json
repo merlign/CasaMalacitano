@@ -1,0 +1,68 @@
+{
+  "seo": {
+    "title": "Casita Malacitano: Detached Casita with Pool in Valle de Abdalajís",
+    "description": "A stylishly furnished detached casita with private veranda, pool access and panoramic views over Valle de Abdalajís, Andalusia. Book direct with your hosts, no platform fees."
+  },
+  "badge": "Detached casita",
+  "title": "Casita Malacitano",
+  "location": "Valle de Abdalajís, Málaga, Spain",
+  "occupancy": { "guests": 2, "bedrooms": 1, "beds": "1 double bed", "bathrooms": "1 bathroom (walk-in shower)" },
+  "rating": { "score": 5.0, "reviews": 18 },
+  "about": [
+    "A completely, stylishly furnished casita with a magnificent view of the friendly village of Valle de Abdalajís. Centrally located between the historic cities of Málaga, Ronda, Granada, Seville and Córdoba.",
+    "The casita is part of Casa Malacitano and has a large living room with open kitchen and French doors that open onto the terrace. There is a spacious bathroom with walk-in shower. The bedroom with double bed is fully equipped with air conditioning (available at €5/night).",
+    "From April to October you can use the swimming pool, shared with any other guests. Upstairs you will find our outdoor kitchen, pool and solarium, in summer months you are welcome to join us for dinner or a drink from the honesty bar.",
+    "The casita can only be reached by car. The village centre is a 5-minute walk away."
+  ],
+  "petsNote": "Pets are welcome on request. Please get in touch before booking.",
+  "packLight": {
+    "title": "Pack light. Everything is here.",
+    "text": "This is a complete stay. You don't need to bring towels, linen, or toiletries."
+  },
+  "highlights": [
+    { "icon": "Check", "text": "Fresh towels & luxury linen", "sub": "Fully provided, no need to pack" },
+    { "icon": "Coffee", "text": "Nespresso coffee machine", "sub": "With starter capsules" },
+    { "icon": "Check", "text": "Shampoo, conditioner & shower gel", "sub": "Quality toiletries provided" },
+    { "icon": "Utensils", "text": "Full kitchen essentials", "sub": "Oil, salt, pepper, pans, dishes" },
+    { "icon": "Waves", "text": "Pool access (Apr–Oct)", "sub": "Open daily 10:00–20:00" },
+    { "icon": "Snowflake", "text": "Air conditioning available", "sub": "€5/night. Request on arrival." }
+  ],
+  "amenities": [
+    { "category": "Bedroom & laundry", "icon": "Bed", "items": ["Towels, linen, soap & toilet paper", "Hangers", "Cotton bedding", "Extra pillows & blankets", "Blackout curtains", "Drying rack", "Safe", "Wardrobe"] },
+    { "category": "Kitchen", "icon": "Utensils", "items": ["Fridge & mini-fridge", "Freezer", "Induction hob", "Microwave", "Kettle", "Nespresso machine", "Wine glasses", "Dining table", "Cooking essentials", "Dishes & cutlery"] },
+    { "category": "Bathroom", "icon": "Wind", "items": ["Hairdryer", "Shampoo", "Conditioner", "Shower gel", "Hot water"] },
+    { "category": "Heating & cooling", "icon": "Snowflake", "items": ["Air conditioning (€5/night)", "Heating (split system)"] },
+    { "category": "Internet", "icon": "Wifi", "items": ["WiFi", "Dedicated workspace (private room)"] },
+    { "category": "Outdoor", "icon": "Leaf", "items": ["Private garden", "Garden furniture", "Outdoor dining area", "Loungers"] },
+    { "category": "Parking & pool", "icon": "Car", "items": ["Free parking on site, 2 spots", "Shared outdoor pool (Apr–Oct, 10:00–20:00)"] },
+    { "category": "Safety", "icon": "Shield", "items": ["Smoke detector", "Fire extinguisher", "First aid kit"] },
+    { "category": "Access", "icon": "Key", "items": ["Private entrance", "Ground floor, no stairs"] }
+  ],
+  "bookingHighlights": ["2 guests", "1 bedroom (double bed)", "1 bathroom (walk-in shower)", "Private entrance & garden", "Free parking (2 spots)", "Shared pool (Apr–Oct)"],
+  "contact": {
+    "title": "Questions? Just ask.",
+    "text": "Curious about availability, arrival or the area? We respond quickly and personally."
+  },
+  "photos": [
+    { "src": "/casita/photo-1.avif", "alt": "Casita Malacitano exterior with pergola and yellow door" },
+    { "src": "/casita/photo-2.avif", "alt": "Pool with mountain backdrop" },
+    { "src": "/casita/photo-3.avif", "alt": "Pool with pink arched wall" },
+    { "src": "/casita/photo-4.avif", "alt": "Terrace with pergola and village view" },
+    { "src": "/casita/photo-5.avif", "alt": "Casita exterior with reed pergola" },
+    { "src": "/casita/photo-6.avif", "alt": "Open-plan living room and kitchen" },
+    { "src": "/casita/photo-7.avif", "alt": "Living room with yellow door and sideboard" },
+    { "src": "/casita/photo-8.avif", "alt": "Dining corner with yellow door" },
+    { "src": "/casita/photo-9.avif", "alt": "Kitchen with mountain view" },
+    { "src": "/casita/photo-10.avif", "alt": "Bedroom with double bed and air conditioning" },
+    { "src": "/casita/photo-11.avif", "alt": "Bathroom with walk-in shower" },
+    { "src": "/casita/photo-12.avif", "alt": "Sun terrace with loungers and pool" },
+    { "src": "/casita/photo-13.avif", "alt": "Solarium loungers under reed parasols" },
+    { "src": "/casita/photo-14.avif", "alt": "Pool area with loungers and cactus" },
+    { "src": "/casita/photo-15.avif", "alt": "Outdoor kitchen and honesty bar dining area" },
+    { "src": "/casita/photo-16.avif", "alt": "Living room window with village and mountain view" },
+    { "src": "/casita/photo-17.avif", "alt": "Private terrace with white beach chairs" },
+    { "src": "/casita/photo-18.avif", "alt": "Garden and honesty bar from outside" },
+    { "src": "/casita/photo-19.avif", "alt": "Aerial view of the property" },
+    { "src": "/casita/photo-20.avif", "alt": "Illuminated staircase at night under the stars" }
+  ]
+}

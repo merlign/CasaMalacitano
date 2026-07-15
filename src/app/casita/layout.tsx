@@ -1,18 +1,17 @@
 import type { Metadata } from 'next'
+import content from '../../../content/casita.json'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Casita Malacitano: Detached Casita with Pool in Valle de Abdalajís' },
-  description:
-    'A stylishly furnished detached casita with private veranda, pool access and panoramic views over Valle de Abdalajís, Andalusia. Book direct with your hosts, no platform fees.',
+  title: { absolute: content.seo.title },
+  description: content.seo.description,
   alternates: {
     canonical: 'https://casamalacitano.com/casita',
   },
   openGraph: {
-    title: 'Casita Malacitano: Detached Casita with Pool',
-    description:
-      'Detached casita with private veranda, pool access and panoramic views in Valle de Abdalajís, Andalusia.',
+    title: content.seo.title,
+    description: content.seo.description,
     url: 'https://casamalacitano.com/casita',
-    images: [{ url: '/casita.jpg', width: 1200, height: 800, alt: 'Casita Malacitano exterior with pergola' }],
+    images: [{ url: content.photos[0].src, width: 1200, height: 800, alt: content.photos[0].alt }],
   },
 }
 

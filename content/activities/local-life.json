@@ -1,0 +1,22 @@
+{
+  "slug": "local-life",
+  "tag": "Local life",
+  "title": "Spain as it used to be",
+  "shortDescription": "Valle de Abdalajís hasn't been packaged for tourists. And that's exactly the point. Sit on a terrace, order something cold, and let the afternoon disappear.",
+  "description": [
+    "The village has everything you need and nothing you don't. A handful of bars, a bakery that opens at 7am, a small supermarket, and a square where locals gather in the evening. No gift shops, no tourist menus, no queues.",
+    "This is the kind of place that rewards slowness. Sit at the bar, drink what the locals drink, and watch the afternoon go by. It's five minutes on foot from Casa Malacitano."
+  ],
+  "tips": [
+    "The bar on the main square is the social hub. Go in the early evening when locals finish work.",
+    "The bakery opens early and runs out of the good stuff fast.",
+    "Don't plan too much. The best parts of Valle de Abdalajís happen without a schedule."
+  ],
+  "practical": [
+    { "label": "Distance from Casa", "value": "5 min walk" },
+    { "label": "Bar hours", "value": "Morning until late" },
+    { "label": "Market", "value": "Saturday mornings" },
+    { "label": "Best season", "value": "Year-round" }
+  ],
+  "image": "/local.jpg"
+}

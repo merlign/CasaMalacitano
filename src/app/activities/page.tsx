@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import activities from '@/data/activities'
+import { getActivities } from '@/lib/activities'
 
 export const metadata = {
   title: 'Things to do near Casa Malacitano',
@@ -12,6 +12,7 @@ export const metadata = {
 }
 
 export default function ActivitiesPage() {
+  const activities = getActivities()
   return (
     <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
       <SiteHeader />

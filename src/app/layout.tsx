@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Fredoka } from 'next/font/google'
 import CookieBanner from '@/components/CookieBanner'
+import settings from '../../content/settings.json'
 import './globals.css'
 
 const inter = Inter({
@@ -56,20 +57,20 @@ const jsonLd = {
   name: 'Casa Malacitano',
   description: 'Quiet, authentic vacation rental estate in Valle de Abdalajís, Andalusia. Two holiday accommodations with private pool, panoramic mountain views and easy access to Caminito del Rey and El Torcal.',
   url: 'https://casamalacitano.com',
-  telephone: ['+34680922373', '+31647100061'],
-  email: 'info.malacitano@gmail.com',
+  telephone: [settings.phonePrimary.replace(/\s/g, ''), settings.phoneSecondary.replace(/\s/g, '')],
+  email: settings.email,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Cam. de la Fuente de La Zarza',
-    addressLocality: 'Valle de Abdalajís',
-    addressRegion: 'Málaga',
-    postalCode: '29240',
+    streetAddress: settings.address.street,
+    addressLocality: settings.address.city,
+    addressRegion: settings.address.region,
+    postalCode: settings.address.postalCode,
     addressCountry: 'ES',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 36.93785025045244,
-    longitude: -4.677895900349077,
+    latitude: settings.coordinates.latitude,
+    longitude: settings.coordinates.longitude,
   },
   image: 'https://casamalacitano.com/view.jpg',
   amenityFeature: [

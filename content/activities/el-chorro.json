@@ -1,0 +1,22 @@
+{
+  "slug": "el-chorro",
+  "tag": "15 min away",
+  "title": "El Chorro lakes",
+  "shortDescription": "Turquoise reservoir water framed by dramatic gorge walls. Swimming, kayaking, and views you will not forget.",
+  "description": [
+    "The El Chorro reservoir system creates a series of turquoise lakes set against the sheer walls of the gorge. The colour of the water against the limestone cliffs is extraordinary, and changes with the light throughout the day.",
+    "Swimming spots are easily accessible along the shore, and kayak hire is available nearby. This is also the starting point for the Caminito del Rey, making it a natural base for a full day out."
+  ],
+  "tips": [
+    "The best swimming spots are a 10-minute walk from the main car park. Follow the path along the water.",
+    "Early morning is magical: the water is glassy and the gorge walls catch the first light.",
+    "Combine with the Caminito del Rey for a full day: walk in the morning, swim in the afternoon."
+  ],
+  "practical": [
+    { "label": "Distance from Casa", "value": "15 min drive" },
+    { "label": "Entry", "value": "Free" },
+    { "label": "Swimming", "value": "April to October" },
+    { "label": "Best season", "value": "Spring and summer" }
+  ],
+  "image": "/chorro.jpg"
+}

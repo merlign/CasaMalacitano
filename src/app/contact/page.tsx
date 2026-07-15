@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
+import settings from '../../../content/settings.json'
 
 export const metadata = {
   title: 'Contact',
@@ -36,8 +37,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-casa-text mb-0.5">Email</p>
-                    <a href="mailto:info.malacitano@gmail.com" className="text-casa-text-light hover:text-casa-teal transition-colors">
-                      info.malacitano@gmail.com
+                    <a href={`mailto:${settings.email}`} className="text-casa-text-light hover:text-casa-teal transition-colors">
+                      {settings.email}
                     </a>
                   </div>
                 </div>
@@ -48,8 +49,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-casa-text mb-0.5">Phone / WhatsApp</p>
-                    <a href="tel:+34680922373" className="text-casa-text-light hover:text-casa-teal transition-colors block">+34 680 922 373</a>
-                    <a href="tel:+31647100061" className="text-casa-text-light hover:text-casa-teal transition-colors block">+31 647 100 061</a>
+                    <a href={`tel:${settings.phonePrimary.replace(/\s/g, '')}`} className="text-casa-text-light hover:text-casa-teal transition-colors block">{settings.phonePrimary}</a>
+                    <a href={`tel:${settings.phoneSecondary.replace(/\s/g, '')}`} className="text-casa-text-light hover:text-casa-teal transition-colors block">{settings.phoneSecondary}</a>
                   </div>
                 </div>
 
@@ -59,16 +60,16 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-casa-text mb-0.5">Address</p>
-                    <p className="text-casa-text-light">Cam. de la Fuente de La Zarza</p>
-                    <p className="text-casa-text-light">29240 Valle de Abdalajís</p>
-                    <p className="text-casa-text-light">Málaga, Spain</p>
+                    <p className="text-casa-text-light">{settings.address.street}</p>
+                    <p className="text-casa-text-light">{settings.address.postalCode} {settings.address.city}</p>
+                    <p className="text-casa-text-light">{settings.address.region}, {settings.address.country}</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-10">
                 <a
-                  href="mailto:info.malacitano@gmail.com"
+                  href={`mailto:${settings.email}`}
                   className="inline-flex items-center gap-2 bg-casa-teal hover:bg-casa-teal/90 text-white px-8 py-4 rounded-full font-medium transition-all shadow-md hover:-translate-y-0.5"
                 >
                   <Mail size={18} />
@@ -80,7 +81,7 @@ export default function ContactPage() {
             {/* Right: map */}
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
               <iframe
-                src="https://maps.google.com/maps?q=36.93785025045244,-4.677895900349077&t=k&z=15&ie=UTF8&iwloc=&output=embed"
+                src={`https://maps.google.com/maps?q=${settings.coordinates.latitude},${settings.coordinates.longitude}&t=k&z=15&ie=UTF8&iwloc=&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

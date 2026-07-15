@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
 import CookiePreferencesButton from './CookiePreferencesButton'
+import settings from '../../content/settings.json'
 
 export default function SiteFooter() {
   return (
@@ -28,9 +29,9 @@ export default function SiteFooter() {
         <div>
           <h4 className="text-casa-text font-semibold mb-6 uppercase tracking-wider text-sm">Contact</h4>
           <ul className="space-y-3">
-            <li className="flex items-center gap-2"><MapPin size={14} /> Valle de Abdalajís</li>
-            <li>Andalusia, Spain</li>
-            <li><a href="mailto:info.malacitano@gmail.com" className="hover:text-casa-teal transition-colors">info.malacitano@gmail.com</a></li>
+            <li className="flex items-center gap-2"><MapPin size={14} /> {settings.address.city}</li>
+            <li>{settings.address.region}, {settings.address.country}</li>
+            <li><a href={`mailto:${settings.email}`} className="hover:text-casa-teal transition-colors">{settings.email}</a></li>
           </ul>
         </div>
       </div>
@@ -38,7 +39,7 @@ export default function SiteFooter() {
         <div className="flex flex-col md:flex-row items-center gap-4">
           <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
           <span className="hidden md:inline text-gray-200">·</span>
-          <p className="text-xs text-gray-400">Tourism licence: CTC-2022245591</p>
+          <p className="text-xs text-gray-400">Tourism licence: {settings.tourismLicence}</p>
         </div>
         <div className="flex gap-6">
           <a href="/privacy-policy/" className="hover:text-casa-text transition-colors">Privacy policy</a>

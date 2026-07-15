@@ -1,0 +1,22 @@
+{
+  "slug": "caminito-del-rey",
+  "tag": "15 min away",
+  "title": "Walk the gorge of a lifetime",
+  "shortDescription": "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
+  "description": [
+    "A boardwalk trail fixed to the sheer walls of the El Chorro gorge, originally built for workers maintaining the hydroelectric dam. Restored and reopened in 2015, it has become one of the most iconic walks in Spain.",
+    "The route runs through the gorge for around 8 km, with exposed sections, suspension bridges, and views that are hard to forget. Casa Malacitano is a 15-minute drive away, making it an easy half-day trip."
+  ],
+  "tips": [
+    "Book tickets online at least 1 to 2 weeks ahead. Slots sell out fast in spring and autumn.",
+    "Go early. The trail is at its best in the morning light and before the tour groups arrive.",
+    "Wear sturdy shoes. The path is well-maintained but some sections are narrow and exposed."
+  ],
+  "practical": [
+    { "label": "Distance from Casa", "value": "11 km" },
+    { "label": "Duration", "value": "3 to 4 hours" },
+    { "label": "Best season", "value": "Spring and autumn" },
+    { "label": "Difficulty", "value": "Moderate" }
+  ],
+  "image": "/caminito.jpg"
+}

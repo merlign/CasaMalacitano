@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "locationTag": "Valle de Abdalajís, Andalusia",
+    "title": "A fresh, breathing oasis in southern Spain.",
+    "subtitle": "A place where you don't just stay. A place where you truly come back to yourself.",
+    "ctaLabel": "View accommodations",
+    "backgroundImage": "/view.jpg"
+  },
+  "facilities": {
+    "title": "Your own place under the Andalusian sun",
+    "text": "At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to, a place where you get to. Genuine Spanish hospitality, no mass tourism.",
+    "image": "/zwembad.jpg",
+    "items": [
+      { "icon": "Sun", "title": "Spacious solarium", "text": "Wonderful relaxing" },
+      { "icon": "Waves", "title": "Nice pool", "text": "For the necessary cooling" },
+      { "icon": "Coffee", "title": "Outdoor kitchen", "text": "With cozy honesty bar" },
+      { "icon": "Snowflake", "title": "Modern comfort", "text": "Aircon & free parking" }
+    ]
+  },
+  "accommodations": {
+    "title": "Our accommodations",
+    "subtitle": "Choose the stay that suits you and easily book directly or via Airbnb.",
+    "casita": {
+      "badge": "Detached",
+      "title": "Casita Malacitano",
+      "text": "A beautiful, stylishly furnished detached house with its own veranda. Equipped with a spacious living room with open kitchen, bedroom and a modern bathroom. Enjoy the breathtaking view in complete privacy.",
+      "image": "/casita.jpg"
+    },
+    "casa": {
+      "badge": "Private entrance",
+      "title": "Casa Malacitano",
+      "text": "A cozy and beautifully renovated studio apartment. Connected to the main building, but with a private entrance and terrace. Perfect as a comfortable base for hikers and active travelers.",
+      "image": "/casa.jpg"
+    }
+  },
+  "village": {
+    "eyebrow": "The village",
+    "title": "Valle de Abdalajís",
+    "tagline": "Quiet, authentic, surrounded by nature.",
+    "text": "Valle de Abdalajís, nestled between mountain ridges in the province of Málaga, is an authentic Andalusian village that tourism has largely passed by. With around 2,500 residents, a handful of bars, several restaurants, two supermarkets for daily groceries, a bakery, a pharmacy and a greengrocer, it is a typical Spanish village with a pace of life that calms you down the moment you arrive."
+  },
+  "hosts": {
+    "eyebrow": "Your hosts",
+    "title": "Meet Jans & Minouche",
+    "text": "[Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]",
+    "image": "/hosts.jpg"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "text": "Questions about availability, arrival or the area? We're happy to help. Reach out directly and we'll get back to you quickly."
+  }
+}

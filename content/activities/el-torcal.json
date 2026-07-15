@@ -1,0 +1,22 @@
+{
+  "slug": "el-torcal",
+  "tag": "30 min away",
+  "title": "El Torcal Natural Park",
+  "shortDescription": "Millions of years of erosion have shaped the limestone into something that looks like another planet entirely.",
+  "description": [
+    "El Torcal de Antequera is one of the most remarkable natural parks in Europe. Millions of years of erosion have sculpted the limestone karst into bizarre, otherworldly formations. Walking trails range from 30 minutes to 3 hours, all well-marked and clearly signed.",
+    "The park is a UNESCO World Heritage Site and home to rare plants and birds of prey. It is one of the most photographed landscapes in Andalusia, and completely unlike anywhere else."
+  ],
+  "tips": [
+    "The short green trail (1.5 km) gives an excellent overview in about 30 minutes.",
+    "Go in the morning for the best light. The formations cast extraordinary shadows until midday.",
+    "Bring a layer even in summer. The plateau sits at 1,200 m and the wind can be sharp."
+  ],
+  "practical": [
+    { "label": "Distance from Casa", "value": "30 min drive" },
+    { "label": "Entry", "value": "Free" },
+    { "label": "Shortest trail", "value": "1.5 km, 30 min" },
+    { "label": "Best season", "value": "Spring and autumn" }
+  ],
+  "image": "/torcal.jpg"
+}
