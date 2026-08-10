@@ -5,14 +5,15 @@ import { ChevronLeft, ChevronRight, Minus, Plus, Loader2, Check } from 'lucide-r
 import {
   LP_API_BASE, LP_API_KEY, PROPERTIES, PropertyKey,
   dayCache, fetchMonthAvailability, buildBookingUrl, formatDisplay,
-  MONTHS, DAYS,
+  getMaxCheckout, MONTHS, DAYS,
 } from '@/lib/lodgepilot'
 
-function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
+function RangePicker({ checkIn, checkOut, onSelect, onMonthChange, property }: {
   checkIn: string
   checkOut: string
   onSelect: (date: string) => void
   onMonthChange: (y: number, m: number) => void
+  property: PropertyKey
 }) {
   const today = new Date().toISOString().split('T')[0]
   const [open, setOpen] = useState(false)
@@ -61,7 +62,10 @@ function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
     if (selectingOut && str > checkIn) setOpen(false)
   }
 
-  const rangeEnd = checkOut || (selectingOut ? hover : '')
+  // Show the max bookable range immediately on check-in click, not just
+  // on hover, so the guest sees at a glance how far they could stay
+  const maxRangeEnd = selectingOut ? getMaxCheckout(checkIn, property) : ''
+  const rangeEnd = checkOut || hover || maxRangeEnd
 
   const label = checkIn && checkOut
     ? `${formatDisplay(checkIn)} → ${formatDisplay(checkOut)}`
@@ -212,6 +216,7 @@ export default function PropertyBookingCard({ property, highlights }: {
             checkOut={checkOut}
             onSelect={handleDateSelect}
             onMonthChange={handleMonthChange}
+            property={property}
           />
         </div>
         <div className="px-4 py-3.5 flex items-center justify-between">

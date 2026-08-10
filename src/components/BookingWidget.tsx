@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Minus, Plus, Loader2, X } from 'lucide-react
 import {
   LP_API_BASE, LP_API_KEY, PROPERTIES, PropertyKey,
   dayCache, fetchMonthAvailability, buildBookingUrl, formatDisplay,
-  MONTHS, DAYS,
+  getMaxCheckout, MONTHS, DAYS,
 } from '@/lib/lodgepilot'
 
 function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
@@ -61,7 +61,10 @@ function RangePicker({ checkIn, checkOut, onSelect, onMonthChange }: {
     if (selectingOut && str > checkIn) setOpen(false)
   }
 
-  const rangeEnd = checkOut || (selectingOut ? hover : '')
+  // Show the max bookable range immediately on check-in click, not just
+  // on hover, so the guest sees at a glance how far they could stay
+  const maxRangeEnd = selectingOut ? getMaxCheckout(checkIn) : ''
+  const rangeEnd = checkOut || hover || maxRangeEnd
 
   return (
     // Wrapper is relative so the floating calendar anchors to it

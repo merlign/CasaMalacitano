@@ -83,6 +83,26 @@ export async function fetchMonthAvailability(_year: number, _month: number): Pro
   await icsLoading
 }
 
+// Walks forward from checkIn through the loaded availability cache to find
+// the furthest checkout date reachable without crossing a booked night, so
+// the calendar can preview the max stay the moment check-in is picked,
+// before the guest hovers anything. property omitted = at least one of the
+// two properties must be free that night (used by the homepage widget,
+// which isn't tied to a single property yet).
+export function getMaxCheckout(checkIn: string, property?: PropertyKey): string {
+  const cur = new Date(checkIn + 'T12:00:00')
+  let result = checkIn
+  for (let i = 0; i < 365; i++) {
+    const str = toDateStr(cur)
+    const avail = dayCache.get(str)
+    const nightFree = property ? avail?.[property] : (avail?.casa || avail?.casita)
+    if (!nightFree) break
+    cur.setDate(cur.getDate() + 1)
+    result = toDateStr(cur)
+  }
+  return result
+}
+
 export function buildBookingUrl(prop: PropertyKey, checkIn: string, checkOut: string, guests: number) {
   const base = PROPERTIES[prop].bookingUrl
   const params = new URLSearchParams({ checkIn, checkOut, guests: String(guests), language: 'nl' })
