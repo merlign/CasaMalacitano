@@ -181,7 +181,7 @@ export default function Page() {
       {/* Village & Map */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <FadeIn className="grid md:grid-cols-2 gap-10 md:gap-16 items-end mb-10">
+          <FadeIn className="grid md:grid-cols-2 gap-10 md:gap-16 items-start mb-10">
             <div>
               <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">{content.village.eyebrow}</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-casa-text mb-3">{content.village.title}</h2>
