@@ -11,10 +11,26 @@
     "text": "At Casa Malacitano we offer two unique stays: a fully equipped casita and a cozy studio apartment. Both with access to our wonderful outdoor facilities. Not a place where you have to, a place where you get to. Genuine Spanish hospitality, no mass tourism.",
     "image": "/zwembad.jpg",
     "items": [
-      { "icon": "Sun", "title": "Spacious solarium", "text": "Wonderful relaxing" },
-      { "icon": "Waves", "title": "Nice pool", "text": "For the necessary cooling" },
-      { "icon": "Coffee", "title": "Outdoor kitchen", "text": "With cozy honesty bar" },
-      { "icon": "Snowflake", "title": "Modern comfort", "text": "Aircon & free parking" }
+      {
+        "icon": "Sun",
+        "title": "Spacious solarium",
+        "text": "Wonderful relaxing"
+      },
+      {
+        "icon": "Waves",
+        "title": "Nice pool",
+        "text": "For the necessary cooling"
+      },
+      {
+        "icon": "Coffee",
+        "title": "Outdoor kitchen",
+        "text": "With cozy honesty bar"
+      },
+      {
+        "icon": "Snowflake",
+        "title": "Modern comfort",
+        "text": "Airconditioning & free parking"
+      }
     ]
   },
   "accommodations": {
