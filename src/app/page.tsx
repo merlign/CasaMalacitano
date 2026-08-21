@@ -2,12 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Star } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 import SurroundingsCarousel from '../components/SurroundingsCarousel'
 import FadeIn from '../components/FadeIn'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import BookingWidget from '../components/BookingWidget'
+import ReviewsSection from '../components/ReviewsSection'
 import { getIcon } from '@/lib/icons'
 import content from '../../content/homepage.json'
 import settings from '../../content/settings.json'
@@ -133,31 +134,12 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
-        <FadeIn className="text-center mb-12">
-          <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">{content.reviews.eyebrow}</p>
-          <h2 className="text-3xl sm:text-4xl font-serif text-casa-text">{content.reviews.title}</h2>
-        </FadeIn>
-        <div className="grid md:grid-cols-3 gap-6">
-          {content.reviews.items.map((review, i) => (
-            <FadeIn key={review.name} delay={i * 0.05} className="bg-white rounded-3xl shadow-lg p-8 flex flex-col">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, j) => <Star key={j} size={16} className="text-yellow-400 fill-yellow-400" />)}
-              </div>
-              <p className="text-casa-text-light leading-relaxed mb-6 flex-1">&ldquo;{review.text}&rdquo;</p>
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                <span className="text-2xl leading-none" role="img" aria-label={review.country}>{review.flag}</span>
-                <div>
-                  <p className="font-semibold text-casa-text text-sm">{review.name}</p>
-                  <p className="text-xs text-casa-text-light">{review.country} · {review.date}</p>
-                  <p className="text-xs text-casa-text-light">{review.source}</p>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </section>
+      <ReviewsSection
+        eyebrow={content.reviews.eyebrow}
+        title={content.reviews.title}
+        items={content.reviews.items}
+        className="pb-16 md:pb-24 px-6 max-w-7xl mx-auto"
+      />
 
       {/* Accommodations */}
       <section id="accommodations" className="py-24 bg-casa-stone-dark px-6">

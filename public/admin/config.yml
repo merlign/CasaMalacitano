@@ -161,13 +161,6 @@ collections:
               - { label: "Beds (text)", name: beds, widget: string }
               - { label: "Bathrooms (text)", name: bathrooms, widget: string }
 
-          - label: "Rating"
-            name: rating
-            widget: object
-            fields:
-              - { label: "Score", name: score, widget: number, value_type: float }
-              - { label: "Reviews", name: reviews, widget: number, value_type: int }
-
           - label: "About (paragraphs)"
             name: about
             widget: list

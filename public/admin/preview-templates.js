@@ -166,7 +166,6 @@
       var highlights = getList(entry, ['highlights'])
       var amenities = getList(entry, ['amenities'])
       var occupancy = get(entry, ['occupancy'], {})
-      var rating = get(entry, ['rating'], {})
       var contact = get(entry, ['contact'], {})
 
       return h('div', { className: 'font-sans text-casa-text bg-casa-stone px-4 md:px-8 py-8 max-w-4xl mx-auto' },
@@ -186,10 +185,6 @@
           h('div', { className: 'flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-casa-text-light mb-4' },
             (occupancy.guests || '') + ' guests · ' + (occupancy.bedrooms || '') + ' bedroom · ' +
             (occupancy.beds || '') + ' · ' + (occupancy.bathrooms || '')
-          ),
-          h('div', { className: 'inline-flex items-center gap-2 bg-white border border-gray-100 rounded-2xl px-4 py-3' },
-            '★ ', h('span', { className: 'font-semibold text-casa-text' }, rating.score),
-            h('span', { className: 'text-casa-text-light text-sm' }, ' · ' + rating.reviews + ' reviews')
           )
         ),
 
