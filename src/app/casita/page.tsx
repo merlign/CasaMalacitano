@@ -223,7 +223,7 @@ export default function CasitaPage() {
           eyebrow={homepage.reviews.eyebrow}
           title={homepage.reviews.title}
           items={homepage.reviews.items}
-          className="pt-14 md:pt-20 pb-8 md:pb-10 px-4 md:px-8 max-w-7xl mx-auto"
+          className="pt-16 md:pt-24 pb-16 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto"
         />
 
         {/* Photo gallery, full width, click to open lightbox */}
