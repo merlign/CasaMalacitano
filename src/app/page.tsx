@@ -33,7 +33,7 @@ export default function Page() {
       <SiteHeader hero />
 
       {/* Hero + Booking Widget */}
-      <section className="relative min-h-[82vh] md:min-h-[88vh] flex flex-col justify-center pb-16 md:pb-24">
+      <section className="relative min-h-[480px] md:min-h-[560px] flex flex-col justify-center pb-12">
         {/* Background — clipped separately so calendar dropdowns aren't cut off */}
         <div className="absolute inset-0 overflow-hidden">
           <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: `url("${content.hero.backgroundImage}")` }}></div>
@@ -50,7 +50,7 @@ export default function Page() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 text-casa-teal font-bold tracking-widest uppercase text-xs mb-8 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10 hover:bg-black/60 transition-colors"
+            className="inline-flex items-center gap-2 text-casa-teal font-bold tracking-widest uppercase text-xs mb-4 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10 hover:bg-black/60 transition-colors"
           >
             <MapPin size={16} />
             <span>{content.hero.locationTag}</span>
@@ -60,7 +60,7 @@ export default function Page() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif text-white mb-6 md:mb-8 leading-[1.1]"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif text-white mb-4 md:mb-5 leading-[1.1]"
             style={{ textShadow: '0 4px 40px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4)' }}
           >
             {content.hero.title}
@@ -70,7 +70,7 @@ export default function Page() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl text-white font-light max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white font-light max-w-2xl mx-auto mb-6 leading-relaxed"
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}
           >
             {content.hero.subtitle}
@@ -82,7 +82,7 @@ export default function Page() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex justify-center"
           >
-            <a href="#accommodations" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-10 py-4 rounded-full text-lg font-medium transition-all shadow-lg hover:-translate-y-1">
+            <a href="#accommodations" className="bg-casa-teal hover:bg-casa-teal/90 text-white px-10 py-3 rounded-full text-lg font-medium transition-all shadow-lg hover:-translate-y-1">
               {content.hero.ctaLabel}
             </a>
           </motion.div>
