@@ -33,7 +33,7 @@ export default function Page() {
       <SiteHeader hero />
 
       {/* Hero + Booking Widget */}
-      <section className="relative min-h-screen flex flex-col justify-center pb-32 md:pb-48">
+      <section className="relative min-h-[82vh] md:min-h-[88vh] flex flex-col justify-center pb-16 md:pb-24">
         {/* Background — clipped separately so calendar dropdowns aren't cut off */}
         <div className="absolute inset-0 overflow-hidden">
           <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: `url("${content.hero.backgroundImage}")` }}></div>
