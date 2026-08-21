@@ -221,9 +221,9 @@ export default function Page() {
           <FadeIn from="left" className="md:col-span-2">
             <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">{content.hosts.eyebrow}</p>
             <h2 className="text-3xl sm:text-4xl font-serif text-casa-text mb-6">{content.hosts.title}</h2>
-            <p className="text-casa-text-light text-lg leading-relaxed">
-              {content.hosts.text}
-            </p>
+            <div className="text-casa-text-light text-lg leading-relaxed space-y-4">
+              {content.hosts.text.map((p, i) => <p key={i}>{p}</p>)}
+            </div>
           </FadeIn>
 
           <FadeIn delay={0.15} className="relative h-64 md:h-72 rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">

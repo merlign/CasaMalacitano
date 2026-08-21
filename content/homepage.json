@@ -88,7 +88,12 @@
   "hosts": {
     "eyebrow": "Your hosts",
     "title": "Meet Jans & Minouche",
-    "text": "[Placeholder: a short, warm introduction about Jans and Minouche together. Who they are, how they ended up in Valle de Abdalajís, and what kind of hosts they are.]",
+    "text": [
+      "In March 2026 we took the leap and began our great Spanish adventure as the proud owners of Casa Malacitano. We fell head over heels for the peace and quiet, the striking natural surroundings and the warmth of Valle de Abdalajís, an authentic whitewashed Andalusian village.",
+      "Our dream? To create a place where you feel at home, far from home. Whether you choose our cozy studio or our stylish casita, your own terrace opens onto an unforgettable view of the village and the mountains beyond.",
+      "We love sharing our favourite insider tips and hidden gems in the area, and on request we treat our guests to a hearty, homemade breakfast. At the same time, we make sure you never have to go without privacy and quiet.",
+      "Come and experience the real Spain."
+    ],
     "image": "/hosts.webp"
   },
   "contact": {

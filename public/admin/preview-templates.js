@@ -141,7 +141,9 @@
           h('div', { className: 'max-w-4xl mx-auto' },
             h('p', { className: 'text-casa-teal font-bold tracking-widest uppercase text-xs mb-3' }, get(entry, ['hosts', 'eyebrow'], '')),
             h('h2', { className: 'text-3xl font-serif text-casa-text mb-6' }, get(entry, ['hosts', 'title'], '')),
-            h('p', { className: 'text-casa-text-light text-lg leading-relaxed' }, get(entry, ['hosts', 'text'], ''))
+            h('div', { className: 'text-casa-text-light text-lg leading-relaxed space-y-4' },
+              getList(entry, ['hosts', 'text']).map(function (p, i) { return h('p', { key: i }, p) })
+            )
           )
         ),
 
