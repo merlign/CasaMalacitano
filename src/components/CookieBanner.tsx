@@ -3,12 +3,28 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
+// Removes any already-set Google Analytics cookies so that
+// withdrawing consent actually clears data, not just stops new
+// collection. Tries both host-only and leading-dot domain forms
+// since GA sets _ga/_ga_* with a leading-dot domain on real domains.
+function clearAnalyticsCookies() {
+  const host = window.location.hostname
+  document.cookie.split(';').forEach((c) => {
+    const name = c.split('=')[0].trim()
+    if (name === '_ga' || name.startsWith('_ga_')) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${host};`
+    }
+  })
+}
+
 export default function CookieBanner() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) setShow(true)
+    if (consent === 'declined') clearAnalyticsCookies()
   }, [])
 
   const accept = () => {
@@ -19,6 +35,7 @@ export default function CookieBanner() {
 
   const decline = () => {
     localStorage.setItem('cookie-consent', 'declined')
+    clearAnalyticsCookies()
     setShow(false)
   }
 
