@@ -117,7 +117,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${fredoka.variable}`}>
       <head>
-        <link rel="icon" type="image/png" href="/logo-1.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
