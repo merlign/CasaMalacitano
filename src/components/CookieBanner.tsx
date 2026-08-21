@@ -42,7 +42,7 @@ export default function CookieBanner() {
   if (!show) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4">
+    <div role="region" aria-label="Cookie consent" className="fixed bottom-0 left-0 right-0 z-50 p-4">
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <p className="text-sm text-casa-text-light flex-1 leading-relaxed">
           We use cookies for analytics (Google Analytics) to improve this site.{' '}
