@@ -68,6 +68,24 @@ collections:
                   - { label: "Title", name: title, widget: string }
                   - { label: "Text", name: text, widget: string }
 
+          - label: "Reviews section"
+            name: reviews
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Title", name: title, widget: string }
+              - label: "Reviews"
+                name: items
+                widget: list
+                summary: "{{fields.name}} ({{fields.country}})"
+                fields:
+                  - { label: "Flag emoji", name: flag, widget: string, hint: "Paste a flag emoji, e.g. 🇫🇷 🇳🇱 🇬🇧" }
+                  - { label: "Country", name: country, widget: string }
+                  - { label: "Date", name: date, widget: string, hint: "Free text, e.g. August 2026" }
+                  - { label: "Guest name", name: name, widget: string }
+                  - { label: "Source", name: source, widget: string, hint: "e.g. Booking.com, 10/10 or Airbnb, 5 stars" }
+                  - { label: "Review text", name: text, widget: text }
+
           - label: "Accommodations section"
             name: accommodations
             widget: object

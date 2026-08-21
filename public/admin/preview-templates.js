@@ -38,6 +38,7 @@
       var entry = this.props.entry
       var props = this.props
       var facilityItems = getList(entry, ['facilities', 'items'])
+      var reviewItems = getList(entry, ['reviews', 'items'])
       var casitaTeaser = get(entry, ['accommodations', 'casita'], {})
       var casaTeaser = get(entry, ['accommodations', 'casa'], {})
       var facilityColors = [
@@ -77,6 +78,27 @@
                 h('div', {},
                   h('h4', { className: 'font-semibold text-casa-text' }, item.title),
                   h('p', { className: 'text-sm text-casa-text-light mt-1' }, item.text)
+                )
+              )
+            })
+          )
+        ),
+
+        h('section', { className: 'pb-16 px-6' },
+          h('div', { className: 'text-center mb-8' },
+            h('p', { className: 'text-casa-teal font-bold tracking-widest uppercase text-xs mb-3' }, get(entry, ['reviews', 'eyebrow'], '')),
+            h('h2', { className: 'text-3xl font-serif text-casa-text' }, get(entry, ['reviews', 'title'], ''))
+          ),
+          h('div', { className: 'grid md:grid-cols-3 gap-6' },
+            reviewItems.map(function (r, i) {
+              return h('div', { className: 'bg-white rounded-3xl shadow-lg p-6', key: i },
+                h('p', { className: 'text-casa-text-light leading-relaxed mb-4' }, '“' + r.text + '”'),
+                h('div', { className: 'flex items-center gap-3 pt-3 border-t border-gray-100' },
+                  h('span', { className: 'text-xl' }, r.flag),
+                  h('div', {},
+                    h('p', { className: 'font-semibold text-casa-text text-sm' }, r.name),
+                    h('p', { className: 'text-xs text-casa-text-light' }, r.country + ' · ' + r.date)
+                  )
                 )
               )
             })
