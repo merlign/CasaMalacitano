@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Fredoka } from 'next/font/google'
 import CookieBanner from '@/components/CookieBanner'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import settings from '../../content/settings.json'
 import './globals.css'
 
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     description: 'Quiet and authentic. Two holiday homes with private pool near Caminito del Rey, Andalusia. Book direct, no Airbnb fees.',
     url: 'https://casamalacitano.com',
     siteName: 'Casa Malacitano',
-    images: [{ url: '/view.jpg', width: 1200, height: 800, alt: 'Casa Malacitano, view over Valle de Abdalajís' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Casa Malacitano, terrace view over Valle de Abdalajís' }],
     locale: 'en_US',
     type: 'website',
   },
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Casa Malacitano, Valle de Abdalajís, Andalusia',
     description: 'Quiet and authentic. Two holiday homes with private pool near Caminito del Rey, Andalusia. Book direct, no Airbnb fees.',
-    images: ['/view.jpg'],
+    images: ['/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://casamalacitano.com',
@@ -72,6 +73,7 @@ const jsonLd = {
     latitude: settings.coordinates.latitude,
     longitude: settings.coordinates.longitude,
   },
+  hasMap: `https://maps.google.com/maps?q=${settings.coordinates.latitude},${settings.coordinates.longitude}`,
   image: 'https://casamalacitano.com/view.jpg',
   amenityFeature: [
     { '@type': 'LocationFeatureSpecification', name: 'Swimming pool', value: true },
@@ -124,6 +126,7 @@ export default function RootLayout({
       <body>
         {children}
         <CookieBanner />
+        <GoogleAnalytics />
       </body>
     </html>
   )

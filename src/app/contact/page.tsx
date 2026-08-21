@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import settings from '../../../content/settings.json'
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function ContactPage() {
 
       <main className="pt-24 md:pt-28">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
 
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
 

@@ -14,8 +14,7 @@ export default function CookieBanner() {
   const accept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
     setShow(false)
-    // GA initialisation goes here once the measurement ID is available:
-    // window.gtag('consent', 'update', { analytics_storage: 'granted' })
+    window.dispatchEvent(new Event('cookie-consent-accepted'))
   }
 
   const decline = () => {

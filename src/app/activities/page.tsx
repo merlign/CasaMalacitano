@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import { getActivities } from '@/lib/activities'
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function ActivitiesPage() {
 
       <main className="pt-24 md:pt-28">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Activities' }]} />
           <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">The surroundings</p>
           <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-4 leading-tight">Things to do</h1>
           <p className="text-casa-text-light text-lg max-w-2xl mb-14 leading-relaxed">

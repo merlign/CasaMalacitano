@@ -11,7 +11,13 @@ export const metadata: Metadata = {
     title: content.seo.title,
     description: content.seo.description,
     url: 'https://casamalacitano.com/casita',
-    images: [{ url: content.photos[0].src, width: 1200, height: 800, alt: content.photos[0].alt }],
+    images: [{ url: '/casita/og-image.jpg', width: 1200, height: 630, alt: 'Casita Malacitano terrace, Valle de Abdalajís' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: content.seo.title,
+    description: content.seo.description,
+    images: ['/casita/og-image.jpg'],
   },
 }
 

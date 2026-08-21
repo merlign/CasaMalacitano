@@ -10,6 +10,7 @@ import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
 import PropertyBookingCard from '@/components/PropertyBookingCard'
 import ReviewsSection from '@/components/ReviewsSection'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import { getIcon } from '@/lib/icons'
 import content from '../../../content/casita.json'
 import settings from '../../../content/settings.json'
@@ -96,6 +97,10 @@ export default function CasitaPage() {
       <SiteHeader />
 
       <main className="pt-24 md:pt-28">
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 pt-2">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: content.title }]} />
+        </div>
 
         {/* Hero gallery, first 5 photos, clickable */}
         <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -244,6 +249,18 @@ export default function CasitaPage() {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* Looking for the other stay */}
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-16 md:mt-24">
+          <a href="/casa" className="group flex flex-col sm:flex-row items-center gap-6 bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-all">
+            <img src={homepage.accommodations.casa.image} alt={homepage.accommodations.casa.title} className="w-full sm:w-40 h-32 rounded-2xl object-cover shrink-0" />
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-xs font-bold uppercase tracking-widest text-casa-teal mb-1">Looking for something else?</p>
+              <h2 className="text-xl font-serif text-casa-text group-hover:text-casa-teal transition-colors">{homepage.accommodations.casa.title}</h2>
+              <p className="text-sm text-casa-text-light mt-1">{homepage.accommodations.casa.badge}. See availability and photos.</p>
+            </div>
+          </a>
         </div>
 
         {/* Contact */}

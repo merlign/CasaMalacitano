@@ -1,6 +1,7 @@
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import MarkdownBody from '@/components/MarkdownBody'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import { readMarkdownWithFrontmatter } from '@/lib/markdown'
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function TermsPage() {
 
       <main className="pt-24 md:pt-28">
         <div className="max-w-3xl mx-auto px-4 md:px-8 py-12 md:py-20">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Terms and Conditions' }]} />
 
           <p className="text-casa-teal font-bold tracking-widest uppercase text-xs mb-3">Legal</p>
           <h1 className="text-4xl md:text-5xl font-serif text-casa-text mb-4 leading-tight">Terms and Conditions</h1>

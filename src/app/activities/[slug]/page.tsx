@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { MapPin, Check } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import { getActivities, getActivity } from '@/lib/activities'
 
 export function generateStaticParams() {
@@ -26,6 +27,7 @@ export default async function ActivityPage({ params }: { params: Promise<{ slug:
   const { slug } = await params
   const activity = getActivity(slug)
   if (!activity) notFound()
+  const otherActivities = getActivities().filter((a) => a.slug !== slug).slice(0, 3)
 
   return (
     <div className="min-h-screen bg-casa-stone font-sans text-casa-text">
@@ -51,6 +53,11 @@ export default async function ActivityPage({ params }: { params: Promise<{ slug:
         </div>
 
         <div className="max-w-7xl mx-auto px-4 md:px-8">
+
+          <Breadcrumbs
+            className="text-sm text-casa-text-light pt-6"
+            items={[{ label: 'Home', href: '/' }, { label: 'Activities', href: '/activities' }, { label: activity.title }]}
+          />
 
           {/* Practical info strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-8 border-b border-gray-100">
@@ -121,6 +128,34 @@ export default async function ActivityPage({ params }: { params: Promise<{ slug:
             View accommodations
           </Link>
         </div>
+
+        {/* More activities */}
+        {otherActivities.length > 0 && (
+          <div className="max-w-7xl mx-auto px-4 md:px-8 pb-16 md:pb-24">
+            <h2 className="text-2xl font-serif text-casa-text mb-6">More things to do nearby</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherActivities.map((a) => (
+                <Link
+                  key={a.slug}
+                  href={`/activities/${a.slug}`}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col"
+                >
+                  <div className="relative h-40 overflow-hidden bg-casa-stone-dark">
+                    <img
+                      src={a.image}
+                      alt={a.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif text-casa-text leading-snug group-hover:text-casa-teal transition-colors">{a.title}</h3>
+                    <p className="text-sm text-casa-text-light mt-1">{a.tag}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
       </main>
 
