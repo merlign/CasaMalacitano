@@ -97,13 +97,6 @@ export default function CasitaPage() {
 
       <main className="pt-24 md:pt-28">
 
-        <ReviewsSection
-          eyebrow={homepage.reviews.eyebrow}
-          title={homepage.reviews.title}
-          items={homepage.reviews.items}
-          className="pb-8 md:pb-10 px-4 md:px-8 max-w-7xl mx-auto"
-        />
-
         {/* Hero gallery, first 5 photos, clickable */}
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 rounded-3xl overflow-hidden h-[260px] md:h-[480px]">
@@ -226,8 +219,15 @@ export default function CasitaPage() {
           />
         </div>
 
+        <ReviewsSection
+          eyebrow={homepage.reviews.eyebrow}
+          title={homepage.reviews.title}
+          items={homepage.reviews.items}
+          className="pt-14 md:pt-20 pb-8 md:pb-10 px-4 md:px-8 max-w-7xl mx-auto"
+        />
+
         {/* Photo gallery, full width, click to open lightbox */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-14 md:mt-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-serif mb-6">All photos</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {PHOTOS.map((photo, i) => (
