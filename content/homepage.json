@@ -34,7 +34,7 @@
     ]
   },
   "reviews": {
-    "eyebrow": "What our guests say",
+    "eyebrow": "Reviews",
     "title": "Loved by guests from across Europe",
     "items": [
       {
@@ -42,7 +42,7 @@
         "country": "France",
         "date": "August 2026",
         "name": "Jacky",
-        "source": "Booking.com, 10/10",
+        "source": "Booking.com",
         "text": "We had a truly lovely stay with Minouche and Jans. A warm welcome, and accommodation that reflects their own style: full of charm, in a quiet and relaxing setting. We especially enjoyed unwinding by the pool. Their generosity, kindness and warmth stood out to us. A wonderful encounter and a place we wholeheartedly recommend."
       },
       {
@@ -50,7 +50,7 @@
         "country": "Netherlands",
         "date": "April 2026",
         "name": "Brenda",
-        "source": "Airbnb, 5 stars",
+        "source": "Airbnb",
         "text": "Still on the fence about booking? Stop right there. What a fantastic place! Beautiful views, wonderfully quiet, plenty of privacy, and a home with everything you could need. Jans and Minouche are wonderfully warm, kind and easygoing hosts. We felt 200% welcome, right at home. Plenty to do, and doing nothing here is just as lovely!"
       },
       {
@@ -58,7 +58,7 @@
         "country": "England",
         "date": "June 2026",
         "name": "Martin",
-        "source": "Airbnb, 5 stars",
+        "source": "Airbnb",
         "text": "We spent 4 nights here and enjoyed every minute. Jans and Minouche are wonderful hosts who make you feel at home right away, striking just the right balance between privacy and being there when you need them. The villa is beautifully decorated, comfortable, and has everything you need."
       }
     ]
