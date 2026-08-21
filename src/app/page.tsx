@@ -226,7 +226,7 @@ export default function Page() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.15} className="relative h-64 md:h-72 rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
+          <FadeIn delay={0.15} className="relative h-80 md:h-[28rem] rounded-3xl overflow-hidden bg-casa-stone-dark flex items-center justify-center">
             <img
               src={content.hosts.image}
               alt="Jans and Minouche"
