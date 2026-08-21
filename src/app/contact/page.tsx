@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import FadeIn from '@/components/FadeIn'
+import ConsentedMap from '@/components/ConsentedMap'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import settings from '../../../content/settings.json'
 
@@ -82,14 +83,8 @@ export default function ContactPage() {
 
             {/* Right: map */}
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-[420px] md:h-[560px]">
-              <iframe
+              <ConsentedMap
                 src={`https://maps.google.com/maps?q=${settings.coordinates.latitude},${settings.coordinates.longitude}&t=k&z=15&ie=UTF8&iwloc=&output=embed`}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="eager"
-                referrerPolicy="no-referrer-when-downgrade"
                 title="Casa Malacitano location"
               />
             </FadeIn>

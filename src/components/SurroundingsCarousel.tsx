@@ -77,7 +77,7 @@ export default function SurroundingsCarousel() {
         ))}
       </div>
 
-      {/* 4 small cards — 4-col grid on desktop */}
+      {/* 4 small cards, 4-col grid on desktop */}
       <div className="hidden md:grid md:grid-cols-4 gap-3">
         {small.map((item) => (
           <a key={item.title} href={item.href} className="relative h-[200px] rounded-2xl overflow-hidden block group">

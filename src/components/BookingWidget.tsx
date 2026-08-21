@@ -258,7 +258,7 @@ export default function BookingWidget() {
           </div>
         </div>
 
-        {/* CLEAR — only visible when dates are set */}
+        {/* CLEAR, only visible when dates are set */}
         {datesReady && (
           <div className="px-4 py-5 flex items-center justify-center">
             <button onClick={clearDates} title="Clear dates"

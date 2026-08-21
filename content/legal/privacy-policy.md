@@ -27,9 +27,15 @@ With your consent, we use Google Analytics 4 to understand how visitors use our 
 
 **Legal basis:** your consent (Art. 6(1)(a) GDPR). You can withdraw consent at any time by clicking "Cookie preferences" in the footer.
 
-### 2.4 Cookies
+### 2.4 Embedded maps (Google Maps)
 
-We use strictly necessary cookies to ensure the website functions correctly. Analytics cookies are only placed after you give explicit consent. See our cookie section below for details.
+With your consent, we show an embedded Google Maps location on our homepage and on the accommodation and contact pages. Until you give consent, a placeholder is shown instead and no connection is made to Google. Google's own privacy policy applies to data collected once the map is loaded.
+
+**Legal basis:** your consent (Art. 6(1)(a) GDPR). You can withdraw consent at any time by clicking "Cookie preferences" in the footer.
+
+### 2.5 Cookies
+
+We use strictly necessary cookies to ensure the website functions correctly. Analytics and map cookies are only placed after you give explicit consent. See our cookie section below for details.
 
 ## 3. How long we keep your data
 
@@ -43,7 +49,7 @@ We use strictly necessary cookies to ensure the website functions correctly. Ana
 We do not sell your personal data. We may share data with:
 
 - **Spanish authorities**: guest identification data as required by law.
-- **Google LLC**: anonymised analytics data (via Google Analytics), processed under a Data Processing Agreement. Google may transfer data to the United States under Standard Contractual Clauses.
+- **Google LLC**: anonymised analytics data (via Google Analytics) and, once you accept cookies, data collected through the embedded Google Maps. Both are processed under a Data Processing Agreement. Google may transfer data to the United States under Standard Contractual Clauses.
 - **Our booking platform**: if you book via a third-party platform (e.g. Booking.com, Airbnb), their privacy policy applies to data shared through that platform.
 
 ## 5. Your rights under GDPR
@@ -56,7 +62,7 @@ You have the right to:
 - **Restriction**: ask us to limit how we use your data in certain circumstances.
 - **Portability**: receive your data in a machine-readable format.
 - **Object**: object to processing based on legitimate interest.
-- **Withdraw consent**: withdraw consent for analytics cookies at any time.
+- **Withdraw consent**: withdraw consent for analytics and map cookies at any time.
 
 To exercise any of these rights, contact us at [info.malacitano@gmail.com](mailto:info.malacitano@gmail.com). We will respond within 30 days. You also have the right to lodge a complaint with the Spanish data protection authority (AEPD) at [www.aepd.es](https://www.aepd.es).
 
@@ -66,6 +72,7 @@ To exercise any of these rights, contact us at [info.malacitano@gmail.com](mailt
 | --- | --- | --- |
 | `cookie-consent` | Strictly necessary | Stores your cookie consent preference (localStorage). No personal data. |
 | `_ga, _ga_*` | Analytics | Google Analytics, measures website traffic. Only set after consent. |
+| Google Maps cookies | Maps | Set by the embedded map once loaded. Only loaded after consent. |
 
 ## 7. Data security
 

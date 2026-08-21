@@ -9,6 +9,7 @@ import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import BookingWidget from '../components/BookingWidget'
 import ReviewsSection from '../components/ReviewsSection'
+import ConsentedMap from '../components/ConsentedMap'
 import { getIcon } from '@/lib/icons'
 import content from '../../content/homepage.json'
 import settings from '../../content/settings.json'
@@ -34,7 +35,7 @@ export default function Page() {
 
       {/* Hero + Booking Widget */}
       <section className="relative min-h-[82vh] md:min-h-[88vh] flex flex-col justify-center pb-16 md:pb-24">
-        {/* Background — clipped separately so calendar dropdowns aren't cut off */}
+        {/* Background, clipped separately so calendar dropdowns aren't cut off */}
         <div className="absolute inset-0 overflow-hidden">
           <div ref={heroBgRef} className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform" style={{ backgroundImage: `url("${content.hero.backgroundImage}")` }}></div>
           <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
@@ -90,7 +91,7 @@ export default function Page() {
 
       </section>
 
-      {/* Booking Widget — straddles hero/cream border */}
+      {/* Booking Widget, straddles hero/cream border */}
       <div id="booking" className="relative z-20 max-w-3xl mx-auto px-4 -mt-10 pb-12 md:pb-20">
         <BookingWidget />
       </div>
@@ -201,15 +202,9 @@ export default function Page() {
           </FadeIn>
 
           <FadeIn delay={0.1} className="rounded-3xl overflow-hidden h-80 md:h-[480px] shadow-lg">
-            <iframe
+            <ConsentedMap
               src={`https://maps.google.com/maps?q=${settings.coordinates.latitude},${settings.coordinates.longitude}&t=k&z=15&ie=UTF8&iwloc=&output=embed`}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="eager"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Casa Malacitano locatie"
+              title="Casa Malacitano location"
             />
           </FadeIn>
         </div>

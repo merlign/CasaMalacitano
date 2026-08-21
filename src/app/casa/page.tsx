@@ -11,6 +11,7 @@ import FadeIn from '@/components/FadeIn'
 import PropertyBookingCard from '@/components/PropertyBookingCard'
 import ReviewsSection from '@/components/ReviewsSection'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import ConsentedMap from '@/components/ConsentedMap'
 import { getIcon } from '@/lib/icons'
 import content from '../../../content/casa.json'
 import settings from '../../../content/settings.json'
@@ -276,14 +277,8 @@ export default function CasaPage() {
               </a>
             </FadeIn>
             <FadeIn from="right" delay={0.1} className="rounded-3xl overflow-hidden shadow-lg h-72 md:h-96">
-              <iframe
+              <ConsentedMap
                 src={`https://maps.google.com/maps?q=${settings.coordinates.latitude},${settings.coordinates.longitude}&t=k&z=15&ie=UTF8&iwloc=&output=embed`}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="eager"
-                referrerPolicy="no-referrer-when-downgrade"
                 title="Casa Malacitano location"
               />
             </FadeIn>
