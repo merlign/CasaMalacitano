@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     default: 'Casa Malacitano: Vacation Rental in Valle de Abdalajís, Andalusia',
     template: '%s | Casa Malacitano',
   },
-  description: 'Quiet, authentic and surrounded by nature. Casa Malacitano offers two holiday accommodations with private pool in Valle de Abdalajís, Andalusia, near Caminito del Rey, El Torcal and Málaga.',
-  keywords: ['vacation rental Andalusia', 'holiday home Valle de Abdalajís', 'casa rural Málaga', 'Caminito del Rey accommodation', 'private pool Spain', 'El Torcal nearby', 'holiday villa Andalusia'],
+  description: 'Quiet and authentic. Two holiday homes with private pool near Caminito del Rey and El Torcal, Andalusia. Book direct, no Airbnb or Booking.com fees.',
+  keywords: ['vacation rental Andalusia', 'holiday home Valle de Abdalajís', 'casa rural Valle de Abdalajís', 'casa rural Málaga', 'accommodation near Caminito del Rey', 'guesthouse near El Chorro', 'private pool Spain', 'El Torcal nearby', 'boutique guesthouse Andalusia', 'book direct no platform fees', 'vakantiehuis Andalusië zwembad', 'vakantiewoning Valle de Abdalajís'],
   openGraph: {
     title: 'Casa Malacitano, Valle de Abdalajís, Andalusia',
-    description: 'Quiet, authentic and surrounded by nature. Two holiday accommodations with private pool near Caminito del Rey and El Torcal.',
+    description: 'Quiet and authentic. Two holiday homes with private pool near Caminito del Rey, Andalusia. Book direct, no Airbnb fees.',
     url: 'https://casamalacitano.com',
     siteName: 'Casa Malacitano',
     images: [{ url: '/view.jpg', width: 1200, height: 800, alt: 'Casa Malacitano, view over Valle de Abdalajís' }],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Casa Malacitano, Valle de Abdalajís, Andalusia',
-    description: 'Quiet, authentic and surrounded by nature. Two holiday accommodations with private pool near Caminito del Rey.',
+    description: 'Quiet and authentic. Two holiday homes with private pool near Caminito del Rey, Andalusia. Book direct, no Airbnb fees.',
     images: ['/view.jpg'],
   },
   alternates: {

@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const activity = getActivity(slug)
   if (!activity) return {}
   return {
-    title: activity.title,
-    description: activity.shortDescription,
+    title: activity.seo?.title ?? activity.title,
+    description: activity.seo?.description ?? activity.shortDescription,
     alternates: {
       canonical: `https://casamalacitano.com/activities/${activity.slug}`,
     },

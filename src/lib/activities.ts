@@ -3,6 +3,7 @@ import { join } from 'path'
 
 export type Activity = {
   slug: string
+  seo?: { title: string; description: string }
   tag: string
   title: string
   shortDescription: string
