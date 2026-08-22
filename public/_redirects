@@ -1,0 +1,19 @@
+# Redirects from the old WordPress site's URLs to their equivalent
+# on the new site, so existing inbound links and Google's index keep
+# working after the domain migration instead of 404ing.
+
+/home/accommodations/                       /#accommodations               301
+/home/activities/                           /activities                    301
+/home/activities/city-trip-malaga/          /activities/three-cities       301
+/home/activities/the-malacitano-routes/     /activities/gr-340             301
+/home/activities/hiking-the-escaleras-arabe/ /activities/el-chorro         301
+/home/activities/el-caminito-del-rey/       /activities/caminito-del-rey   301
+/home/activities/hiking-torcal-mountain/    /activities/el-torcal          301
+
+# No direct equivalent on the new site, send to the activities index
+# rather than letting them 404.
+/home/activities/el-alhambra-at-granada/    /activities                    301
+/home/activities/lobo-park/                 /activities                    301
+
+# Safety net for any other old /home/... URL not listed above.
+/home/*                                     /                              301
