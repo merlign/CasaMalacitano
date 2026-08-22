@@ -26,7 +26,7 @@ const fredoka = Fredoka({
 export const metadata: Metadata = {
   metadataBase: new URL('https://casamalacitano.com'),
   title: {
-    default: 'Casa Malacitano: Vacation Rental in Valle de Abdalajís, Andalusia',
+    default: 'Casa Malacitano: Valle de Abdalajís Rental near Caminito del Rey',
     template: '%s | Casa Malacitano',
   },
   description: 'Quiet and authentic. Two holiday homes with private pool near Caminito del Rey and El Torcal, Andalusia. Book direct, no Airbnb or Booking.com fees.',
