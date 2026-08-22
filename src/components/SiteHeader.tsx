@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 export default function SiteHeader({ hero = false }: { hero?: boolean }) {
   const [menuOpen, setMenuOpen] = React.useState(false)
@@ -66,7 +67,11 @@ export default function SiteHeader({ hero = false }: { hero?: boolean }) {
           <button onClick={() => setMenuOpen(!menuOpen)} className={`md:hidden focus:outline-none transition-colors duration-300 ${transparent ? 'text-white' : 'text-casa-text'}`}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <Link href="/" className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ${transparent ? 'bg-white text-casa-text hover:bg-casa-stone' : 'bg-casa-teal text-white hover:bg-casa-teal/90'}`}>
+          <Link
+            href="/"
+            onClick={() => trackEvent('book_now_click', { location: 'header_desktop' })}
+            className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ${transparent ? 'bg-white text-casa-text hover:bg-casa-stone' : 'bg-casa-teal text-white hover:bg-casa-teal/90'}`}
+          >
             Book now
           </Link>
         </div>
@@ -98,7 +103,13 @@ export default function SiteHeader({ hero = false }: { hero?: boolean }) {
             <Link href="/contact" onClick={() => setMenuOpen(false)} className="flex items-center py-3 text-base font-medium hover:text-casa-teal transition-colors">Contact</Link>
           </div>
           <div className="px-5 pb-4">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="block w-full text-center bg-casa-teal text-white py-3 rounded-full font-semibold hover:bg-casa-teal/90 transition-colors">Book now</Link>
+            <Link
+              href="/"
+              onClick={() => { setMenuOpen(false); trackEvent('book_now_click', { location: 'header_mobile' }) }}
+              className="block w-full text-center bg-casa-teal text-white py-3 rounded-full font-semibold hover:bg-casa-teal/90 transition-colors"
+            >
+              Book now
+            </Link>
           </div>
         </div>
       )}

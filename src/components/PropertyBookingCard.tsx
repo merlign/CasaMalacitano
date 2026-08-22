@@ -7,6 +7,7 @@ import {
   dayCache, fetchMonthAvailability, buildBookingUrl, formatDisplay,
   getMaxCheckout, MONTHS, DAYS,
 } from '@/lib/lodgepilot'
+import { trackEvent } from '@/lib/analytics'
 
 function RangePicker({ checkIn, checkOut, onSelect, onMonthChange, property }: {
   checkIn: string
@@ -249,6 +250,7 @@ export default function PropertyBookingCard({ property, highlights }: {
       )}
       {status === 'available' && (
         <a href={bookingHref} target="_blank" rel="noopener noreferrer"
+          onClick={() => trackEvent('book_click', { property, location: 'property_page' })}
           className="block w-full bg-casa-teal hover:bg-casa-teal-dark text-white text-center px-6 py-4 rounded-2xl font-bold transition-colors shadow-sm">
           Book now →
         </a>
