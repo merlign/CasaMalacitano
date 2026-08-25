@@ -40,6 +40,13 @@ export default function SiteFooter() {
           <p>&copy; {new Date().getFullYear()} Casa Malacitano. All rights reserved.</p>
           <span className="hidden md:inline text-gray-200">·</span>
           <p className="text-xs text-gray-400">Tourism licence: {settings.tourismLicence}</p>
+          <span className="hidden md:inline text-gray-200">·</span>
+          <p className="text-xs text-gray-400">
+            Website by{' '}
+            <a href="https://www.merlign.com" target="_blank" rel="noopener noreferrer" className="hover:text-casa-teal transition-colors">
+              Merlign
+            </a>
+          </p>
         </div>
         <div className="flex gap-6">
           <a href="/privacy-policy/" className="hover:text-casa-text transition-colors">Privacy policy</a>
