@@ -7,7 +7,7 @@ These terms apply to all bookings made with **Jans Pijbes and Minouche van den B
 
 The "guest" or "you" refers to the lead guest who makes the booking and accepts these terms on behalf of all members of the party.
 
-Tourism licence:  **CR/MA/02488** These terms are governed by Spanish law and the regional regulations of the Community of Andalusia.
+Tourism licence: **CR/MA/02488.** These terms are governed by Spanish law and the regional regulations of the Community of Andalusia.
 
 ## 2. The properties
 
@@ -31,8 +31,8 @@ Cancellations must be submitted in writing to [info.malacitano@gmail.com](mailto
 
 | Notice before arrival | Amount retained |
 | --------------------- | --------------- |
-| More than 45 days     |  0% of total    |
-| 30 days               |  50% of total   |
+| More than 45 days     | 0% of total     |
+| 30 days               | 50% of total    |
 | 15 to 29 days         | 75% of total    |
 | Less than 15 days     | 100% of total   |
 
@@ -54,8 +54,8 @@ The maximum number of guests must not be exceeded at any time: Casita Malacitano
 
 ## 8. House rules
 
-* **Smoking:** Smoking is not permitted inside either property. Smoking is permitted on the outdoor terraces.]
-* **Pets:** Pets are welcome with prior agreement. Please contact us before booking.]
+* **Smoking:** Smoking is not permitted inside either property. Smoking is permitted on the outdoor terraces.
+* **Pets:** Pets are welcome with prior agreement. Please contact us before booking.
 * **Noise:** We ask guests to respect the quiet of the surrounding village. Loud music or noise after 23:00 is not permitted.
 * **Events and parties:** The properties may not be used for events, parties or gatherings beyond the stated number of guests without our prior written consent.
 * **Pool:** Swimming alone at night is not permitted. Please shower before entering the pool.
