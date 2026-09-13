@@ -22,5 +22,6 @@
     { "label": "Swimming", "value": "April to October" },
     { "label": "Best season", "value": "Spring and summer" }
   ],
-  "image": "/chorro.jpg"
+  "image": "/chorro.jpg",
+  "featured": false
 }

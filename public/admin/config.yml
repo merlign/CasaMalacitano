@@ -243,6 +243,7 @@ collections:
       - { label: "Tag (small badge)", name: tag, widget: string }
       - { label: "Title", name: title, widget: string }
       - { label: "Short description (used in cards)", name: shortDescription, widget: text }
+      - { label: "Show as large card on homepage", name: featured, widget: boolean, default: false, hint: "Tick this for the 1 or 2 activities that should get a big photo and intro text on the homepage. All others show as a small card automatically. If more than 2 are ticked, only the first 2 are used." }
 
       - label: "Description (paragraphs)"
         name: description

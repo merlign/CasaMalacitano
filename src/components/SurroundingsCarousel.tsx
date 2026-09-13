@@ -1,46 +1,20 @@
-const large = [
-  {
-    tag: "15 min away",
-    title: "Walk the gorge of a lifetime",
-    description: "The Caminito del Rey clings to the walls of the El Chorro gorge. One of the most dramatic walks in Europe. You'll be back for dinner.",
-    image: "/caminito.jpg",
-    href: "/activities/caminito-del-rey",
-  },
-  {
-    tag: "GR-340 trail",
-    title: "Ride out. Get lost. Find yourself.",
-    description: "The GR-340 passes right through the village. Climb into the hills on two wheels or two feet, through olive groves, limestone ridges and zero crowds.",
-    image: "/mb.jpg",
-    href: "/activities/gr-340",
-  },
-]
+import activities from '../../content/activities-index.generated.json'
 
-const small = [
-  {
-    tag: "Within 1 hour",
-    title: "Three cities, one base.",
-    image: "/malaga.jpg",
-    href: "/activities/three-cities",
-  },
-  {
-    tag: "Local life",
-    title: "Spain as it used to be",
-    image: "/local.jpg",
-    href: "/activities/local-life",
-  },
-  {
-    tag: "30 min away",
-    title: "El Torcal Natural Park",
-    image: "/torcal.jpg",
-    href: "/activities/el-torcal",
-  },
-  {
-    tag: "15 min away",
-    title: "El Chorro lakes",
-    image: "/chorro.jpg",
-    href: "/activities/el-chorro",
-  },
-]
+// Which activities get a big hero card (bigger photo + intro text) is
+// ticked per-activity in the CMS ("Show as large card on homepage"), so
+// adding, removing or re-featuring an activity is reflected here without
+// ever needing a code change. At most 2 large cards fit the design, so if
+// more are ticked only the first 2 are used; everything else, including an
+// un-featured activity, automatically gets a small card below it.
+const featured = activities.filter((a) => a.featured).slice(0, 2)
+const featuredSlugs = new Set(featured.map((a) => a.slug))
+
+const large = featured
+  .map((a) => ({ tag: a.tag, title: a.title, description: a.shortDescription, image: a.image, href: `/activities/${a.slug}` }))
+
+const small = activities
+  .filter((a) => !featuredSlugs.has(a.slug))
+  .map((a) => ({ tag: a.tag, title: a.title, image: a.image, href: `/activities/${a.slug}` }))
 
 export default function SurroundingsCarousel() {
   return (
@@ -52,8 +26,9 @@ export default function SurroundingsCarousel() {
         </h2>
       </div>
 
-      {/* 2 large cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+      {/* Large cards (0-2, tick "Show as large card" in the CMS) */}
+      {large.length > 0 && (
+      <div className={`grid grid-cols-1 gap-3 mb-3 ${large.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
         {large.map((item) => (
           <a key={item.title} href={item.href} className="relative h-[340px] md:h-[420px] rounded-3xl overflow-hidden block group">
             <img
@@ -76,8 +51,9 @@ export default function SurroundingsCarousel() {
           </a>
         ))}
       </div>
+      )}
 
-      {/* 4 small cards, 4-col grid on desktop */}
+      {/* Small cards, wraps to a new row past 4 on desktop */}
       <div className="hidden md:grid md:grid-cols-4 gap-3">
         {small.map((item) => (
           <a key={item.title} href={item.href} className="relative h-[200px] rounded-2xl overflow-hidden block group">

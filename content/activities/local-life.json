@@ -22,5 +22,6 @@
     { "label": "Market", "value": "Saturday mornings" },
     { "label": "Best season", "value": "Year-round" }
   ],
-  "image": "/local.jpg"
+  "image": "/local.jpg",
+  "featured": false
 }

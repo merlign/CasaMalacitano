@@ -22,5 +22,6 @@
     { "label": "Best season", "value": "Spring and autumn" },
     { "label": "Difficulty", "value": "Easy to challenging" }
   ],
-  "image": "/mb.jpg"
+  "image": "/mb.jpg",
+  "featured": true
 }

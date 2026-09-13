@@ -22,5 +22,6 @@
     { "label": "Best season", "value": "Spring and autumn" },
     { "label": "Difficulty", "value": "Moderate" }
   ],
-  "image": "/caminito.jpg"
+  "image": "/caminito.jpg",
+  "featured": true
 }

@@ -11,6 +11,7 @@ export type Activity = {
   tips: string[]
   practical: { label: string; value: string }[]
   image: string
+  featured?: boolean
 }
 
 const ACTIVITIES_DIR = join(process.cwd(), 'content', 'activities')

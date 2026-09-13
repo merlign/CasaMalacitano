@@ -22,5 +22,6 @@
     { "label": "Shortest trail", "value": "1.5 km, 30 min" },
     { "label": "Best season", "value": "Spring and autumn" }
   ],
-  "image": "/torcal.jpg"
+  "image": "/torcal.jpg",
+  "featured": false
 }

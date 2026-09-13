@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/sync-activity-refs.js",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-activity-refs.js",
     "build": "next build",
     "postbuild": "node scripts/copy-preview-css.js",
     "start": "next start",

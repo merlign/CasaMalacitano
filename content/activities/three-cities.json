@@ -22,5 +22,6 @@
     { "label": "Ronda", "value": "50 min" },
     { "label": "Best season", "value": "Year-round" }
   ],
-  "image": "/malaga.jpg"
+  "image": "/malaga.jpg",
+  "featured": false
 }

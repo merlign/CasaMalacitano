@@ -16,6 +16,7 @@ dist-ssr
 .next/
 out/
 dist/
+content/activities-index.generated.json
 
 # Editor directories and files
 .vscode/*
