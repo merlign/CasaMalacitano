@@ -20,10 +20,10 @@ Casa Malacitano offers two holiday accommodations on the same estate:
 
 A booking is confirmed once we have accepted your reservation in writing (by email or via our booking platform) and received the required deposit.
 
-* **Deposit:** FILL IN, e.g. 35% of the total booking amount is due at the time of booking.
+* **Deposit:** 35% of the total booking amount is due at the time of booking.
 * **Balance:** The remaining amount is due 15 days before arrival.
-* **Payment methods:** bank transfer, credit card via booking platform
-* All prices are in euros and include, bed linen, towels, pool use, WiFi, Airconditioning and final cleaning
+* **Payment methods:** bank transfer, credit card via booking platform.
+* All prices are in euros and include bed linen, towels, pool use, WiFi, air conditioning and final cleaning.
 
 ## 4. Cancellation policy
 
@@ -42,11 +42,11 @@ We strongly recommend taking out travel insurance that covers cancellation costs
 
 * **Check-in:** from 15:00 (3 pm). Earlier check-in may be arranged subject to availability.
 * **Check-out:** by 11:00 (11 am). Late check-out may be arranged subject to availability.
-* Arrival instructions  details will be sent by email prior to your stay.
+* Arrival instructions and key handover details will be sent by email prior to your stay.
 
 ## 6. Security deposit
 
-A refundable security deposit of  **€100,-** is required  at check-in in cash. The deposit will be returned of departure, provided the property is left in good condition with no damage beyond normal wear and tear.
+A refundable security deposit of **€100,-** is required at check-in in cash. The deposit will be returned within \[FILL IN, e.g. 7 days] of departure, provided the property is left in good condition with no damage beyond normal wear and tear.
 
 ## 7. Maximum occupancy
 

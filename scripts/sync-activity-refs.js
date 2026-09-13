@@ -4,7 +4,7 @@
 // (or adding) an activity there automatically:
 //  - drops it from (or adds it to) the homepage "Surroundings" carousel
 //  - stops the old-WordPress _redirects file from pointing at a dead page
-//  - stops llms.txt from listing a page that no longer exists
+//  - stops llms.txt and sitemap.xml from listing a page that no longer exists
 // so nobody has to remember to touch code or static files by hand.
 import { readdirSync, readFileSync, writeFileSync } from 'fs'
 import { dirname, join } from 'path'
@@ -16,6 +16,7 @@ const ACTIVITIES_DIR = join(ROOT, 'content', 'activities')
 const GENERATED_INDEX = join(ROOT, 'content', 'activities-index.generated.json')
 const REDIRECTS_FILE = join(ROOT, 'public', '_redirects')
 const LLMS_FILE = join(ROOT, 'public', 'llms.txt')
+const SITEMAP_FILE = join(ROOT, 'public', 'sitemap.xml')
 
 const activities = readdirSync(ACTIVITIES_DIR)
   .filter((f) => f.endsWith('.json'))
@@ -38,15 +39,26 @@ writeFileSync(
 )
 
 // 2. Redirect any old WordPress URL that used to point at a now-deleted
-// activity to the activities index instead of letting it 404.
+// activity to the activities index instead of letting it 404. Rules that
+// track a specific activity are marked with a "# activity: <slug>" comment
+// on the line above, so the original mapping survives even after it's been
+// collapsed to the generic fallback, and gets restored if the activity
+// (or one with the same slug) comes back.
 const redirectsLines = readFileSync(REDIRECTS_FILE, 'utf-8').split('\n')
+let pendingActivity = null
 const redirectsFixed = redirectsLines.map((line) => {
-  const match = line.match(/^(\S+)(\s+)\/activities\/([a-z0-9-]+)(\s+301)(.*)$/)
-  if (!match) return line
-  const [, source, gap1, slug, gap2, rest] = match
-  if (slugs.has(slug)) return line
-  const newGap = ' '.repeat(gap2.length + slug.length + 1)
-  return `${source}${gap1}/activities${newGap}301${rest}`
+  const activityComment = line.match(/^# activity: ([a-z0-9-]+)\s*$/)
+  if (activityComment) {
+    pendingActivity = activityComment[1]
+    return line
+  }
+  const match = line.match(/^(\S+)(\s+)\/activities(?:\/[a-z0-9-]+)?(\s+)301(.*)$/)
+  const slug = pendingActivity
+  pendingActivity = null
+  if (!match || !slug) return line
+  const [, source, gap1, gap2, rest] = match
+  const target = slugs.has(slug) ? `/activities/${slug}` : '/activities'
+  return `${source}${gap1}${target}${gap2}301${rest}`
 })
 writeFileSync(REDIRECTS_FILE, redirectsFixed.join('\n'))
 
@@ -65,5 +77,22 @@ const newActivityLines = activities.map(
 )
 withoutActivityLinks.splice(insertAt, 0, ...newActivityLines)
 writeFileSync(LLMS_FILE, withoutActivityLinks.join('\n'))
+
+// 4. Same regeneration for the individual activity <url> entries in
+// sitemap.xml (what Google Search Console reads), leaving every other
+// page's entry untouched.
+const sitemap = readFileSync(SITEMAP_FILE, 'utf-8')
+const activityUrlBlockPattern = /  <url>\n    <loc>https:\/\/casamalacitano\.com\/activities\/[a-z0-9-]+\/<\/loc>\n(?:.*\n)*?  <\/url>\n/g
+const sitemapWithoutActivityBlocks = sitemap.replace(activityUrlBlockPattern, '')
+const newSitemapBlocks = activities
+  .map((a) => `  <url>\n    <loc>https://casamalacitano.com/activities/${a.slug}/</loc>\n    <priority>0.6</priority>\n    <changefreq>monthly</changefreq>\n  </url>\n`)
+  .join('')
+const sitemapFixed = sitemapWithoutActivityBlocks.includes('  <url>\n    <loc>https://casamalacitano.com/activities/</loc>')
+  ? sitemapWithoutActivityBlocks.replace(
+      /(  <url>\n    <loc>https:\/\/casamalacitano\.com\/activities\/<\/loc>\n(?:.*\n)*?  <\/url>\n)/,
+      `$1${newSitemapBlocks}`
+    )
+  : sitemapWithoutActivityBlocks.replace('</urlset>', `${newSitemapBlocks}</urlset>`)
+writeFileSync(SITEMAP_FILE, sitemapFixed)
 
 console.log(`sync-activity-refs: ${activities.length} activities (${[...slugs].join(', ')})`)

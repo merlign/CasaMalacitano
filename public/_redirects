@@ -1,13 +1,23 @@
 # Redirects from the old WordPress site's URLs to their equivalent
 # on the new site, so existing inbound links and Google's index keep
 # working after the domain migration instead of 404ing.
+#
+# A "# activity: <slug>" comment above a rule is read by
+# scripts/sync-activity-refs.js: if that activity still exists the rule
+# below it redirects straight to it, otherwise it's rewritten to fall
+# back to the activities index so it never points at a deleted page.
 
 /home/accommodations/                       /#accommodations               301
 /home/activities/                           /activities                    301
+# activity: three-cities
 /home/activities/city-trip-malaga/          /activities/three-cities       301
+# activity: gr-340
 /home/activities/the-malacitano-routes/     /activities/gr-340             301
+# activity: el-chorro
 /home/activities/hiking-the-escaleras-arabe/ /activities         301
+# activity: caminito-del-rey
 /home/activities/el-caminito-del-rey/       /activities/caminito-del-rey   301
+# activity: el-torcal
 /home/activities/hiking-torcal-mountain/    /activities/el-torcal          301
 
 # No direct equivalent on the new site, send to the activities index

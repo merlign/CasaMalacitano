@@ -21,7 +21,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://casamalacitano.com/activities/caminito-del-rey/</loc>
+    <loc>https://casamalacitano.com/activities/el-torcal/</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -31,22 +31,17 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://casamalacitano.com/activities/three-cities/</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://casamalacitano.com/activities/local-life/</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://casamalacitano.com/activities/el-torcal/</loc>
+    <loc>https://casamalacitano.com/activities/three-cities/</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://casamalacitano.com/activities/el-chorro/</loc>
+    <loc>https://casamalacitano.com/activities/caminito-del-rey/</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
