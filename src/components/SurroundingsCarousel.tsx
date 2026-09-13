@@ -16,6 +16,12 @@ const small = activities
   .filter((a) => !featuredSlugs.has(a.slug))
   .map((a) => ({ tag: a.tag, title: a.title, image: a.image, href: `/activities/${a.slug}` }))
 
+// With fewer than 4 small cards, stretch them across the full width
+// instead of leaving empty columns. All of these class names need to
+// appear literally somewhere for Tailwind to generate them.
+const SMALL_COLS_CLASS: Record<number, string> = { 1: 'md:grid-cols-1', 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4' }
+const smallColsClass = SMALL_COLS_CLASS[Math.min(small.length, 4)] ?? 'md:grid-cols-4'
+
 export default function SurroundingsCarousel() {
   return (
     <div>
@@ -53,8 +59,9 @@ export default function SurroundingsCarousel() {
       </div>
       )}
 
-      {/* Small cards, wraps to a new row past 4 on desktop */}
-      <div className="hidden md:grid md:grid-cols-4 gap-3">
+      {/* Small cards: fills the row width even with fewer than 4, wraps past 4 */}
+      {small.length > 0 && (
+      <div className={`hidden md:grid ${smallColsClass} gap-3`}>
         {small.map((item) => (
           <a key={item.title} href={item.href} className="relative h-[200px] rounded-2xl overflow-hidden block group">
             <img
@@ -74,6 +81,7 @@ export default function SurroundingsCarousel() {
           </a>
         ))}
       </div>
+      )}
 
       {/* Mobile: horizontal scroll strip */}
       <div className="md:hidden flex gap-3 overflow-x-auto pb-3 scrollbar-hide snap-x snap-mandatory">
